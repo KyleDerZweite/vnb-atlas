@@ -10,6 +10,7 @@ dist/
 node_modules/
 .vite/
 *.log
+vnbdigital/output/
 .env
 .env.*
 !.env.example
