@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NRW VNB Atlas</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Zum Hauptinhalt springen</a>
+    <header class="site-header">
+      <nav aria-label="Hauptnavigation" class="nav">
+        <a class="brand" href="/">NRW VNB Atlas</a>
+        <a href="/map.html">Karte</a>
+      </nav>
+    </header>
+
+    <main id="main" class="landing">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Lokales MVP</p>
+          <h1 id="page-title">NRW VNB Atlas</h1>
+          <p>
+            Eine einfache Web-App zur Visualisierung von Verteilnetzbetreibern in Nordrhein-Westfalen
+            auf einer OpenStreetMap-basierten Karte.
+          </p>
+          <p class="notice">
+            Aktueller Stand: Mock-Daten / nicht amtlich. Die Flaechen zeigen keine echten
+            Netzgebietsgrenzen oder Zustaendigkeiten.
+          </p>
+          <a class="button-primary" href="/map.html">Zur Kartenansicht</a>
+        </div>
+      </section>
+
+      <section class="content-band" aria-labelledby="goal-title">
+        <h2 id="goal-title">Ziel der Anwendung</h2>
+        <p>
+          Das MVP bereitet die technische Struktur fuer echte GIS-Daten vor: REST-Endpunkte,
+          GeoJSON-Ausgabe, Suche, Filter und eine zugängliche Ergebnisliste neben der Karte.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Mock-Daten fuer Entwicklungszwecke. Keine amtliche Auskunft.</p>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

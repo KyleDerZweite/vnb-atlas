@@ -1,0 +1,95 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mock-rheinland-west",
+        "name": "Mock-Gebiet Rheinland West",
+        "operatorId": "rheinnetz-mock",
+        "accuracy": "mock",
+        "source": "Handgezeichnete Demo-Geometrie, nicht amtlich",
+        "updatedAt": "2026-04-24",
+        "mockNotice": "Mock-Daten / nicht amtlich. Grenzen zeigen keine echten VNB-Zustaendigkeiten.",
+        "places": ["Koeln", "Bonn", "Huerth"],
+        "postalCodes": ["50667", "53111", "50354"]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[6.63, 50.68], [7.24, 50.70], [7.28, 51.02], [6.80, 51.12], [6.55, 50.95], [6.63, 50.68]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mock-ruhr-west",
+        "name": "Mock-Gebiet Ruhr West",
+        "operatorId": "westnetz-mock",
+        "accuracy": "municipality_approximation",
+        "source": "Handgezeichnete Demo-Geometrie, nicht amtlich",
+        "updatedAt": "2026-04-24",
+        "mockNotice": "Mock-Daten / nicht amtlich. Grenzen zeigen keine echten VNB-Zustaendigkeiten.",
+        "places": ["Essen", "Duisburg", "Muelheim an der Ruhr"],
+        "postalCodes": ["45127", "47051", "45468"]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[6.55, 51.30], [7.12, 51.32], [7.20, 51.58], [6.76, 51.65], [6.45, 51.52], [6.55, 51.30]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mock-duesseldorf",
+        "name": "Mock-Gebiet Duesseldorf",
+        "operatorId": "sw-duesseldorf-netz-mock",
+        "accuracy": "mock",
+        "source": "Handgezeichnete Demo-Geometrie, nicht amtlich",
+        "updatedAt": "2026-04-24",
+        "mockNotice": "Mock-Daten / nicht amtlich. Grenzen zeigen keine echten VNB-Zustaendigkeiten.",
+        "places": ["Duesseldorf", "Neuss", "Ratingen"],
+        "postalCodes": ["40213", "41460", "40878"]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[6.62, 51.10], [6.95, 51.12], [6.98, 51.34], [6.72, 51.40], [6.55, 51.26], [6.62, 51.10]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mock-dortmund",
+        "name": "Mock-Gebiet Dortmund",
+        "operatorId": "dortmunder-netz-mock",
+        "accuracy": "mock",
+        "source": "Handgezeichnete Demo-Geometrie, nicht amtlich",
+        "updatedAt": "2026-04-24",
+        "mockNotice": "Mock-Daten / nicht amtlich. Grenzen zeigen keine echten VNB-Zustaendigkeiten.",
+        "places": ["Dortmund", "Luenen", "Castrop-Rauxel"],
+        "postalCodes": ["44135", "44532", "44575"]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[7.25, 51.38], [7.70, 51.40], [7.76, 51.62], [7.42, 51.70], [7.18, 51.55], [7.25, 51.38]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mock-niederrhein",
+        "name": "Mock-Gebiet Niederrhein",
+        "operatorId": "new-netz-mock",
+        "accuracy": "municipality_approximation",
+        "source": "Handgezeichnete Demo-Geometrie, nicht amtlich",
+        "updatedAt": "2026-04-24",
+        "mockNotice": "Mock-Daten / nicht amtlich. Grenzen zeigen keine echten VNB-Zustaendigkeiten.",
+        "places": ["Moenchengladbach", "Viersen", "Krefeld"],
+        "postalCodes": ["41061", "41747", "47798"]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[6.20, 51.05], [6.62, 51.08], [6.68, 51.36], [6.42, 51.52], [6.12, 51.32], [6.20, 51.05]]]
+      }
+    }
+  ]
+}

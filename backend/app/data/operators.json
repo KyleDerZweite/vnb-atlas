@@ -1,0 +1,52 @@
+[
+  {
+    "id": "rheinnetz-mock",
+    "name": "RheinNetz GmbH (Mock)",
+    "type": "VNB",
+    "website": "https://example.invalid/rheinnetz-mock",
+    "parentCompany": "Mock Rhein Energie Gruppe",
+    "description": "Mock-Betreiber fuer Demo-Zwecke. Nicht amtlich und keine echte Netzgebietsaussage.",
+    "voltageLevels": ["Niederspannung", "Mittelspannung"],
+    "mockNotice": "Mock-Daten / nicht amtlich."
+  },
+  {
+    "id": "westnetz-mock",
+    "name": "Westnetz GmbH (Mock)",
+    "type": "VNB",
+    "website": "https://example.invalid/westnetz-mock",
+    "parentCompany": "Mock West Energie",
+    "description": "Mock-Betreiber fuer Demo-Zwecke. Nicht amtlich und keine echte Netzgebietsaussage.",
+    "voltageLevels": ["Niederspannung", "Mittelspannung", "Hochspannung"],
+    "mockNotice": "Mock-Daten / nicht amtlich."
+  },
+  {
+    "id": "sw-duesseldorf-netz-mock",
+    "name": "Stadtwerke Duesseldorf Netz GmbH (Mock)",
+    "type": "VNB",
+    "website": "https://example.invalid/stadtwerke-duesseldorf-netz-mock",
+    "parentCompany": "Mock Stadtwerke Duesseldorf",
+    "description": "Mock-Betreiber fuer Demo-Zwecke. Nicht amtlich und keine echte Netzgebietsaussage.",
+    "voltageLevels": ["Niederspannung", "Mittelspannung"],
+    "mockNotice": "Mock-Daten / nicht amtlich."
+  },
+  {
+    "id": "dortmunder-netz-mock",
+    "name": "Dortmunder Netz GmbH (Mock)",
+    "type": "VNB",
+    "website": "https://example.invalid/dortmunder-netz-mock",
+    "parentCompany": "Mock Stadtwerke Dortmund",
+    "description": "Mock-Betreiber fuer Demo-Zwecke. Nicht amtlich und keine echte Netzgebietsaussage.",
+    "voltageLevels": ["Niederspannung", "Mittelspannung"],
+    "mockNotice": "Mock-Daten / nicht amtlich."
+  },
+  {
+    "id": "new-netz-mock",
+    "name": "NEW Netz GmbH (Mock)",
+    "type": "VNB",
+    "website": "https://example.invalid/new-netz-mock",
+    "parentCompany": "Mock NEW Gruppe",
+    "description": "Mock-Betreiber fuer Demo-Zwecke. Nicht amtlich und keine echte Netzgebietsaussage.",
+    "voltageLevels": ["Niederspannung", "Mittelspannung"],
+    "mockNotice": "Mock-Daten / nicht amtlich."
+  }
+]

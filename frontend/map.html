@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karte und Suche | NRW VNB Atlas</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Zum Hauptinhalt springen</a>
+    <header class="site-header">
+      <nav aria-label="Hauptnavigation" class="nav">
+        <a class="brand" href="/">NRW VNB Atlas</a>
+        <a aria-current="page" href="/map.html">Karte</a>
+      </nav>
+    </header>
+
+    <main id="main" class="map-page">
+      <section class="page-intro" aria-labelledby="page-title">
+        <p class="eyebrow">Mock-Daten / nicht amtlich</p>
+        <h1 id="page-title">Karte und Suche</h1>
+        <p>
+          Suche nach Ort, PLZ oder Betreibername. Die Ergebnisliste enthaelt dieselben Mock-Gebiete
+          wie die Karte und ist ohne visuelle Kartenbedienung nutzbar.
+        </p>
+      </section>
+
+      <section class="app-shell" aria-label="VNB-Kartensuche">
+        <div class="panel search-panel">
+          <form id="search-form" class="search-form" novalidate>
+            <div class="field">
+              <label for="search-input">Ort, PLZ oder Netzbetreiber</label>
+              <div class="search-row">
+                <input
+                  id="search-input"
+                  name="q"
+                  type="search"
+                  autocomplete="off"
+                  placeholder="z. B. Duesseldorf, 40213, Westnetz"
+                />
+                <button type="submit">Suchen</button>
+              </div>
+            </div>
+
+            <div class="filter-grid" aria-label="Filter">
+              <div class="field">
+                <label for="operator-filter">Betreiber</label>
+                <select id="operator-filter" name="operator">
+                  <option value="">Alle Betreiber</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="accuracy-filter">Datenqualität</label>
+                <select id="accuracy-filter" name="accuracy">
+                  <option value="">Alle Qualitaeten</option>
+                  <option value="mock">Mock</option>
+                  <option value="municipality_approximation">Kommunale Naeherung</option>
+                  <option value="verified">Verifiziert</option>
+                </select>
+              </div>
+            </div>
+          </form>
+
+          <p id="status" class="status" role="status" aria-live="polite">Lade Daten...</p>
+          <p id="form-error" class="error-message" hidden></p>
+
+          <section aria-labelledby="results-title" class="results-section">
+            <h2 id="results-title">Ergebnisliste</h2>
+            <ol id="results-list" class="results-list"></ol>
+          </section>
+        </div>
+
+        <section class="map-region" aria-labelledby="map-title">
+          <h2 id="map-title">Karte</h2>
+          <p id="map-description" class="visually-hidden">
+            Interaktive OpenStreetMap-Karte mit Mock-Gebieten. Alle wichtigen Informationen sind auch
+            in der Ergebnisliste und im Detailbereich verfuegbar.
+          </p>
+          <div id="map" class="map" aria-describedby="map-description"></div>
+        </section>
+
+        <aside id="detail-panel" class="panel detail-panel" tabindex="-1" aria-labelledby="detail-title">
+          <h2 id="detail-title">Details</h2>
+          <div id="detail-content">
+            <p>Waehle ein Gebiet in der Ergebnisliste oder Karte aus.</p>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Mock-Daten fuer Entwicklungszwecke. Keine amtliche Auskunft.</p>
+    </footer>
+    <script type="module" src="/src/map-page.ts"></script>
+  </body>
+</html>
