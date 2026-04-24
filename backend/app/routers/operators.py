@@ -7,6 +7,7 @@ from app.services.data_service import (
     filter_operators,
     get_operator,
     parse_accuracy,
+    parse_coverage,
     parse_operator_type,
 )
 
@@ -18,6 +19,9 @@ def list_operators(
     q: str | None = Query(default=None, max_length=80),
     type: Literal["VNB", "ÜNB", "UNKNOWN"] | None = Query(default=None),
     accuracy: Literal["mock", "municipality_approximation", "verified"] | None = Query(default=None),
+    country: Literal["DE"] | None = Query(default=None),
+    federal_state: str | None = Query(default=None, min_length=2, max_length=2),
+    coverage: Literal["none", "mock", "partial", "verified"] | None = Query(default=None),
 ) -> list[Operator]:
     return [
         Operator.model_validate(operator)
@@ -25,6 +29,9 @@ def list_operators(
             q=q,
             operator_type=parse_operator_type(type),
             accuracy=parse_accuracy(accuracy),
+            country=country,
+            federal_state=federal_state,
+            coverage=parse_coverage(coverage),
         )
     ]
 

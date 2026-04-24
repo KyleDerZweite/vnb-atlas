@@ -1,6 +1,6 @@
-# NRW VNB Atlas Backend
+# Deutschland VNB Atlas Backend
 
-FastAPI-Backend fuer das NRW VNB Atlas MVP. Die Daten in `app/data/` sind Mock-Daten und nicht amtlich.
+FastAPI-Backend fuer das Deutschland VNB Atlas MVP. Die Anwendung ist deutschlandweit ausgelegt; befuellte GIS-/Mockdaten gibt es im MVP nur fuer Nordrhein-Westfalen.
 
 ## Start
 

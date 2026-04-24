@@ -1,0 +1,397 @@
+/* -----------------------------------------------------------------------------
+ * Karten- / Suchseite – Map-zentriertes Layout mit schwebenden Panels.
+ * -------------------------------------------------------------------------- */
+
+.map-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+/* --- Kompakter Titel-Streifen oberhalb der Karte ----------------------- */
+.map-page__intro {
+  width: min(var(--content-width), 100%);
+  margin-inline: auto;
+  padding: var(--space-5) var(--gutter) var(--space-4);
+  display: grid;
+  gap: var(--space-3) var(--space-5);
+  grid-template-columns: minmax(0, 1fr);
+  align-items: end;
+}
+
+@media (min-width: 820px) {
+  .map-page__intro {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+}
+
+.map-page__intro h1 {
+  margin: var(--space-1) 0 0;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.map-page__intro p {
+  margin: 0;
+  color: var(--color-ink-soft);
+  max-width: 62ch;
+  font-size: 0.98rem;
+}
+
+/* --- Map-Stage (Karte + Overlay-Panels) --------------------------------- */
+.map-stage {
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: clamp(560px, calc(100vh - 260px), 820px);
+  background: var(--color-page-deep);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.map-stage__canvas {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  background: #e7ecdd;
+  z-index: 0;
+}
+
+/* Leaflet-Feintuning */
+.leaflet-container {
+  font: inherit;
+  background: #e7ecdd;
+}
+
+.leaflet-container .leaflet-vnbAreas-pane svg {
+  max-width: none !important;
+  max-height: none !important;
+}
+
+.leaflet-interactive:focus {
+  outline: 4px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Leaflet-Controls weg vom Suchpanel, näher zur Mitte */
+.map-stage .leaflet-top.leaflet-left {
+  top: var(--space-4);
+  left: calc(380px + var(--space-4));
+}
+
+@media (max-width: 1100px) {
+  .map-stage .leaflet-top.leaflet-left {
+    left: var(--space-4);
+  }
+}
+
+/* --- Gemeinsame Card-Basis für Overlay-Panels --------------------------- */
+.map-card {
+  position: absolute;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* Über allen Leaflet-Panes (Popup-Pane liegt bei 700). */
+  z-index: 1000;
+}
+
+.map-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: linear-gradient(180deg, var(--color-surface), var(--color-surface-muted));
+  border-bottom: 1px solid var(--color-line);
+}
+
+.map-card__title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.map-card__body {
+  padding: var(--space-4);
+  overflow: auto;
+  scrollbar-gutter: stable;
+}
+
+/* Dezente Scrollbar */
+.map-card__body::-webkit-scrollbar {
+  width: 10px;
+}
+
+.map-card__body::-webkit-scrollbar-thumb {
+  background: var(--color-line-strong);
+  border-radius: 999px;
+  border: 2px solid var(--color-surface);
+}
+
+/* --- Suche (linkes Overlay) --------------------------------------------- */
+.search-panel {
+  top: var(--space-4);
+  left: var(--space-4);
+  width: 360px;
+  max-height: calc(100% - var(--space-6));
+}
+
+.search-form {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.search-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-2);
+}
+
+.filter-grid {
+  display: grid;
+  gap: var(--space-3);
+  padding-top: var(--space-3);
+  margin-top: var(--space-1);
+  border-top: 1px dashed var(--color-line);
+}
+
+.field > label {
+  margin-bottom: var(--space-1);
+}
+
+/* Status & Fehler */
+.status {
+  margin: var(--space-3) 0 0;
+  padding: 0.55rem 0.75rem;
+  background: var(--color-accent-soft);
+  border-radius: var(--radius-sm);
+  color: var(--color-accent-strong);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.error-message {
+  margin: var(--space-2) 0 0;
+  padding: 0.55rem 0.75rem;
+  background: #fbecec;
+  border: 1px solid rgb(154 31 31 / 35%);
+  border-radius: var(--radius-sm);
+  color: var(--color-danger);
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+/* --- Ergebnisliste ------------------------------------------------------- */
+.results-section {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-line);
+}
+
+.results-section h2 {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  font-weight: 800;
+}
+
+.results-list {
+  display: grid;
+  gap: var(--space-2);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.result-button {
+  width: 100%;
+  display: grid;
+  gap: 0.12rem;
+  align-items: start;
+  justify-content: stretch;
+  justify-items: start;
+  padding: 0.58rem 0.78rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink);
+  text-align: left;
+  font-weight: 500;
+  min-height: 0;
+  transition: border-color 120ms ease, background-color 120ms ease, transform 120ms ease;
+  position: relative;
+}
+
+.result-button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  width: 3px;
+  background: transparent;
+  border-radius: 0 2px 2px 0;
+  transition: background-color 120ms ease;
+}
+
+.result-button:hover {
+  background: var(--color-surface-muted);
+  border-color: var(--color-line-strong);
+  color: var(--color-ink);
+}
+
+.result-button:hover::before {
+  background: var(--color-line-strong);
+}
+
+.result-button.is-active {
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+  color: var(--color-ink);
+}
+
+.result-button.is-active::before {
+  background: var(--color-accent);
+}
+
+.result-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.98rem;
+  letter-spacing: 0;
+  color: var(--color-ink);
+}
+
+.meta-line {
+  color: var(--color-muted);
+  font-size: 0.84rem;
+}
+
+.empty-result {
+  padding: var(--space-4);
+  background: var(--color-surface-muted);
+  border: 1px dashed var(--color-line-strong);
+  border-radius: var(--radius-sm);
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+/* --- Detail-Panel (rechtes Overlay) ------------------------------------- */
+.detail-panel {
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 340px;
+  max-height: calc(100% - var(--space-6));
+}
+
+.detail-panel:focus {
+  outline: none;
+}
+
+.detail-panel:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.detail-list {
+  display: grid;
+  gap: 0;
+  margin: var(--space-2) 0 0;
+}
+
+.detail-list > div {
+  display: grid;
+  grid-template-columns: minmax(100px, 0.55fr) 1fr;
+  gap: var(--space-3);
+  padding-block: 0.65rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.detail-list > div:last-child {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.detail-list dt {
+  color: var(--color-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-top: 0.1rem;
+}
+
+.detail-list dd {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: 0.94rem;
+  word-break: break-word;
+  line-height: 1.45;
+}
+
+.detail-panel .notice {
+  margin-top: 0;
+  margin-bottom: var(--space-3);
+  font-size: 0.88rem;
+}
+
+/* --- Responsive: Stack-Layout auf schmalen Viewports ------------------- */
+@media (max-width: 960px) {
+  .map-stage {
+    height: auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .map-stage__canvas {
+    position: relative;
+    height: 55vh;
+    min-height: 420px;
+    order: 1;
+  }
+
+  .map-card {
+    position: static;
+    width: auto;
+    max-height: none;
+    margin: var(--space-3) var(--gutter);
+    box-shadow: var(--shadow-md);
+  }
+
+  .search-panel {
+    order: 2;
+  }
+
+  .detail-panel {
+    order: 3;
+  }
+
+  .map-stage .leaflet-top.leaflet-left {
+    left: var(--space-3);
+  }
+}
+
+@media (max-width: 560px) {
+  .search-row {
+    grid-template-columns: 1fr;
+  }
+
+}

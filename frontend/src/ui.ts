@@ -1,4 +1,4 @@
-import type { Accuracy, AreaFeature, Operator } from "./types";
+import type { AreaFeature, FederalState, Operator } from "./types";
 
 export interface UiElements {
   status: HTMLElement;
@@ -6,14 +6,9 @@ export interface UiElements {
   resultsList: HTMLOListElement;
   detailPanel: HTMLElement;
   detailContent: HTMLElement;
+  federalStateFilter: HTMLSelectElement;
   operatorFilter: HTMLSelectElement;
 }
-
-const accuracyLabels: Record<Accuracy, string> = {
-  mock: "Mock",
-  municipality_approximation: "Kommunale Naeherung",
-  verified: "Verifiziert",
-};
 
 export function setStatus(elements: UiElements, message: string): void {
   elements.status.textContent = message;
@@ -31,6 +26,18 @@ export function renderOperatorFilter(select: HTMLSelectElement, operators: Opera
     select.append(new Option(operator.name, operator.id));
   }
   select.value = operators.some((operator) => operator.id === currentValue) ? currentValue : "";
+}
+
+export function renderFederalStateFilter(select: HTMLSelectElement, federalStates: FederalState[]): void {
+  const currentValue = select.value;
+  select.replaceChildren(new Option("Alle verfuegbaren Daten", ""));
+  for (const federalState of federalStates) {
+    const status = federalState.hasAreaData ? "Pilotdaten" : "keine Daten";
+    const option = new Option(`${federalState.name} (${status})`, federalState.id);
+    option.disabled = !federalState.hasAreaData;
+    select.append(option);
+  }
+  select.value = federalStates.some((state) => state.id === currentValue && state.hasAreaData) ? currentValue : "";
 }
 
 export function renderResults(
@@ -57,8 +64,8 @@ export function renderResults(
     button.innerHTML = `
       <span class="result-title">${escapeHtml(feature.properties.name)}</span>
       <span>${escapeHtml(feature.properties.operatorName)}</span>
+      <span class="meta-line">Pilotdatensatz: ${escapeHtml(feature.properties.federalState)}</span>
       <span class="meta-line">${escapeHtml(feature.properties.places.join(", "))}</span>
-      <span class="badge">${accuracyLabels[feature.properties.accuracy]}</span>
     `;
     button.addEventListener("click", () => onSelect(feature, true));
     item.append(button);
@@ -73,7 +80,7 @@ export function renderDetails(elements: UiElements, feature: AreaFeature, focusD
     <dl class="detail-list">
       <div><dt>Gebiet</dt><dd>${escapeHtml(properties.name)}</dd></div>
       <div><dt>Betreiber</dt><dd>${escapeHtml(properties.operatorName)}</dd></div>
-      <div><dt>Datenqualitaet</dt><dd>${accuracyLabels[properties.accuracy]}</dd></div>
+      <div><dt>Pilotdatensatz</dt><dd>${escapeHtml(properties.country)} / ${escapeHtml(properties.federalState)}</dd></div>
       <div><dt>Orte</dt><dd>${escapeHtml(properties.places.join(", "))}</dd></div>
       <div><dt>PLZ</dt><dd>${escapeHtml(properties.postalCodes.join(", "))}</dd></div>
       <div><dt>Quelle</dt><dd>${escapeHtml(properties.source)}</dd></div>
@@ -86,9 +93,13 @@ export function renderDetails(elements: UiElements, feature: AreaFeature, focusD
   }
 }
 
-export function announceAreaCount(elements: UiElements, count: number): void {
+export function announceAreaCount(elements: UiElements, count: number, coverageLabel: string): void {
   const suffix = count === 1 ? "Gebiet" : "Gebiete";
-  setStatus(elements, `${count} ${suffix} sichtbar. Mock-Daten / nicht amtlich.`);
+  setStatus(elements, `${count} ${suffix} sichtbar. MVP-Datenabdeckung: ${coverageLabel}. Mock-Daten / nicht amtlich.`);
+}
+
+export function showNoCoverageMessage(elements: UiElements): void {
+  setStatus(elements, "Fuer dieses Gebiet liegen im MVP noch keine VNB-GIS-Daten vor.");
 }
 
 function highlightResultButton(areaId: string): void {

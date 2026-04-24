@@ -1,23 +1,28 @@
-import { getAreas, getOperators, search } from "./api-client";
+import { getAreas, getCoverage, getFederalStates, getOperators, search } from "./api-client";
 import { AtlasMap } from "./map";
 import { readFilters, readSearchQuery, validateSearchQuery, type SearchFormElements } from "./search";
 import type { AreaFeature, Operator, SearchResult } from "./types";
 import {
   announceAreaCount,
+  renderFederalStateFilter,
   renderDetails,
   renderOperatorFilter,
   renderResults,
   setError,
   setStatus,
+  showNoCoverageMessage,
   type UiElements,
 } from "./ui";
 
 const elements = getElements();
 let allOperators: Operator[] = [];
 let visibleFeatures: AreaFeature[] = [];
+let coverageLabel = "Nordrhein-Westfalen";
 
 const atlasMap = new AtlasMap("map", (feature, focusDetail) => {
   renderDetails(elements.ui, feature, focusDetail);
+}, () => {
+  showNoCoverageMessage(elements.ui);
 });
 
 void initialize();
@@ -25,8 +30,16 @@ void initialize();
 async function initialize(): Promise<void> {
   setStatus(elements.ui, "Lade Betreiber und Gebiete...");
   try {
-    allOperators = await getOperators();
+    const [operators, federalStates, coverage] = await Promise.all([getOperators(), getFederalStates(), getCoverage()]);
+    allOperators = operators;
     renderOperatorFilter(elements.ui.operatorFilter, allOperators);
+    renderFederalStateFilter(elements.ui.federalStateFilter, federalStates);
+    coverageLabel =
+      Object.values(coverage.federalStates)
+        .filter((state) => state.hasAreas)
+        .map((state) => state.name)
+        .join(", ") || coverageLabel;
+    setStatus(elements.ui, `MVP-Datenabdeckung: ${coverageLabel}. Andere Bundeslaender sind vorbereitet.`);
     await loadAreas();
     bindEvents();
     window.setTimeout(() => atlasMap.invalidateSize(), 100);
@@ -44,7 +57,7 @@ function bindEvents(): void {
   elements.form.operatorFilter.addEventListener("change", () => {
     void loadAreas();
   });
-  elements.form.accuracyFilter.addEventListener("change", () => {
+  elements.form.federalStateFilter.addEventListener("change", () => {
     void loadAreas();
   });
 }
@@ -69,7 +82,11 @@ async function runSearch(): Promise<void> {
     const response = await search(query);
     const areaIds = new Set(response.results.map(resultToAreaId).filter(isString));
     await loadAreas(areaIds);
-    setStatus(elements.ui, `${response.total} Suchtreffer, ${visibleFeatures.length} passende Gebiete sichtbar.`);
+    if (visibleFeatures.length === 0) {
+      showNoCoverageMessage(elements.ui);
+      return;
+    }
+    setStatus(elements.ui, `${response.total} Suchtreffer, ${visibleFeatures.length} passende Pilotgebiete sichtbar.`);
   } catch (error) {
     setStatus(elements.ui, "Suche fehlgeschlagen.");
     setError(elements.ui, error instanceof Error ? error.message : "Unbekannter Suchfehler.");
@@ -89,7 +106,8 @@ async function loadAreas(allowedAreaIds?: Set<string>): Promise<void> {
       atlasMap.selectArea(feature, focusDetail);
       atlasMap.focusArea(feature.properties.id);
     });
-    announceAreaCount(elements.ui, visibleFeatures.length);
+    atlasMap.fitRenderedAreas();
+    announceAreaCount(elements.ui, visibleFeatures.length, coverageLabel);
   } catch (error) {
     visibleFeatures = [];
     renderResults(elements.ui, [], () => undefined);
@@ -114,14 +132,14 @@ function getElements(): { form: SearchFormElements; ui: UiElements } {
   const form = requireElement<HTMLFormElement>("search-form");
   const input = requireElement<HTMLInputElement>("search-input");
   const operatorFilter = requireElement<HTMLSelectElement>("operator-filter");
-  const accuracyFilter = requireElement<HTMLSelectElement>("accuracy-filter");
+  const federalStateFilter = requireElement<HTMLSelectElement>("federal-state-filter");
 
   return {
     form: {
       form,
       input,
+      federalStateFilter,
       operatorFilter,
-      accuracyFilter,
     },
     ui: {
       status: requireElement("status"),
@@ -129,6 +147,7 @@ function getElements(): { form: SearchFormElements; ui: UiElements } {
       resultsList: requireElement<HTMLOListElement>("results-list"),
       detailPanel: requireElement("detail-panel"),
       detailContent: requireElement("detail-content"),
+      federalStateFilter,
       operatorFilter,
     },
   };

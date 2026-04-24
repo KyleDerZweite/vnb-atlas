@@ -11,6 +11,9 @@ class Operator(BaseModel):
     parentCompany: str | None = None
     description: str
     voltageLevels: list[str]
+    country: Literal["DE"]
+    federalStates: list[str]
+    dataCoverage: Literal["none", "mock", "partial", "verified"]
     mockNotice: str
 
 
@@ -19,6 +22,8 @@ class AreaProperties(BaseModel):
     name: str
     operatorId: str
     operatorName: str
+    country: Literal["DE"]
+    federalState: str
     accuracy: Literal["mock", "municipality_approximation", "verified"]
     source: str
     updatedAt: str
@@ -55,4 +60,23 @@ class LookupResponse(BaseModel):
 
 class HealthResponse(BaseModel):
     status: str = Field(examples=["ok"])
-    service: str = Field(examples=["nrw-vnb-atlas"])
+    service: str = Field(examples=["vnb-atlas"])
+
+
+class FederalState(BaseModel):
+    id: str
+    name: str
+    hasAreaData: bool
+    dataStatus: Literal["mock", "partial", "verified", "not_available"]
+
+
+class FederalStateCoverage(BaseModel):
+    id: str
+    name: str
+    hasAreas: bool
+    status: Literal["mock", "partial", "verified", "not_available"]
+
+
+class CountryCoverage(BaseModel):
+    country: Literal["DE"]
+    federalStates: dict[str, FederalStateCoverage]

@@ -5,7 +5,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-from app.models import Accuracy, OperatorRecord, OperatorType
+from app.models import Accuracy, DataCoverage, OperatorRecord, OperatorType
 from app.schemas import SearchResult
 from app.services.geo_service import BBox, bbox_intersects, geometry_bbox, point_in_geometry
 
@@ -19,6 +19,12 @@ def parse_operator_type(value: str | None) -> OperatorType | None:
 
 
 def parse_accuracy(value: str | None) -> Accuracy | None:
+    if value is None:
+        return None
+    return value  # FastAPI already validated the literal.
+
+
+def parse_coverage(value: str | None) -> DataCoverage | None:
     if value is None:
         return None
     return value  # FastAPI already validated the literal.
@@ -46,6 +52,9 @@ def filter_operators(
     q: str | None = None,
     operator_type: OperatorType | None = None,
     accuracy: Accuracy | None = None,
+    country: str | None = None,
+    federal_state: str | None = None,
+    coverage: DataCoverage | None = None,
 ) -> list[OperatorRecord]:
     normalized_query = normalize(q)
     matching_operator_ids = None
@@ -59,6 +68,12 @@ def filter_operators(
     operators = []
     for operator in load_operators():
         if operator_type and operator["type"] != operator_type:
+            continue
+        if country and operator["country"] != country:
+            continue
+        if federal_state and federal_state not in operator["federalStates"]:
+            continue
+        if coverage and operator["dataCoverage"] != coverage:
             continue
         if matching_operator_ids is not None and operator["id"] not in matching_operator_ids:
             continue
@@ -74,6 +89,8 @@ def filter_area_features(
     bbox: BBox | None = None,
     operator_id: str | None = None,
     accuracy: Accuracy | None = None,
+    country: str | None = None,
+    federal_state: str | None = None,
 ) -> list[dict[str, Any]]:
     operators_by_id = {operator["id"]: operator for operator in load_operators()}
     features = []
@@ -81,6 +98,10 @@ def filter_area_features(
     for feature in load_areas()["features"]:
         properties = feature["properties"]
         if operator_id and properties["operatorId"] != operator_id:
+            continue
+        if country and properties["country"] != country:
+            continue
+        if federal_state and properties["federalState"] != federal_state:
             continue
         if accuracy and properties["accuracy"] != accuracy:
             continue
@@ -170,7 +191,19 @@ def _validate_feature_collection(data: dict[str, Any]) -> None:
             raise ValueError("areas.geojson features must be Polygon or MultiPolygon")
         geometry_bbox(geometry)
         properties = feature.get("properties", {})
-        required = {"id", "name", "operatorId", "accuracy", "source", "updatedAt", "mockNotice", "places", "postalCodes"}
+        required = {
+            "id",
+            "name",
+            "operatorId",
+            "country",
+            "federalState",
+            "accuracy",
+            "source",
+            "updatedAt",
+            "mockNotice",
+            "places",
+            "postalCodes",
+        }
         missing = required - set(properties)
         if missing:
             raise ValueError(f"areas.geojson feature is missing properties: {sorted(missing)}")

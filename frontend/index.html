@@ -3,47 +3,163 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NRW VNB Atlas</title>
+    <meta
+      name="description"
+      content="Deutschland VNB Atlas - eine schlichte Web-App zur deutschlandweiten Visualisierung von Verteilnetzbetreibern auf einer OpenStreetMap-Karte. Lokales MVP mit Mock-Daten für NRW."
+    />
+    <title>VNB Atlas - Verteilnetzbetreiber auf der Karte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,600;9..144,700&display=swap"
+    />
     <link rel="stylesheet" href="/styles/main.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Zum Hauptinhalt springen</a>
+
     <header class="site-header">
-      <nav aria-label="Hauptnavigation" class="nav">
-        <a class="brand" href="/">NRW VNB Atlas</a>
-        <a href="/map.html">Karte</a>
-      </nav>
+      <div class="site-header__inner">
+        <a class="site-header__brand" href="/">
+          <span class="site-header__brand-text">
+            <span class="site-header__brand-name">VNB Atlas</span>
+            <span class="site-header__brand-sub">Verteilnetz · MVP</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Hauptnavigation">
+          <a href="/">Start</a>
+          <a href="/map.html">Karte</a>
+        </nav>
+      </div>
     </header>
 
     <main id="main" class="landing">
       <section class="hero" aria-labelledby="page-title">
-        <div class="hero-copy">
-          <p class="eyebrow">Lokales MVP</p>
-          <h1 id="page-title">NRW VNB Atlas</h1>
-          <p>
-            Eine einfache Web-App zur Visualisierung von Verteilnetzbetreibern in Nordrhein-Westfalen
-            auf einer OpenStreetMap-basierten Karte.
+        <div class="hero__copy">
+          <p class="eyebrow">Lokales MVP · Pilotdatensatz NRW</p>
+          <h1 id="page-title">Verteilnetzbetreiber auf einer Karte Deutschlands.</h1>
+          <p class="hero__lede">
+            Eine schlichte Web-App zur deutschlandweiten Visualisierung von Verteilnetzbetreibern
+            auf einer OpenStreetMap-Basiskarte. Suche nach Ort, PLZ oder Betreiber und sieh
+            die Netzgebiete mit einem Blick.
           </p>
-          <p class="notice">
-            Aktueller Stand: Mock-Daten / nicht amtlich. Die Flaechen zeigen keine echten
-            Netzgebietsgrenzen oder Zustaendigkeiten.
-          </p>
-          <a class="button-primary" href="/map.html">Zur Kartenansicht</a>
+          <div class="hero__cta-row">
+            <a class="button button-primary" href="/map.html">
+              Zur Kartenansicht
+              <span class="button__arrow" aria-hidden="true">→</span>
+            </a>
+            <p class="hero__cta-note">Keine amtliche Auskunft. Mock-Daten für Entwicklungszwecke.</p>
+          </div>
         </div>
+
+        <figure class="hero__visual" aria-hidden="true">
+          <div class="hero__visual-frame">
+            <span class="hero__visual-label">Pilotgebiet NRW</span>
+            <div class="hero__visual-map">
+              <!-- Stilisierte Netzdarstellung: Polygone + Knoten -->
+              <svg viewBox="0 0 400 320" role="img" aria-hidden="true" focusable="false">
+                <defs>
+                  <pattern id="dots" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+                    <circle cx="1" cy="1" r="0.9" fill="#10140f" fill-opacity="0.12" />
+                  </pattern>
+                </defs>
+
+                <!-- Hintergrund-Punkte -->
+                <rect x="0" y="0" width="400" height="320" fill="url(#dots)" />
+
+                <!-- Netzgebiete (stilisiert) -->
+                <g stroke-linejoin="round" stroke-linecap="round">
+                  <polygon
+                    points="60,90 140,70 175,120 150,180 80,170"
+                    fill="#0a6b59" fill-opacity="0.14"
+                    stroke="#0a6b59" stroke-width="1.6"
+                  />
+                  <polygon
+                    points="145,70 230,55 260,110 200,140 175,120"
+                    fill="#0a6b59" fill-opacity="0.22"
+                    stroke="#074a3f" stroke-width="1.8"
+                  />
+                  <polygon
+                    points="200,140 275,120 310,175 250,220 175,195"
+                    fill="#b07315" fill-opacity="0.14"
+                    stroke="#b07315" stroke-width="1.6"
+                  />
+                  <polygon
+                    points="80,170 155,185 180,240 115,260 55,215"
+                    fill="#0a6b59" fill-opacity="0.10"
+                    stroke="#0a6b59" stroke-width="1.4"
+                    stroke-dasharray="4 3"
+                  />
+                </g>
+
+                <!-- Netz-Knoten -->
+                <g fill="#074a3f">
+                  <circle cx="140" cy="70" r="3.5" />
+                  <circle cx="200" cy="140" r="4.5" />
+                  <circle cx="80" cy="170" r="3" />
+                  <circle cx="275" cy="120" r="3" />
+                  <circle cx="155" cy="185" r="3" />
+                </g>
+
+                <!-- Verbindungslinien -->
+                <g stroke="#074a3f" stroke-width="1" fill="none" stroke-opacity="0.45">
+                  <line x1="140" y1="70" x2="200" y2="140" />
+                  <line x1="200" y1="140" x2="80" y2="170" />
+                  <line x1="200" y1="140" x2="275" y2="120" />
+                  <line x1="200" y1="140" x2="155" y2="185" />
+                </g>
+
+                <!-- Hervorgehobener aktiver Knoten -->
+                <circle cx="200" cy="140" r="9" fill="none" stroke="#0a6b59" stroke-width="1.5" />
+                <circle cx="200" cy="140" r="14" fill="none" stroke="#0a6b59" stroke-width="0.8" stroke-opacity="0.45" />
+              </svg>
+            </div>
+            <span class="hero__visual-caption">OpenStreetMap · Mock-Polygone</span>
+          </div>
+        </figure>
       </section>
 
-      <section class="content-band" aria-labelledby="goal-title">
-        <h2 id="goal-title">Ziel der Anwendung</h2>
-        <p>
-          Das MVP bereitet die technische Struktur fuer echte GIS-Daten vor: REST-Endpunkte,
-          GeoJSON-Ausgabe, Suche, Filter und eine zugängliche Ergebnisliste neben der Karte.
-        </p>
+      <section class="intro" aria-labelledby="goal-title">
+        <div class="intro__header">
+          <h2 id="goal-title">Ziel der Anwendung</h2>
+          <p>
+            Das MVP bereitet die deutschlandweite technische Struktur für echte GIS-Daten vor:
+            REST-Endpunkte, GeoJSON-Ausgabe, Suche, Filter und eine zugängliche Ergebnisliste
+            neben der Karte. Der erste Pilotdatensatz enthält ausschließlich NRW-Mockgebiete.
+          </p>
+        </div>
+
+        <div class="intro__grid" aria-label="Kernfunktionen">
+          <article class="intro__card">
+            <span class="intro__card__index" aria-hidden="true">01</span>
+            <h3>Karte</h3>
+            <p>OpenStreetMap-Basiskarte mit Polygonen der Pilot-Netzgebiete und Hover-Tooltips.</p>
+          </article>
+          <article class="intro__card">
+            <span class="intro__card__index" aria-hidden="true">02</span>
+            <h3>Suche &amp; Filter</h3>
+            <p>Freitextsuche sowie Filter nach Bundesland, Betreiber und Datenqualität.</p>
+          </article>
+          <article class="intro__card">
+            <span class="intro__card__index" aria-hidden="true">03</span>
+            <h3>Barrierefrei</h3>
+            <p>Ergebnisliste, Tastaturbedienung und Screenreader-Ausgabe sind gleichwertig zur Karte nutzbar.</p>
+          </article>
+        </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>Mock-Daten fuer Entwicklungszwecke. Keine amtliche Auskunft.</p>
+      <div class="site-footer__inner">
+        <p>Mock-Daten für Entwicklungszwecke. Keine amtliche Auskunft.</p>
+        <span class="site-footer__meta">
+          <span class="site-footer__tag">MVP · v0.1</span>
+          <span>OpenStreetMap-Basiskarte</span>
+        </span>
+      </div>
     </footer>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

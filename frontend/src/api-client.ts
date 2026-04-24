@@ -1,4 +1,12 @@
-import type { Accuracy, AreaFeatureCollection, AreaFilters, LookupResponse, Operator, SearchResponse } from "./types";
+import type {
+  AreaFeatureCollection,
+  AreaFilters,
+  Coverage,
+  FederalState,
+  LookupResponse,
+  Operator,
+  SearchResponse,
+} from "./types";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://127.0.0.1:8000";
 
@@ -12,18 +20,26 @@ export class ApiError extends Error {
   }
 }
 
-export async function getOperators(params: { q?: string; accuracy?: Accuracy } = {}): Promise<Operator[]> {
+export async function getOperators(params: { q?: string } = {}): Promise<Operator[]> {
   const search = new URLSearchParams();
   if (params.q) search.set("q", params.q);
-  if (params.accuracy) search.set("accuracy", params.accuracy);
   return fetchJson<Operator[]>(`/api/operators${withQuery(search)}`);
 }
 
 export async function getAreas(filters: AreaFilters = {}): Promise<AreaFeatureCollection> {
   const search = new URLSearchParams();
+  if (filters.country) search.set("country", filters.country);
+  if (filters.federalState) search.set("federal_state", filters.federalState);
   if (filters.operatorId) search.set("operator_id", filters.operatorId);
-  if (filters.accuracy) search.set("accuracy", filters.accuracy);
   return fetchJson<AreaFeatureCollection>(`/api/areas${withQuery(search)}`);
+}
+
+export async function getFederalStates(): Promise<FederalState[]> {
+  return fetchJson<FederalState[]>("/api/federal-states");
+}
+
+export async function getCoverage(): Promise<Coverage> {
+  return fetchJson<Coverage>("/api/coverage");
 }
 
 export async function search(query: string): Promise<SearchResponse> {

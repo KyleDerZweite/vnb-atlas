@@ -5,4 +5,12 @@ export default defineConfig({
     port: 5173,
     strictPort: false,
   },
+  build: {
+    rollupOptions: {
+      input: {
+        index: "index.html",
+        map: "map.html",
+      },
+    },
+  },
 });

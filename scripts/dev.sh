@@ -48,7 +48,7 @@ echo "Installing frontend dependencies..."
 )
 
 echo
-echo "Starting NRW VNB Atlas in dev mode..."
+echo "Starting Deutschland VNB Atlas in dev mode..."
 echo "Backend:  http://127.0.0.1:8000"
 echo "OpenAPI:  http://127.0.0.1:8000/docs"
 echo "Frontend: http://127.0.0.1:5173"

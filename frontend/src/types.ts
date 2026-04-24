@@ -9,6 +9,9 @@ export interface Operator {
   parentCompany: string | null;
   description: string;
   voltageLevels: string[];
+  country: "DE";
+  federalStates: string[];
+  dataCoverage: "none" | "mock" | "partial" | "verified";
   mockNotice: string;
 }
 
@@ -17,6 +20,8 @@ export interface AreaProperties {
   name: string;
   operatorId: string;
   operatorName: string;
+  country: "DE";
+  federalState: string;
   accuracy: Accuracy;
   source: string;
   updatedAt: string;
@@ -64,5 +69,26 @@ export interface LookupResponse {
 
 export interface AreaFilters {
   operatorId?: string;
-  accuracy?: Accuracy;
+  country?: "DE";
+  federalState?: string;
+}
+
+export interface FederalState {
+  id: string;
+  name: string;
+  hasAreaData: boolean;
+  dataStatus: "mock" | "partial" | "verified" | "not_available";
+}
+
+export interface Coverage {
+  country: "DE";
+  federalStates: Record<
+    string,
+    {
+      id: string;
+      name: string;
+      hasAreas: boolean;
+      status: "mock" | "partial" | "verified" | "not_available";
+    }
+  >;
 }

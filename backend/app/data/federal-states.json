@@ -1,0 +1,98 @@
+[
+  {
+    "id": "BW",
+    "name": "Baden-Wuerttemberg",
+    "hasAreaData": false,
+    "dataStatus": "not_available"
+  },
+  {
+    "id": "BY",
+    "name": "Bayern",
+    "hasAreaData": false,
+    "dataStatus": "not_available"
+  },
+  {
+    "id": "BE",
+    "name": "Berlin",
+    "hasAreaData": false,
+    "dataStatus": "not_available"
+  },
+  {
+    "id": "BB",
+    "name": "Brandenburg",
+    "hasAreaData": false,
+    "dataStatus": "not_available"
+  },
+  {
+    "id": "HB",
+    "name": "Bremen",
+    "hasAreaData": false,
+    "dataStatus": "not_available"
+  },
+  {
+    "id": "HH",
+    "name": "Hamburg",
+    "hasAreaData": false,
+    "dataStatus": "not_available"
+  },
+  {
+    "id": "HE",
+    "name": "Hessen",
+    "hasAreaData": false,
+    "dataStatus": "not_available"
+  },
+  {
+    "id": "MV",
+    "name": "Mecklenburg-Vorpommern",
+    "hasAreaData": false,
+    "dataStatus": "not_available"
+  },
+  {
+    "id": "NI",
+    "name": "Niedersachsen",
+    "hasAreaData": false,
+    "dataStatus": "not_available"
+  },
+  {
+    "id": "NW",
+    "name": "Nordrhein-Westfalen",
+    "hasAreaData": true,
+    "dataStatus": "mock"
+  },
+  {
+    "id": "RP",
+    "name": "Rheinland-Pfalz",
+    "hasAreaData": false,
+    "dataStatus": "not_available"
+  },
+  {
+    "id": "SL",
+    "name": "Saarland",
+    "hasAreaData": false,
+    "dataStatus": "not_available"
+  },
+  {
+    "id": "SN",
+    "name": "Sachsen",
+    "hasAreaData": false,
+    "dataStatus": "not_available"
+  },
+  {
+    "id": "ST",
+    "name": "Sachsen-Anhalt",
+    "hasAreaData": false,
+    "dataStatus": "not_available"
+  },
+  {
+    "id": "SH",
+    "name": "Schleswig-Holstein",
+    "hasAreaData": false,
+    "dataStatus": "not_available"
+  },
+  {
+    "id": "TH",
+    "name": "Thueringen",
+    "hasAreaData": false,
+    "dataStatus": "not_available"
+  }
+]

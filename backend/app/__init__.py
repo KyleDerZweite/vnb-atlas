@@ -1,1 +1,1 @@
-"""NRW VNB Atlas backend package."""
+"""Deutschland VNB Atlas backend package."""

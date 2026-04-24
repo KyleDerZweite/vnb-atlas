@@ -3,94 +3,131 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Karte und Suche | NRW VNB Atlas</title>
+    <meta
+      name="description"
+      content="Karte und Suche der Verteilnetzbetreiber. Suche nach Ort, PLZ oder Betreiber und filtere nach Bundesland. MVP-Datenabdeckung: NRW."
+    />
+    <title>Karte und Suche · Deutschland VNB Atlas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,600;9..144,700&display=swap"
+    />
     <link rel="stylesheet" href="/styles/main.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Zum Hauptinhalt springen</a>
+
     <header class="site-header">
-      <nav aria-label="Hauptnavigation" class="nav">
-        <a class="brand" href="/">NRW VNB Atlas</a>
-        <a aria-current="page" href="/map.html">Karte</a>
-      </nav>
+      <div class="site-header__inner">
+        <a class="site-header__brand" href="/">
+          <span class="site-header__brand-text">
+            <span class="site-header__brand-name">VNB Atlas</span>
+            <span class="site-header__brand-sub">Verteilnetz · MVP</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Hauptnavigation">
+          <a href="/">Start</a>
+          <a aria-current="page" href="/map.html">Karte</a>
+        </nav>
+      </div>
     </header>
 
     <main id="main" class="map-page">
-      <section class="page-intro" aria-labelledby="page-title">
-        <p class="eyebrow">Mock-Daten / nicht amtlich</p>
-        <h1 id="page-title">Karte und Suche</h1>
+      <section class="map-page__intro" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Karte &amp; Suche</p>
+          <h1 id="page-title">Netzgebiete erkunden</h1>
+        </div>
         <p>
-          Suche nach Ort, PLZ oder Betreibername. Die Ergebnisliste enthaelt dieselben Mock-Gebiete
-          wie die Karte und ist ohne visuelle Kartenbedienung nutzbar.
+          Suche deutschlandweit nach Ort, PLZ oder Betreibername. Im MVP sind nur NRW-Mockgebiete
+          befüllt; die Ergebnisliste ist auch ohne visuelle Kartenbedienung vollständig nutzbar.
         </p>
       </section>
 
-      <section class="app-shell" aria-label="VNB-Kartensuche">
-        <div class="panel search-panel">
-          <form id="search-form" class="search-form" novalidate>
-            <div class="field">
-              <label for="search-input">Ort, PLZ oder Netzbetreiber</label>
-              <div class="search-row">
-                <input
-                  id="search-input"
-                  name="q"
-                  type="search"
-                  autocomplete="off"
-                  placeholder="z. B. Duesseldorf, 40213, Westnetz"
-                />
-                <button type="submit">Suchen</button>
-              </div>
-            </div>
+      <section class="map-stage" aria-label="VNB-Kartensuche">
+        <div id="map" class="map-stage__canvas" aria-describedby="map-description"></div>
+        <p id="map-description" class="visually-hidden">
+          Interaktive OpenStreetMap-Karte mit Mock-Gebieten. Alle wichtigen Informationen sind
+          auch in der Ergebnisliste und im Detailbereich verfügbar. Im MVP sind nur NRW-Gebiete
+          befüllt.
+        </p>
 
-            <div class="filter-grid" aria-label="Filter">
+        <!-- Linkes Overlay: Suche + Filter + Ergebnisliste -->
+        <section class="map-card search-panel" aria-labelledby="search-title">
+          <header class="map-card__head">
+            <h2 id="search-title" class="map-card__title">Suche &amp; Filter</h2>
+          </header>
+          <div class="map-card__body">
+            <form id="search-form" class="search-form" novalidate>
               <div class="field">
-                <label for="operator-filter">Betreiber</label>
-                <select id="operator-filter" name="operator">
-                  <option value="">Alle Betreiber</option>
-                </select>
+                <label for="search-input">Ort, PLZ oder Netzbetreiber</label>
+                <div class="search-row">
+                  <input
+                    id="search-input"
+                    name="q"
+                    type="search"
+                    autocomplete="off"
+                    placeholder="z. B. Düsseldorf, 40213, Westnetz"
+                  />
+                  <button type="submit">Suchen</button>
+                </div>
               </div>
-              <div class="field">
-                <label for="accuracy-filter">Datenqualität</label>
-                <select id="accuracy-filter" name="accuracy">
-                  <option value="">Alle Qualitaeten</option>
-                  <option value="mock">Mock</option>
-                  <option value="municipality_approximation">Kommunale Naeherung</option>
-                  <option value="verified">Verifiziert</option>
-                </select>
+
+              <div class="filter-grid" role="group" aria-label="Filter">
+                <div class="field">
+                  <label for="federal-state-filter">Bundesland</label>
+                  <select id="federal-state-filter" name="federalState">
+                    <option value="">Alle verfügbaren Daten</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="operator-filter">Betreiber</label>
+                  <select id="operator-filter" name="operator">
+                    <option value="">Alle Betreiber</option>
+                  </select>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
 
-          <p id="status" class="status" role="status" aria-live="polite">Lade Daten...</p>
-          <p id="form-error" class="error-message" hidden></p>
+            <p id="status" class="status" role="status" aria-live="polite">Lade Daten…</p>
+            <p id="form-error" class="error-message" role="alert" hidden></p>
 
-          <section aria-labelledby="results-title" class="results-section">
-            <h2 id="results-title">Ergebnisliste</h2>
-            <ol id="results-list" class="results-list"></ol>
-          </section>
-        </div>
-
-        <section class="map-region" aria-labelledby="map-title">
-          <h2 id="map-title">Karte</h2>
-          <p id="map-description" class="visually-hidden">
-            Interaktive OpenStreetMap-Karte mit Mock-Gebieten. Alle wichtigen Informationen sind auch
-            in der Ergebnisliste und im Detailbereich verfuegbar.
-          </p>
-          <div id="map" class="map" aria-describedby="map-description"></div>
+            <section aria-labelledby="results-title" class="results-section">
+              <h2 id="results-title">Ergebnisliste</h2>
+              <ol id="results-list" class="results-list"></ol>
+            </section>
+          </div>
         </section>
 
-        <aside id="detail-panel" class="panel detail-panel" tabindex="-1" aria-labelledby="detail-title">
-          <h2 id="detail-title">Details</h2>
-          <div id="detail-content">
-            <p>Waehle ein Gebiet in der Ergebnisliste oder Karte aus.</p>
+        <!-- Rechtes Overlay: Details des ausgewählten Gebiets -->
+        <aside
+          id="detail-panel"
+          class="map-card detail-panel"
+          tabindex="-1"
+          aria-labelledby="detail-title"
+        >
+          <header class="map-card__head">
+            <h2 id="detail-title" class="map-card__title">Details</h2>
+          </header>
+          <div class="map-card__body" id="detail-content">
+            <p>Wähle ein Gebiet in der Ergebnisliste oder Karte aus.</p>
           </div>
         </aside>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>Mock-Daten fuer Entwicklungszwecke. Keine amtliche Auskunft.</p>
+      <div class="site-footer__inner">
+        <p>Mock-Daten für Entwicklungszwecke. Keine amtliche Auskunft.</p>
+        <span class="site-footer__meta">
+          <span class="site-footer__tag">MVP · v0.1</span>
+          <span>OpenStreetMap-Basiskarte</span>
+        </span>
+      </div>
     </footer>
+
     <script type="module" src="/src/map-page.ts"></script>
   </body>
 </html>

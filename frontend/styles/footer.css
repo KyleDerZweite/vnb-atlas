@@ -1,0 +1,53 @@
+/* -----------------------------------------------------------------------------
+ * Footer
+ * -------------------------------------------------------------------------- */
+
+.site-footer {
+  margin-top: auto;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+  color: var(--color-muted);
+  font-size: 0.88rem;
+}
+
+.site-footer__inner {
+  width: min(var(--content-width), 100%);
+  margin-inline: auto;
+  padding: var(--space-4) var(--gutter);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-footer p {
+  margin: 0;
+  max-width: none;
+}
+
+.site-footer__meta {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  color: var(--color-muted);
+}
+
+.site-footer__tag {
+  padding: 0.15rem 0.6rem;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  font-weight: 700;
+}
+
+/* Besonders schmal: enger stapeln */
+@media (max-width: 560px) {
+  .site-footer__inner {
+    padding-block: var(--space-3);
+  }
+}

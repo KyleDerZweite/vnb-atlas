@@ -7,6 +7,9 @@
     "parentCompany": "Mock Rhein Energie Gruppe",
     "description": "Mock-Betreiber fuer Demo-Zwecke. Nicht amtlich und keine echte Netzgebietsaussage.",
     "voltageLevels": ["Niederspannung", "Mittelspannung"],
+    "country": "DE",
+    "federalStates": ["NW"],
+    "dataCoverage": "mock",
     "mockNotice": "Mock-Daten / nicht amtlich."
   },
   {
@@ -17,6 +20,9 @@
     "parentCompany": "Mock West Energie",
     "description": "Mock-Betreiber fuer Demo-Zwecke. Nicht amtlich und keine echte Netzgebietsaussage.",
     "voltageLevels": ["Niederspannung", "Mittelspannung", "Hochspannung"],
+    "country": "DE",
+    "federalStates": ["NW"],
+    "dataCoverage": "mock",
     "mockNotice": "Mock-Daten / nicht amtlich."
   },
   {
@@ -27,6 +33,9 @@
     "parentCompany": "Mock Stadtwerke Duesseldorf",
     "description": "Mock-Betreiber fuer Demo-Zwecke. Nicht amtlich und keine echte Netzgebietsaussage.",
     "voltageLevels": ["Niederspannung", "Mittelspannung"],
+    "country": "DE",
+    "federalStates": ["NW"],
+    "dataCoverage": "mock",
     "mockNotice": "Mock-Daten / nicht amtlich."
   },
   {
@@ -37,6 +46,9 @@
     "parentCompany": "Mock Stadtwerke Dortmund",
     "description": "Mock-Betreiber fuer Demo-Zwecke. Nicht amtlich und keine echte Netzgebietsaussage.",
     "voltageLevels": ["Niederspannung", "Mittelspannung"],
+    "country": "DE",
+    "federalStates": ["NW"],
+    "dataCoverage": "mock",
     "mockNotice": "Mock-Daten / nicht amtlich."
   },
   {
@@ -47,6 +59,9 @@
     "parentCompany": "Mock NEW Gruppe",
     "description": "Mock-Betreiber fuer Demo-Zwecke. Nicht amtlich und keine echte Netzgebietsaussage.",
     "voltageLevels": ["Niederspannung", "Mittelspannung"],
+    "country": "DE",
+    "federalStates": ["NW"],
+    "dataCoverage": "mock",
     "mockNotice": "Mock-Daten / nicht amtlich."
   }
 ]

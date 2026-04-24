@@ -8,8 +8,8 @@ def main() -> None:
     print(
         dedent(
             """
-            NRW VNB Atlas GIS import placeholder
-            ====================================
+            Deutschland VNB Atlas GIS import placeholder
+            ============================================
 
             Der echte Import ist in diesem MVP noch nicht implementiert.
 
@@ -31,6 +31,8 @@ def main() -> None:
             Ziel:
             - backend/app/data/areas.geojson
             - Koordinaten in EPSG:4326
+            - Die Architektur ist deutschlandweit ausgelegt; aktuell ist nur NRW als
+              Pilotdatensatz befuellt.
             """
         ).strip()
     )

@@ -1,10 +1,10 @@
-import type { Accuracy, AreaFilters } from "./types";
+import type { AreaFilters } from "./types";
 
 export interface SearchFormElements {
   form: HTMLFormElement;
   input: HTMLInputElement;
+  federalStateFilter: HTMLSelectElement;
   operatorFilter: HTMLSelectElement;
-  accuracyFilter: HTMLSelectElement;
 }
 
 export function readSearchQuery(input: HTMLInputElement): string {
@@ -22,7 +22,7 @@ export function validateSearchQuery(query: string): string | null {
 }
 
 export function readFilters(elements: SearchFormElements): AreaFilters {
+  const federalState = elements.federalStateFilter.value || undefined;
   const operatorId = elements.operatorFilter.value || undefined;
-  const accuracy = (elements.accuracyFilter.value || undefined) as Accuracy | undefined;
-  return { operatorId, accuracy };
+  return { country: "DE", federalState, operatorId };
 }

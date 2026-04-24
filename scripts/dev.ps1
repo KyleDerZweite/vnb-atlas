@@ -50,7 +50,7 @@ finally {
 }
 
 Write-Host ""
-Write-Host "Starting NRW VNB Atlas in dev mode..."
+Write-Host "Starting Deutschland VNB Atlas in dev mode..."
 Write-Host "Backend:  http://127.0.0.1:8000"
 Write-Host "OpenAPI:  http://127.0.0.1:8000/docs"
 Write-Host "Frontend: http://127.0.0.1:5173"
