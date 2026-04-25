@@ -1,10 +1,11 @@
-import type { AreaFilters } from "./types";
+import { DEFAULT_VOLTAGE_LEVEL, type AreaFilters } from "./types";
 
 export interface SearchFormElements {
   form: HTMLFormElement;
   input: HTMLInputElement;
   federalStateFilter: HTMLSelectElement;
   operatorFilter: HTMLSelectElement;
+  voltageLevelFilter: HTMLSelectElement;
 }
 
 export function readSearchQuery(input: HTMLInputElement): string {
@@ -24,5 +25,6 @@ export function validateSearchQuery(query: string): string | null {
 export function readFilters(elements: SearchFormElements): AreaFilters {
   const federalState = elements.federalStateFilter.value || undefined;
   const operatorId = elements.operatorFilter.value || undefined;
-  return { country: "DE", federalState, operatorId };
+  const voltageLevel = elements.voltageLevelFilter.value || DEFAULT_VOLTAGE_LEVEL;
+  return { country: "DE", federalState, operatorId, voltageLevel: voltageLevel as AreaFilters["voltageLevel"] };
 }

@@ -33,6 +33,7 @@ class AreaPropertiesRecord(TypedDict):
     mockNotice: str
     places: list[str]
     postalCodes: list[str]
+    voltageLevels: list[str]
 
 
 class FederalStateRecord(TypedDict):

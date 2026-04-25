@@ -57,7 +57,7 @@
     "id": "NW",
     "name": "Nordrhein-Westfalen",
     "hasAreaData": true,
-    "dataStatus": "mock"
+    "dataStatus": "partial"
   },
   {
     "id": "RP",

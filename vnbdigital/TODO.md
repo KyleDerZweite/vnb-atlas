@@ -2,7 +2,7 @@
 
 ## Spannungsebenen / Filter
 
-Aktuell live validierte `vnb_FilterInput.voltageTypes` Werte:
+Umgesetzte Filterwerte im VNBdigital-Client, Backend und Frontend:
 - Niederspannung
 - Mittelspannung
 - Hochspannung

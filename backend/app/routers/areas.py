@@ -2,7 +2,7 @@ from typing import Any, Literal
 
 from fastapi import APIRouter, Query
 
-from app.services.data_service import filter_area_features, parse_accuracy
+from app.services.data_service import filter_area_features, parse_accuracy, parse_voltage_level
 from app.services.geo_service import parse_bbox
 
 router = APIRouter(prefix="/api/areas", tags=["areas"])
@@ -15,6 +15,7 @@ def list_areas(
     accuracy: Literal["mock", "municipality_approximation", "verified"] | None = Query(default=None),
     country: Literal["DE"] | None = Query(default=None),
     federal_state: str | None = Query(default=None, min_length=2, max_length=2),
+    voltage_level: Literal["Niederspannung", "Mittelspannung", "Hochspannung"] | None = Query(default=None),
 ) -> dict[str, Any]:
     parsed_bbox = parse_bbox(bbox) if bbox else None
     return {
@@ -25,6 +26,7 @@ def list_areas(
             accuracy=parse_accuracy(accuracy),
             country=country,
             federal_state=federal_state,
+            voltage_level=parse_voltage_level(voltage_level),
         ),
-        "mockNotice": "MVP-Datenabdeckung: NRW. Mock-Daten / nicht amtlich. Grenzen zeigen keine echten VNB-Zustaendigkeiten.",
+        "mockNotice": "MVP-Datenabdeckung: NRW. VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen.",
     }

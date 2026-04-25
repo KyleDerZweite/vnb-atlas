@@ -9,6 +9,7 @@ from app.services.data_service import (
     parse_accuracy,
     parse_coverage,
     parse_operator_type,
+    parse_voltage_level,
 )
 
 router = APIRouter(prefix="/api/operators", tags=["operators"])
@@ -22,6 +23,7 @@ def list_operators(
     country: Literal["DE"] | None = Query(default=None),
     federal_state: str | None = Query(default=None, min_length=2, max_length=2),
     coverage: Literal["none", "mock", "partial", "verified"] | None = Query(default=None),
+    voltage_level: Literal["Niederspannung", "Mittelspannung", "Hochspannung"] | None = Query(default=None),
 ) -> list[Operator]:
     return [
         Operator.model_validate(operator)
@@ -32,6 +34,7 @@ def list_operators(
             country=country,
             federal_state=federal_state,
             coverage=parse_coverage(coverage),
+            voltage_level=parse_voltage_level(voltage_level),
         )
     ]
 

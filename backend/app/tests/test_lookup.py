@@ -10,11 +10,15 @@ def test_lookup_inside_area() -> None:
     assert response.status_code == 200
     body = response.json()
     assert body["match"] is not None
-    assert body["match"]["area"]["properties"]["id"] == "mock-duesseldorf"
-    assert body["match"]["operator"]["id"] == "sw-duesseldorf-netz-mock"
+    assert body["match"]["operator"]["id"] == "vnbdigital-153"
+    assert [match["area"]["properties"]["voltageLevel"] for match in body["matches"]] == [
+        "Niederspannung",
+        "Mittelspannung",
+        "Hochspannung",
+    ]
 
 
 def test_lookup_outside_area() -> None:
-    response = client.get("/api/lookup", params={"lat": 52.5, "lon": 9.5})
+    response = client.get("/api/lookup", params={"lat": 55.5, "lon": 15.5})
     assert response.status_code == 200
-    assert response.json() == {"match": None}
+    assert response.json() == {"match": None, "matches": []}

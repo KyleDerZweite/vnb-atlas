@@ -1,5 +1,7 @@
 export type OperatorType = "VNB" | "ÜNB" | "UNKNOWN";
 export type Accuracy = "mock" | "municipality_approximation" | "verified";
+export type VoltageLevel = "Niederspannung" | "Mittelspannung" | "Hochspannung";
+export const DEFAULT_VOLTAGE_LEVEL: VoltageLevel = "Niederspannung";
 
 export interface Operator {
   id: string;
@@ -28,6 +30,10 @@ export interface AreaProperties {
   mockNotice: string;
   places: string[];
   postalCodes: string[];
+  voltageLevels: string[];
+  voltageLevel?: string;
+  vnbdigitalId?: string;
+  samplePointCount?: number;
 }
 
 export interface AreaFeature {
@@ -65,12 +71,17 @@ export interface LookupResponse {
     area: AreaFeature;
     operator: Operator;
   };
+  matches: Array<{
+    area: AreaFeature;
+    operator: Operator;
+  }>;
 }
 
 export interface AreaFilters {
   operatorId?: string;
   country?: "DE";
   federalState?: string;
+  voltageLevel?: VoltageLevel;
 }
 
 export interface FederalState {

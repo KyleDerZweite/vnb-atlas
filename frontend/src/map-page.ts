@@ -1,7 +1,7 @@
 import { getAreas, getCoverage, getFederalStates, getOperators, search } from "./api-client";
 import { AtlasMap } from "./map";
 import { readFilters, readSearchQuery, validateSearchQuery, type SearchFormElements } from "./search";
-import type { AreaFeature, Operator, SearchResult } from "./types";
+import { DEFAULT_VOLTAGE_LEVEL, type AreaFeature, type Operator, type SearchResult } from "./types";
 import {
   announceAreaCount,
   renderFederalStateFilter,
@@ -30,7 +30,12 @@ void initialize();
 async function initialize(): Promise<void> {
   setStatus(elements.ui, "Lade Betreiber und Gebiete...");
   try {
-    const [operators, federalStates, coverage] = await Promise.all([getOperators(), getFederalStates(), getCoverage()]);
+    elements.form.voltageLevelFilter.value = DEFAULT_VOLTAGE_LEVEL;
+    const [operators, federalStates, coverage] = await Promise.all([
+      getOperators({ voltageLevel: DEFAULT_VOLTAGE_LEVEL }),
+      getFederalStates(),
+      getCoverage(),
+    ]);
     allOperators = operators;
     renderOperatorFilter(elements.ui.operatorFilter, allOperators);
     renderFederalStateFilter(elements.ui.federalStateFilter, federalStates);
@@ -58,6 +63,12 @@ function bindEvents(): void {
     void loadAreas();
   });
   elements.form.federalStateFilter.addEventListener("change", () => {
+    void loadAreas();
+  });
+  elements.form.voltageLevelFilter.addEventListener("change", async () => {
+    const filters = readFilters(elements.form);
+    allOperators = await getOperators({ voltageLevel: filters.voltageLevel });
+    renderOperatorFilter(elements.ui.operatorFilter, allOperators);
     void loadAreas();
   });
 }
@@ -133,6 +144,7 @@ function getElements(): { form: SearchFormElements; ui: UiElements } {
   const input = requireElement<HTMLInputElement>("search-input");
   const operatorFilter = requireElement<HTMLSelectElement>("operator-filter");
   const federalStateFilter = requireElement<HTMLSelectElement>("federal-state-filter");
+  const voltageLevelFilter = requireElement<HTMLSelectElement>("voltage-level-filter");
 
   return {
     form: {
@@ -140,6 +152,7 @@ function getElements(): { form: SearchFormElements; ui: UiElements } {
       input,
       federalStateFilter,
       operatorFilter,
+      voltageLevelFilter,
     },
     ui: {
       status: requireElement("status"),
@@ -149,6 +162,7 @@ function getElements(): { form: SearchFormElements; ui: UiElements } {
       detailContent: requireElement("detail-content"),
       federalStateFilter,
       operatorFilter,
+      voltageLevelFilter,
     },
   };
 }

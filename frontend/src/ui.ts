@@ -8,6 +8,7 @@ export interface UiElements {
   detailContent: HTMLElement;
   federalStateFilter: HTMLSelectElement;
   operatorFilter: HTMLSelectElement;
+  voltageLevelFilter: HTMLSelectElement;
 }
 
 export function setStatus(elements: UiElements, message: string): void {
@@ -64,7 +65,8 @@ export function renderResults(
     button.innerHTML = `
       <span class="result-title">${escapeHtml(feature.properties.name)}</span>
       <span>${escapeHtml(feature.properties.operatorName)}</span>
-      <span class="meta-line">Pilotdatensatz: ${escapeHtml(feature.properties.federalState)}</span>
+      <span class="meta-line">VNBdigital-Mesh: ${escapeHtml(feature.properties.federalState)}</span>
+      <span class="meta-line">${escapeHtml(formatVoltageLevels(feature.properties.voltageLevels))}</span>
       <span class="meta-line">${escapeHtml(feature.properties.places.join(", "))}</span>
     `;
     button.addEventListener("click", () => onSelect(feature, true));
@@ -80,7 +82,8 @@ export function renderDetails(elements: UiElements, feature: AreaFeature, focusD
     <dl class="detail-list">
       <div><dt>Gebiet</dt><dd>${escapeHtml(properties.name)}</dd></div>
       <div><dt>Betreiber</dt><dd>${escapeHtml(properties.operatorName)}</dd></div>
-      <div><dt>Pilotdatensatz</dt><dd>${escapeHtml(properties.country)} / ${escapeHtml(properties.federalState)}</dd></div>
+      <div><dt>Spannungsebene</dt><dd>${escapeHtml(formatVoltageLevels(properties.voltageLevels))}</dd></div>
+      <div><dt>Datensatz</dt><dd>${escapeHtml(properties.country)} / ${escapeHtml(properties.federalState)}</dd></div>
       <div><dt>Orte</dt><dd>${escapeHtml(properties.places.join(", "))}</dd></div>
       <div><dt>PLZ</dt><dd>${escapeHtml(properties.postalCodes.join(", "))}</dd></div>
       <div><dt>Quelle</dt><dd>${escapeHtml(properties.source)}</dd></div>
@@ -95,7 +98,7 @@ export function renderDetails(elements: UiElements, feature: AreaFeature, focusD
 
 export function announceAreaCount(elements: UiElements, count: number, coverageLabel: string): void {
   const suffix = count === 1 ? "Gebiet" : "Gebiete";
-  setStatus(elements, `${count} ${suffix} sichtbar. MVP-Datenabdeckung: ${coverageLabel}. Mock-Daten / nicht amtlich.`);
+  setStatus(elements, `${count} ${suffix} sichtbar. MVP-Datenabdeckung: ${coverageLabel}. VNBdigital-Meshdaten / nicht amtlich.`);
 }
 
 export function showNoCoverageMessage(elements: UiElements): void {
@@ -117,4 +120,8 @@ function escapeHtml(value: string): string {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+function formatVoltageLevels(voltageLevels: string[]): string {
+  return voltageLevels.length > 0 ? voltageLevels.join(", ") : "Spannungsebene unbekannt";
 }

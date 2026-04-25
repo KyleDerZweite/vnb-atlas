@@ -3,13 +3,15 @@ import json
 import unicodedata
 from functools import lru_cache
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 from app.models import Accuracy, DataCoverage, OperatorRecord, OperatorType
 from app.schemas import SearchResult
 from app.services.geo_service import BBox, bbox_intersects, geometry_bbox, point_in_geometry
 
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
+VOLTAGE_PRIORITY = {"Niederspannung": 0, "Mittelspannung": 1, "Hochspannung": 2}
+VoltageLevel = Literal["Niederspannung", "Mittelspannung", "Hochspannung"]
 
 
 def parse_operator_type(value: str | None) -> OperatorType | None:
@@ -25,6 +27,12 @@ def parse_accuracy(value: str | None) -> Accuracy | None:
 
 
 def parse_coverage(value: str | None) -> DataCoverage | None:
+    if value is None:
+        return None
+    return value  # FastAPI already validated the literal.
+
+
+def parse_voltage_level(value: str | None) -> VoltageLevel | None:
     if value is None:
         return None
     return value  # FastAPI already validated the literal.
@@ -55,6 +63,7 @@ def filter_operators(
     country: str | None = None,
     federal_state: str | None = None,
     coverage: DataCoverage | None = None,
+    voltage_level: VoltageLevel | None = None,
 ) -> list[OperatorRecord]:
     normalized_query = normalize(q)
     matching_operator_ids = None
@@ -75,6 +84,8 @@ def filter_operators(
             continue
         if coverage and operator["dataCoverage"] != coverage:
             continue
+        if voltage_level and voltage_level not in operator["voltageLevels"]:
+            continue
         if matching_operator_ids is not None and operator["id"] not in matching_operator_ids:
             continue
         if normalized_query and normalized_query not in normalize(
@@ -91,6 +102,7 @@ def filter_area_features(
     accuracy: Accuracy | None = None,
     country: str | None = None,
     federal_state: str | None = None,
+    voltage_level: VoltageLevel | None = None,
 ) -> list[dict[str, Any]]:
     operators_by_id = {operator["id"]: operator for operator in load_operators()}
     features = []
@@ -104,6 +116,8 @@ def filter_area_features(
         if federal_state and properties["federalState"] != federal_state:
             continue
         if accuracy and properties["accuracy"] != accuracy:
+            continue
+        if voltage_level and voltage_level not in properties.get("voltageLevels", []):
             continue
         if bbox and not bbox_intersects(geometry_bbox(feature["geometry"]), bbox):
             continue
@@ -155,17 +169,40 @@ def search_all(query: str) -> list[SearchResult]:
     return results
 
 
-def find_area_for_point(lat: float, lon: float) -> dict[str, Any] | None:
+def find_areas_for_point(lat: float, lon: float) -> list[dict[str, Any]]:
+    matches = []
     for feature in filter_area_features():
         if point_in_geometry(lon=lon, lat=lat, geometry=feature["geometry"]):
-            return feature
-    return None
+            matches.append(feature)
+    return sorted(matches, key=_area_sort_key)
+
+
+def find_area_for_point(lat: float, lon: float) -> dict[str, Any] | None:
+    matches = find_areas_for_point(lat=lat, lon=lon)
+    return matches[0] if matches else None
+
+
+def _area_sort_key(feature: dict[str, Any]) -> tuple[int, str, str]:
+    properties = feature["properties"]
+    voltage_priority = min(
+        (VOLTAGE_PRIORITY.get(level, 99) for level in properties.get("voltageLevels", [])),
+        default=99,
+    )
+    return voltage_priority, properties["operatorName"], properties["id"]
 
 
 def normalize(value: str | None) -> str:
     if not value:
         return ""
-    normalized = unicodedata.normalize("NFKD", value.strip().casefold())
+    value = (
+        value.strip()
+        .casefold()
+        .replace("ä", "ae")
+        .replace("ö", "oe")
+        .replace("ü", "ue")
+        .replace("ß", "ss")
+    )
+    normalized = unicodedata.normalize("NFKD", value)
     return "".join(char for char in normalized if not unicodedata.combining(char))
 
 
@@ -187,8 +224,8 @@ def _validate_feature_collection(data: dict[str, Any]) -> None:
         raise ValueError("areas.geojson must be a FeatureCollection")
     for feature in data.get("features", []):
         geometry = feature.get("geometry", {})
-        if geometry.get("type") not in {"Polygon", "MultiPolygon"}:
-            raise ValueError("areas.geojson features must be Polygon or MultiPolygon")
+        if geometry.get("type") not in {"Point", "Polygon", "MultiPolygon"}:
+            raise ValueError("areas.geojson features must be Point, Polygon or MultiPolygon")
         geometry_bbox(geometry)
         properties = feature.get("properties", {})
         required = {
@@ -203,6 +240,7 @@ def _validate_feature_collection(data: dict[str, Any]) -> None:
             "mockNotice",
             "places",
             "postalCodes",
+            "voltageLevels",
         }
         missing = required - set(properties)
         if missing:

@@ -50,6 +50,8 @@ def point_in_geometry(lon: float, lat: float, geometry: dict[str, Any]) -> bool:
     geometry_type = geometry.get("type")
     coordinates = geometry.get("coordinates", [])
 
+    if geometry_type == "Point":
+        return len(coordinates) >= 2 and abs(coordinates[0] - lon) < 1e-10 and abs(coordinates[1] - lat) < 1e-10
     if geometry_type == "Polygon":
         return point_in_polygon((lon, lat), coordinates)
     if geometry_type == "MultiPolygon":
@@ -103,7 +105,10 @@ def _iter_points(geometry: dict[str, Any]):
     geometry_type = geometry.get("type")
     coordinates = geometry.get("coordinates", [])
 
-    if geometry_type == "Polygon":
+    if geometry_type == "Point":
+        if len(coordinates) >= 2:
+            yield coordinates[0], coordinates[1]
+    elif geometry_type == "Polygon":
         for ring in coordinates:
             for lon, lat in ring:
                 yield lon, lat

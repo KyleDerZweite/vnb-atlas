@@ -61,6 +61,7 @@ export class AtlasMap {
 
   private createPanes(): void {
     this.map.createPane("vnbAreas").style.zIndex = "650";
+    this.map.createPane("vnbTooltips").style.zIndex = "850";
   }
 
   renderAreas(collection: AreaFeatureCollection): void {
@@ -73,13 +74,24 @@ export class AtlasMap {
 
     this.layer = L.geoJSON(collection as unknown as GeoJsonObject, {
       pane: "vnbAreas",
+      pointToLayer: (feature, latlng) => {
+        const areaFeature = feature as unknown as AreaFeature;
+        return L.circleMarker(latlng, {
+          ...this.getAreaStyle(areaFeature),
+          radius: 5,
+          fillOpacity: 0.72,
+        });
+      },
       style: (feature) => this.getAreaStyle(feature as unknown as AreaFeature),
       onEachFeature: (feature, layer) => {
         const areaFeature = feature as unknown as AreaFeature;
         const areaId = areaFeature.properties.id;
         this.featureLayers.set(areaId, layer);
         this.featuresByAreaId.set(areaId, areaFeature);
-        layer.bindTooltip(`${areaFeature.properties.name} - ${areaFeature.properties.operatorName}`);
+        layer.bindTooltip(areaFeature.properties.operatorName, {
+          pane: "vnbTooltips",
+          sticky: true,
+        });
         layer.on({
           click: (event) => {
             L.DomEvent.stopPropagation(event);
@@ -111,6 +123,8 @@ export class AtlasMap {
       if (bounds.isValid()) {
         this.fitBounds(bounds.pad(0.35), 11);
       }
+    } else if (layer && hasLatLng(layer)) {
+      this.map.setView(layer.getLatLng(), 11);
     }
   }
 
@@ -195,6 +209,9 @@ export class AtlasMap {
       if (feature) {
         layer.setStyle(this.getAreaStyle(feature, "hover"));
       }
+      if (layer instanceof L.CircleMarker) {
+        layer.setRadius(7);
+      }
       layer.bringToFront();
     }
   }
@@ -204,6 +221,9 @@ export class AtlasMap {
     const feature = this.featuresByAreaId.get(areaId);
     if (layer instanceof L.Path) {
       layer.setStyle(feature ? this.getAreaStyle(feature, areaId === this.selectedAreaId ? "selected" : "default") : {});
+      if (layer instanceof L.CircleMarker) {
+        layer.setRadius(areaId === this.selectedAreaId ? 7 : 5);
+      }
     }
   }
 
@@ -212,6 +232,9 @@ export class AtlasMap {
       const feature = this.featuresByAreaId.get(areaId);
       if (layer instanceof L.Path) {
         layer.setStyle(feature ? this.getAreaStyle(feature, areaId === this.selectedAreaId ? "selected" : "default") : {});
+        if (layer instanceof L.CircleMarker) {
+          layer.setRadius(areaId === this.selectedAreaId ? 7 : 5);
+        }
       }
     });
   }
@@ -219,6 +242,10 @@ export class AtlasMap {
 
 function hasBounds(layer: L.Layer): layer is L.Layer & { getBounds: () => L.LatLngBounds } {
   return "getBounds" in layer && typeof layer.getBounds === "function";
+}
+
+function hasLatLng(layer: L.Layer): layer is L.Layer & { getLatLng: () => L.LatLng } {
+  return "getLatLng" in layer && typeof layer.getLatLng === "function";
 }
 
 function buildOperatorColors(features: AreaFeature[]): Map<string, string> {

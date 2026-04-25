@@ -69,6 +69,14 @@
   max-height: none !important;
 }
 
+.leaflet-container .leaflet-vnbTooltips-pane {
+  z-index: 850;
+}
+
+.leaflet-container .leaflet-vnbTooltips-pane .leaflet-tooltip {
+  z-index: 850;
+}
+
 .leaflet-interactive:focus {
   outline: 4px solid var(--color-focus);
   outline-offset: 2px;

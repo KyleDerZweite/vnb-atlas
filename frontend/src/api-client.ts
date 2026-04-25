@@ -6,6 +6,7 @@ import type {
   LookupResponse,
   Operator,
   SearchResponse,
+  VoltageLevel,
 } from "./types";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://127.0.0.1:8000";
@@ -20,9 +21,10 @@ export class ApiError extends Error {
   }
 }
 
-export async function getOperators(params: { q?: string } = {}): Promise<Operator[]> {
+export async function getOperators(params: { q?: string; voltageLevel?: VoltageLevel } = {}): Promise<Operator[]> {
   const search = new URLSearchParams();
   if (params.q) search.set("q", params.q);
+  if (params.voltageLevel) search.set("voltage_level", params.voltageLevel);
   return fetchJson<Operator[]>(`/api/operators${withQuery(search)}`);
 }
 
@@ -31,6 +33,7 @@ export async function getAreas(filters: AreaFilters = {}): Promise<AreaFeatureCo
   if (filters.country) search.set("country", filters.country);
   if (filters.federalState) search.set("federal_state", filters.federalState);
   if (filters.operatorId) search.set("operator_id", filters.operatorId);
+  if (filters.voltageLevel) search.set("voltage_level", filters.voltageLevel);
   return fetchJson<AreaFeatureCollection>(`/api/areas${withQuery(search)}`);
 }
 

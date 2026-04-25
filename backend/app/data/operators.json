@@ -1,67 +1,4362 @@
 [
   {
-    "id": "rheinnetz-mock",
-    "name": "RheinNetz GmbH (Mock)",
+    "id": "vnbdigital-7780",
+    "name": "Ahrtal-Werke GmbH",
     "type": "VNB",
-    "website": "https://example.invalid/rheinnetz-mock",
-    "parentCompany": "Mock Rhein Energie Gruppe",
-    "description": "Mock-Betreiber fuer Demo-Zwecke. Nicht amtlich und keine echte Netzgebietsaussage.",
-    "voltageLevels": ["Niederspannung", "Mittelspannung"],
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Ahrtal-Werke GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
     "country": "DE",
-    "federalStates": ["NW"],
-    "dataCoverage": "mock",
-    "mockNotice": "Mock-Daten / nicht amtlich."
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
   },
   {
-    "id": "westnetz-mock",
-    "name": "Westnetz GmbH (Mock)",
+    "id": "vnbdigital-219",
+    "name": "Albwerk GmbH & Co. KG",
     "type": "VNB",
-    "website": "https://example.invalid/westnetz-mock",
-    "parentCompany": "Mock West Energie",
-    "description": "Mock-Betreiber fuer Demo-Zwecke. Nicht amtlich und keine echte Netzgebietsaussage.",
-    "voltageLevels": ["Niederspannung", "Mittelspannung", "Hochspannung"],
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Albwerk GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
     "country": "DE",
-    "federalStates": ["NW"],
-    "dataCoverage": "mock",
-    "mockNotice": "Mock-Daten / nicht amtlich."
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
   },
   {
-    "id": "sw-duesseldorf-netz-mock",
-    "name": "Stadtwerke Duesseldorf Netz GmbH (Mock)",
+    "id": "vnbdigital-7387",
+    "name": "AllgäuNetz GmbH & Co. KG",
     "type": "VNB",
-    "website": "https://example.invalid/stadtwerke-duesseldorf-netz-mock",
-    "parentCompany": "Mock Stadtwerke Duesseldorf",
-    "description": "Mock-Betreiber fuer Demo-Zwecke. Nicht amtlich und keine echte Netzgebietsaussage.",
-    "voltageLevels": ["Niederspannung", "Mittelspannung"],
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer AllgäuNetz GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
     "country": "DE",
-    "federalStates": ["NW"],
-    "dataCoverage": "mock",
-    "mockNotice": "Mock-Daten / nicht amtlich."
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
   },
   {
-    "id": "dortmunder-netz-mock",
-    "name": "Dortmunder Netz GmbH (Mock)",
+    "id": "vnbdigital-7272",
+    "name": "Alliander Netz Heinsberg GmbH",
     "type": "VNB",
-    "website": "https://example.invalid/dortmunder-netz-mock",
-    "parentCompany": "Mock Stadtwerke Dortmund",
-    "description": "Mock-Betreiber fuer Demo-Zwecke. Nicht amtlich und keine echte Netzgebietsaussage.",
-    "voltageLevels": ["Niederspannung", "Mittelspannung"],
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Alliander Netz Heinsberg GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
     "country": "DE",
-    "federalStates": ["NW"],
-    "dataCoverage": "mock",
-    "mockNotice": "Mock-Daten / nicht amtlich."
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
   },
   {
-    "id": "new-netz-mock",
-    "name": "NEW Netz GmbH (Mock)",
+    "id": "vnbdigital-7137",
+    "name": "Avacon Netz GmbH",
     "type": "VNB",
-    "website": "https://example.invalid/new-netz-mock",
-    "parentCompany": "Mock NEW Gruppe",
-    "description": "Mock-Betreiber fuer Demo-Zwecke. Nicht amtlich und keine echte Netzgebietsaussage.",
-    "voltageLevels": ["Niederspannung", "Mittelspannung"],
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Avacon Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
     "country": "DE",
-    "federalStates": ["NW"],
-    "dataCoverage": "mock",
-    "mockNotice": "Mock-Daten / nicht amtlich."
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-227",
+    "name": "AVU Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer AVU Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-38",
+    "name": "Bad Honnef AG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Bad Honnef AG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-1068",
+    "name": "Bayernwerk Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Bayernwerk Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-689",
+    "name": "BEW Netze GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer BEW Netze GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-85",
+    "name": "Bielefelder Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Bielefelder Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7693",
+    "name": "BIGGE ENERGIE GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer BIGGE ENERGIE GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7010",
+    "name": "Blomberg Netz GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Blomberg Netz GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-91",
+    "name": "Bocholter Energie- und Wasserversorgung GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Bocholter Energie- und Wasserversorgung GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-95",
+    "name": "Bonn-Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Bonn-Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-126",
+    "name": "Celle-Uelzen Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Celle-Uelzen Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-bnyoauesycj3abrcs",
+    "name": "CPM Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer CPM Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-962",
+    "name": "Creos Deutschland GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Creos Deutschland GmbH.",
+    "voltageLevels": [
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-794",
+    "name": "Dortmunder Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Dortmunder Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-134",
+    "name": "e-netz Südhessen AG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer e-netz Südhessen AG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-mcjld6a47ssazlyon",
+    "name": "e-regio Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer e-regio Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-366",
+    "name": "E-Werk Netze GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer E-Werk Netze GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-1000",
+    "name": "E.DIS Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer E.DIS Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7276",
+    "name": "e.wa riss Netze GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer e.wa riss Netze GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-330",
+    "name": "EAM Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer EAM Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-190",
+    "name": "EGF EnergieGesellschaft Frankenberg mbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer EGF EnergieGesellschaft Frankenberg mbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-221",
+    "name": "ELE Verteilnetz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer ELE Verteilnetz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7058",
+    "name": "Elektrizitäts-Werk Ottersberg",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Elektrizitäts-Werk Ottersberg.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7021",
+    "name": "Elektrizitätsgenossenschaft Engelsberg e.G.",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Elektrizitätsgenossenschaft Engelsberg e.G..",
+    "voltageLevels": [
+      "Niederspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-pjw5jijgs6hhtmttr",
+    "name": "Elektrizitätsgenossenschaft Oesterweg e.G.",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Elektrizitätsgenossenschaft Oesterweg e.G..",
+    "voltageLevels": [
+      "Niederspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7721",
+    "name": "Elektrizitätsnetze Allgäu GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Elektrizitätsnetze Allgäu GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-300",
+    "name": "Elektrizitätswerk Hindelang eG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Elektrizitätswerk Hindelang eG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-584",
+    "name": "Elektrizitätswerk Schweiger oHG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Elektrizitätswerk Schweiger oHG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-624",
+    "name": "Elektrizitätswerk Tegernsee Carl Miller KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Elektrizitätswerk Tegernsee Carl Miller KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-693",
+    "name": "Elektrizitätswerk Wörth an der Donau Rupert",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Elektrizitätswerk Wörth an der Donau Rupert.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-208",
+    "name": "Elektrizitätswerke Reutte GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Elektrizitätswerke Reutte GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-958",
+    "name": "ENA Energienetze Apolda GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer ENA Energienetze Apolda GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-269",
+    "name": "enercity Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer enercity Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-357",
+    "name": "Energie Waldeck-Frankenberg GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Energie Waldeck-Frankenberg GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-262",
+    "name": "Energie- und Wasserversorgung Hamm GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Energie- und Wasserversorgung Hamm GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-541",
+    "name": "Energie- und Wasserversorgung Rheine GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Energie- und Wasserversorgung Rheine GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-350",
+    "name": "Energienetze Mittelrhein GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Energienetze Mittelrhein GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7006",
+    "name": "Energieversorgung Beckum GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Energieversorgung Beckum GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-133",
+    "name": "Energieversorgung Dahlenburg-Bleckede AG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Energieversorgung Dahlenburg-Bleckede AG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-747",
+    "name": "Energieversorgung Halle Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Energieversorgung Halle Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7011",
+    "name": "Energieversorgung Südbaar GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Energieversorgung Südbaar GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7211",
+    "name": "energis-Netzgesellschaft mbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer energis-Netzgesellschaft mbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7409",
+    "name": "ENERVIE Vernetzt GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer ENERVIE Vernetzt GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-eq5hdqycuitlbwrqu",
+    "name": "enwag energie- und wassergesellschaft mbh",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer enwag energie- und wassergesellschaft mbh.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7669",
+    "name": "EVE Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer EVE Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-25",
+    "name": "EW Geiger GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer EW Geiger GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-496",
+    "name": "EWE NETZ GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer EWE NETZ GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-534",
+    "name": "EWR GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer EWR GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-701",
+    "name": "EWR Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer EWR Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-539",
+    "name": "FairNetz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer FairNetz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-971",
+    "name": "Freitaler Stadtwerke GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Freitaler Stadtwerke GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7653",
+    "name": "Gelsenwasser Energienetze GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Gelsenwasser Energienetze GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-216",
+    "name": "Gemeindewerke Garmisch-Partenkirchen",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Gemeindewerke Garmisch-Partenkirchen.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-763",
+    "name": "Gemeindewerke Grefrath GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Gemeindewerke Grefrath GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7053",
+    "name": "Gemeindewerke Nümbrecht GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Gemeindewerke Nümbrecht GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-484",
+    "name": "Gemeindewerke Oberaudorf",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Gemeindewerke Oberaudorf.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7070",
+    "name": "Gemeindewerke Steinhagen GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Gemeindewerke Steinhagen GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-78",
+    "name": "GRUPPEN-GAS- UND ELEKTRIZITÄTSWERK BERGSTRASSE AKTIENGESELLSCHAFT",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer GRUPPEN-GAS- UND ELEKTRIZITÄTSWERK BERGSTRASSE AKTIENGESELLSCHAFT.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-323",
+    "name": "GSW Gemeinschaftsstadtwerke GmbH Kamen - Bönen - Bergkamen",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer GSW Gemeinschaftsstadtwerke GmbH Kamen - Bönen - Bergkamen.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-259",
+    "name": "Hamburger Energienetze GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Hamburger Energienetze GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7684",
+    "name": "Hanau Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Hanau Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7273",
+    "name": "Harz Energie Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Harz Energie Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-278",
+    "name": "Hellenstein-Energie-Logistik GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Hellenstein-Energie-Logistik GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-293",
+    "name": "Hertener Stadtwerke GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Hertener Stadtwerke GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-789",
+    "name": "inetz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer inetz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-308",
+    "name": "KBG Kraftstrom-Bezugsgenossenschaft Homberg eG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer KBG Kraftstrom-Bezugsgenossenschaft Homberg eG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-220",
+    "name": "Kreiswerke Main-Kinzig GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Kreiswerke Main-Kinzig GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7787",
+    "name": "LeineNetz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer LeineNetz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7658",
+    "name": "Leitungspartner GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Leitungspartner GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-27",
+    "name": "LEW Verteilnetz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer LEW Verteilnetz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-8",
+    "name": "LokalWerke GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer LokalWerke GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7388",
+    "name": "LSW Netz GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer LSW Netz GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-405",
+    "name": "Mainzer Netze GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Mainzer Netze GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7154",
+    "name": "MEGA Monheimer Elektrizitäts- und Gasversorgung",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer MEGA Monheimer Elektrizitäts- und Gasversorgung.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-1081",
+    "name": "Mitteldeutsche Netzgesellschaft Strom mbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Mitteldeutsche Netzgesellschaft Strom mbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-229",
+    "name": "Mittelhessen Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Mittelhessen Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7466",
+    "name": "MVV Netze GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer MVV Netze GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-479",
+    "name": "N-ERGIE Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer N-ERGIE Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7323",
+    "name": "naturenergie netze GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer naturenergie netze GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-5gzl4m4klrrwirpwa",
+    "name": "NETCUR GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer NETCUR GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-770",
+    "name": "Netz Leipzig GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Netz Leipzig GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7214",
+    "name": "Netze BW GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Netze BW GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-154",
+    "name": "Netze Duisburg GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Netze Duisburg GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7046",
+    "name": "Netze Magdeburg GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Netze Magdeburg GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-1010",
+    "name": "Netze ODR GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Netze ODR GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-9",
+    "name": "Netzgesellschaft Ahlen mbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Netzgesellschaft Ahlen mbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-153",
+    "name": "Netzgesellschaft Düsseldorf mbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Netzgesellschaft Düsseldorf mbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-248",
+    "name": "Netzgesellschaft Gütersloh mbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Netzgesellschaft Gütersloh mbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7355",
+    "name": "Netzgesellschaft Lübbecke mbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Netzgesellschaft Lübbecke mbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-x3t5mzbpcqxrdfpjb",
+    "name": "netzplus GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer netzplus GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-426",
+    "name": "NEW Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer NEW Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-360",
+    "name": "NGN NETZGESELLSCHAFT NIEDERRHEIN MBH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer NGN NETZGESELLSCHAFT NIEDERRHEIN MBH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7376",
+    "name": "NRM Netzdienste Rhein-Main GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer NRM Netzdienste Rhein-Main GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7391",
+    "name": "nvb Nordhorner Versorgungsbetriebe GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer nvb Nordhorner Versorgungsbetriebe GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-485",
+    "name": "Oberhausener Netzgesellschaft mbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Oberhausener Netzgesellschaft mbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7595",
+    "name": "Osterholzer Stadtwerke GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Osterholzer Stadtwerke GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-209",
+    "name": "OsthessenNetz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer OsthessenNetz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-202",
+    "name": "ovag Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer ovag Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-396",
+    "name": "Pfalzwerke Netz AG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Pfalzwerke Netz AG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-938",
+    "name": "REDINET Burgenland GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer REDINET Burgenland GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7118",
+    "name": "Regionalwerke Wolfhager Land GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Regionalwerke Wolfhager Land GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-3",
+    "name": "Regionetz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Regionetz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7emszephnhhtaczqu",
+    "name": "Reußenköge Netz ＆ Infrastruktur GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Reußenköge Netz ＆ Infrastruktur GmbH.",
+    "voltageLevels": [
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7399",
+    "name": "RheinNetz GmbH (RNG)",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer RheinNetz GmbH (RNG).",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-726",
+    "name": "SachsenNetze HS.HD GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer SachsenNetze HS.HD GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7632",
+    "name": "Saerbecker Ver- und Entsorgungsnetzgesellschaft",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Saerbecker Ver- und Entsorgungsnetzgesellschaft.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-535",
+    "name": "Schleswig-Holstein Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Schleswig-Holstein Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-939",
+    "name": "SSW Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer SSW Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7232",
+    "name": "Stadt- und Überlandwerke GmbH Luckau-Lübbenau",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadt- und Überlandwerke GmbH Luckau-Lübbenau.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-449",
+    "name": "Stadtnetze Münster GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtnetze Münster GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-48",
+    "name": "Stadtwerke Bad Pyrmont GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Bad Pyrmont GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-55",
+    "name": "Stadtwerke Bad Salzuflen GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Bad Salzuflen GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-684",
+    "name": "Stadtwerke Bad Wildbad GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Bad Wildbad GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-61",
+    "name": "Stadtwerke Baden-Baden",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Baden-Baden.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-64",
+    "name": "Stadtwerke Baiersdorf KU, AöR",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Baiersdorf KU, AöR.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-66",
+    "name": "Stadtwerke Balingen",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Balingen.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-74",
+    "name": "Stadtwerke Bayreuth Energie und Wasser GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Bayreuth Energie und Wasser GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7509",
+    "name": "Stadtwerke Bochum Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Bochum Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-h4n3fszg7aeknpqyw",
+    "name": "Stadtwerke Borken/Westf. GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Borken/Westf. GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-99",
+    "name": "Stadtwerke Bramsche GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Bramsche GmbH.",
+    "voltageLevels": [
+      "Niederspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-112",
+    "name": "Stadtwerke Brühl GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Brühl GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7088",
+    "name": "Stadtwerke Burgbernheim",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Burgbernheim.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-127",
+    "name": "Stadtwerke Cham GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Cham GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-130",
+    "name": "Stadtwerke Coesfeld GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Coesfeld GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-968",
+    "name": "Stadtwerke Detmold GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Detmold GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-148",
+    "name": "Stadtwerke Dülmen GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Dülmen GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7182",
+    "name": "Stadtwerke Eilenburg GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Eilenburg GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-167",
+    "name": "Stadtwerke Elmshorn",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Elmshorn.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7020",
+    "name": "Stadtwerke Emmerich GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Emmerich GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-171",
+    "name": "Stadtwerke Emsdetten GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Emsdetten GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7022",
+    "name": "Stadtwerke Engen GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Engen GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7023",
+    "name": "Stadtwerke Erkrath GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Erkrath GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-137",
+    "name": "Stadtwerke EVB Huntetal Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke EVB Huntetal Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-205",
+    "name": "Stadtwerke Fröndenberg Wickede GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Fröndenberg Wickede GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-206",
+    "name": "Stadtwerke Fürstenfeldbruck GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Fürstenfeldbruck GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7746",
+    "name": "Stadtwerke Geldern NETZ GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Geldern NETZ GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7027",
+    "name": "Stadtwerke Georgsmarienhütte Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Georgsmarienhütte Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-983",
+    "name": "Stadtwerke Glauchau Dienstleistungsgesellschaft",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Glauchau Dienstleistungsgesellschaft.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7028",
+    "name": "Stadtwerke Goch GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Goch GmbH.",
+    "voltageLevels": [
+      "Niederspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-242",
+    "name": "Stadtwerke Greven GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Greven GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-244",
+    "name": "Stadtwerke Gronau GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Gronau GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-254",
+    "name": "Stadtwerke Haiger",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Haiger.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-258",
+    "name": "Stadtwerke Haltern am See GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Haltern am See GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-261",
+    "name": "Stadtwerke Hameln Weserbergland GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Hameln Weserbergland GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7032",
+    "name": "Stadtwerke Havelberg GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Havelberg GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7740",
+    "name": "Stadtwerke Heiligenhaus GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Heiligenhaus GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-287",
+    "name": "Stadtwerke Herborn GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Herborn GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-291",
+    "name": "Stadtwerke Herne AG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Herne AG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-298",
+    "name": "Stadtwerke Hilden GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Hilden GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-317",
+    "name": "Stadtwerke Iserlohn GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Iserlohn GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-319",
+    "name": "Stadtwerke Jülich GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Jülich GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-337",
+    "name": "Stadtwerke Kempen GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Kempen GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-795",
+    "name": "Stadtwerke Kleve GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Kleve GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-379",
+    "name": "Stadtwerke Lauterbach GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Lauterbach GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-381",
+    "name": "Stadtwerke Lemgo GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Lemgo GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7187",
+    "name": "Stadtwerke Lingen GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Lingen GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7704",
+    "name": "Stadtwerke Lippe-Weser Service GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Lippe-Weser Service GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-956",
+    "name": "Stadtwerke Lippstadt GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Lippstadt GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-771",
+    "name": "Stadtwerke Lutherstadt Wittenberg GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Lutherstadt Wittenberg GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-402",
+    "name": "Stadtwerke Lünen GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Lünen GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-410",
+    "name": "Stadtwerke Marburg GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Marburg GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-927",
+    "name": "Stadtwerke Meiningen GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Meiningen GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-419",
+    "name": "Stadtwerke Menden GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Menden GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-714",
+    "name": "Stadtwerke Nettetal GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Nettetal GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-472",
+    "name": "Stadtwerke Norderney GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Norderney GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-473",
+    "name": "Stadtwerke Norderstedt",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Norderstedt.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7054",
+    "name": "Stadtwerke Ochtrup",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Ochtrup.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7056",
+    "name": "Stadtwerke Oerlinghausen GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Oerlinghausen GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-172",
+    "name": "Stadtwerke Ostmünsterland GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Ostmünsterland GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-965",
+    "name": "Stadtwerke Parchim GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Parchim GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-1014",
+    "name": "Stadtwerke Radevormwald GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Radevormwald GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-527",
+    "name": "Stadtwerke Ratingen GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Ratingen GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-540",
+    "name": "Stadtwerke Rhede GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Rhede GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-545",
+    "name": "Stadtwerke Rinteln GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Rinteln GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-561",
+    "name": "Stadtwerke Saarbrücken Netz AG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Saarbrücken Netz AG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-578",
+    "name": "Stadtwerke Schorndorf GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Schorndorf GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7112",
+    "name": "Stadtwerke Schwerte GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Schwerte GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-582",
+    "name": "Stadtwerke Schwäbisch Gmünd GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Schwäbisch Gmünd GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-579",
+    "name": "Stadtwerke Schüttorf ▪ Emsbüren GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Schüttorf ▪ Emsbüren GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-6sllpkcrcuedwk6a8",
+    "name": "Stadtwerke Service Meerbusch Willich GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Service Meerbusch Willich GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-791",
+    "name": "Stadtwerke Sigmaringen GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Sigmaringen GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-602",
+    "name": "Stadtwerke Soest GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Soest GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-604",
+    "name": "Stadtwerke Soltau GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Soltau GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7069",
+    "name": "Stadtwerke Staßfurt GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Staßfurt GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7775",
+    "name": "Stadtwerke Steinfurt GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Steinfurt GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7072",
+    "name": "Stadtwerke Strausberg GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Strausberg GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-633",
+    "name": "Stadtwerke Treuchtlingen",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Treuchtlingen.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7076",
+    "name": "Stadtwerke Troisdorf GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Troisdorf GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-645",
+    "name": "Stadtwerke Ulm/Neu-Ulm Netze GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Ulm/Neu-Ulm Netze GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-646",
+    "name": "Stadtwerke Unna GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Unna GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-651",
+    "name": "Stadtwerke Velbert GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Velbert GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-656",
+    "name": "Stadtwerke Villingen-Schwenningen GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Villingen-Schwenningen GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7779",
+    "name": "Stadtwerke Vlotho Stromnetz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Vlotho Stromnetz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7080",
+    "name": "Stadtwerke Waldkirchen",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Waldkirchen.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7082",
+    "name": "Stadtwerke Warburg GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Warburg GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-941",
+    "name": "Stadtwerke Werl GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Werl GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-683",
+    "name": "Stadtwerke Wiesbaden Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Wiesbaden Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-690",
+    "name": "Stadtwerke Witten GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Witten GmbH.",
+    "voltageLevels": [
+      "Niederspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7809",
+    "name": "Stadtwerke Witten Mittelspannungsnetz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Witten Mittelspannungsnetz GmbH.",
+    "voltageLevels": [
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-696",
+    "name": "Stadtwerke Wolfenbüttel GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Wolfenbüttel GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-708",
+    "name": "Stadtwerke Zirndorf GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stadtwerke Zirndorf GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-80",
+    "name": "Stromnetz Berlin GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stromnetz Berlin GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7326",
+    "name": "Stromversorgung Angermünde GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stromversorgung Angermünde GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7749",
+    "name": "Stromversorgung Pfaffenhofen a. d. Ilm GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stromversorgung Pfaffenhofen a. d. Ilm GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7750",
+    "name": "Stuttgart Netze GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Stuttgart Netze GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-948",
+    "name": "StWB Stadtwerke Brandenburg an der Havel GmbH &",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer StWB Stadtwerke Brandenburg an der Havel GmbH &.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-332",
+    "name": "Städtische Werke Netz + Service GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Städtische Werke Netz + Service GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-28",
+    "name": "swa Netze GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer swa Netze GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-84",
+    "name": "SWB Stadtwerke Biedenkopf GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer SWB Stadtwerke Biedenkopf GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-bgqmkcongk8grhsoo",
+    "name": "SWL Energienetz- und Entsorgungsgesellschaft Mbh",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer SWL Energienetz- und Entsorgungsgesellschaft Mbh.",
+    "voltageLevels": [
+      "Niederspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7042",
+    "name": "SWL Verteilungsnetzgesellschaft mbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer SWL Verteilungsnetzgesellschaft mbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7547",
+    "name": "SWL Übertragungsnetzgesellschaft mbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer SWL Übertragungsnetzgesellschaft mbH.",
+    "voltageLevels": [
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7248",
+    "name": "SWM Infrastruktur GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer SWM Infrastruktur GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-500",
+    "name": "SWO Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer SWO Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-tryzbe8xt7ymjasph",
+    "name": "SWR Energie GmbH ＆ Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer SWR Energie GmbH ＆ Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-603",
+    "name": "SWS Netze Solingen GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer SWS Netze Solingen GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7792",
+    "name": "SWTE Netz GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer SWTE Netz GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-1064",
+    "name": "Syna GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Syna GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-944",
+    "name": "T.W.O. Technische Werke Osning GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer T.W.O. Technische Werke Osning GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-730",
+    "name": "TEN Thüringer Energienetze GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer TEN Thüringer Energienetze GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7153",
+    "name": "Teutoburger Energie Netzwerk eG (TEN)",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Teutoburger Energie Netzwerk eG (TEN).",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-399",
+    "name": "TraveNetz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer TraveNetz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7166",
+    "name": "Verbandsgemeindewerke Enkenbach-Alsenborn",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Verbandsgemeindewerke Enkenbach-Alsenborn.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-676",
+    "name": "Verteilnetze Energie Weißenhorn GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Verteilnetze Energie Weißenhorn GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-562",
+    "name": "VSE Verteilnetz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer VSE Verteilnetz GmbH.",
+    "voltageLevels": [
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-719",
+    "name": "WEMAG Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer WEMAG Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7203",
+    "name": "wesernetz Bremen GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer wesernetz Bremen GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-1087",
+    "name": "Westfalen Weser Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Westfalen Weser Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7332",
+    "name": "Westnetz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Westnetz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-7759",
+    "name": "WEV Warendorfer Energieversorgung GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer WEV Warendorfer Energieversorgung GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-705",
+    "name": "WSW Netz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer WSW Netz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE",
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-wyc29en9arhyls3d6",
+    "name": "YNCORIS GmbH & Co. KG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer YNCORIS GmbH & Co. KG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "NW"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-417",
+    "name": "Überlandwerk Rhön GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Überlandwerk Rhön GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  },
+  {
+    "id": "vnbdigital-401",
+    "name": "ÜZ Mainfranken eG",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer ÜZ Mainfranken eG.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
   }
 ]

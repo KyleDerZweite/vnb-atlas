@@ -30,6 +30,7 @@ class AreaProperties(BaseModel):
     mockNotice: str
     places: list[str]
     postalCodes: list[str]
+    voltageLevels: list[str] = Field(default_factory=list)
 
 
 class SearchResult(BaseModel):
@@ -56,6 +57,7 @@ class LookupMatch(BaseModel):
 
 class LookupResponse(BaseModel):
     match: LookupMatch | None = None
+    matches: list[LookupMatch] = Field(default_factory=list)
 
 
 class HealthResponse(BaseModel):

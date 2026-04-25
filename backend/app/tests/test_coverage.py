@@ -11,7 +11,7 @@ def test_coverage_marks_nw_as_only_available_state() -> None:
     body = response.json()
     assert body["country"] == "DE"
     assert body["federalStates"]["NW"]["hasAreas"] is True
-    assert body["federalStates"]["NW"]["status"] == "mock"
+    assert body["federalStates"]["NW"]["status"] == "partial"
     assert body["federalStates"]["BY"]["hasAreas"] is False
     assert body["federalStates"]["BY"]["status"] == "not_available"
 
