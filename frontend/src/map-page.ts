@@ -15,9 +15,17 @@ import {
 } from "./ui";
 
 const elements = getElements();
-let allOperators: Operator[] = [];
-let visibleFeatures: AreaFeature[] = [];
-let coverageLabel = "Nordrhein-Westfalen";
+interface PageState {
+  allOperators: Operator[];
+  visibleFeatures: AreaFeature[];
+  coverageLabel: string;
+}
+
+const pageState: PageState = {
+  allOperators: [],
+  visibleFeatures: [],
+  coverageLabel: "Nordrhein-Westfalen",
+};
 
 const atlasMap = new AtlasMap("map", (feature, focusDetail) => {
   renderDetails(elements.ui, feature, focusDetail);
@@ -36,15 +44,14 @@ async function initialize(): Promise<void> {
       getFederalStates(),
       getCoverage(),
     ]);
-    allOperators = operators;
-    renderOperatorFilter(elements.ui.operatorFilter, allOperators);
+    updateOperators(operators);
     renderFederalStateFilter(elements.ui.federalStateFilter, federalStates);
-    coverageLabel =
+    pageState.coverageLabel =
       Object.values(coverage.federalStates)
         .filter((state) => state.hasAreas)
         .map((state) => state.name)
-        .join(", ") || coverageLabel;
-    setStatus(elements.ui, `MVP-Datenabdeckung: ${coverageLabel}. Andere Bundeslaender sind vorbereitet.`);
+        .join(", ") || pageState.coverageLabel;
+    setStatus(elements.ui, `MVP-Datenabdeckung: ${pageState.coverageLabel}. Andere Bundeslaender sind vorbereitet.`);
     await loadAreas();
     bindEvents();
     window.setTimeout(() => atlasMap.invalidateSize(), 100);
@@ -67,8 +74,7 @@ function bindEvents(): void {
   });
   elements.form.voltageLevelFilter.addEventListener("change", async () => {
     const filters = readFilters(elements.form);
-    allOperators = await getOperators({ voltageLevel: filters.voltageLevel });
-    renderOperatorFilter(elements.ui.operatorFilter, allOperators);
+    updateOperators(await getOperators({ voltageLevel: filters.voltageLevel }));
     void loadAreas();
   });
 }
@@ -91,13 +97,13 @@ async function runSearch(): Promise<void> {
   setStatus(elements.ui, "Suche laeuft...");
   try {
     const response = await search(query);
-    const areaIds = new Set(response.results.map(resultToAreaId).filter(isString));
+    const areaIds = new Set(response.results.map((result) => resultToAreaId(result, pageState.visibleFeatures)).filter(isString));
     await loadAreas(areaIds);
-    if (visibleFeatures.length === 0) {
+    if (pageState.visibleFeatures.length === 0) {
       showNoCoverageMessage(elements.ui);
       return;
     }
-    setStatus(elements.ui, `${response.total} Suchtreffer, ${visibleFeatures.length} passende Pilotgebiete sichtbar.`);
+    setStatus(elements.ui, `${response.total} Suchtreffer, ${pageState.visibleFeatures.length} passende Pilotgebiete sichtbar.`);
   } catch (error) {
     setStatus(elements.ui, "Suche fehlgeschlagen.");
     setError(elements.ui, error instanceof Error ? error.message : "Unbekannter Suchfehler.");
@@ -108,26 +114,31 @@ async function loadAreas(allowedAreaIds?: Set<string>): Promise<void> {
   setStatus(elements.ui, "Lade Gebiete...");
   try {
     const collection = await getAreas(readFilters(elements.form));
-    visibleFeatures = allowedAreaIds
+    pageState.visibleFeatures = allowedAreaIds
       ? collection.features.filter((feature) => allowedAreaIds.has(feature.properties.id))
       : collection.features;
-    const visibleCollection = { ...collection, features: visibleFeatures };
+    const visibleCollection = { ...collection, features: pageState.visibleFeatures };
     atlasMap.renderAreas(visibleCollection);
-    renderResults(elements.ui, visibleFeatures, (feature, focusDetail) => {
+    renderResults(elements.ui, pageState.visibleFeatures, (feature, focusDetail) => {
       atlasMap.selectArea(feature, focusDetail);
       atlasMap.focusArea(feature.properties.id);
     });
     atlasMap.fitRenderedAreas();
-    announceAreaCount(elements.ui, visibleFeatures.length, coverageLabel);
+    announceAreaCount(elements.ui, pageState.visibleFeatures.length, pageState.coverageLabel);
   } catch (error) {
-    visibleFeatures = [];
+    pageState.visibleFeatures = [];
     renderResults(elements.ui, [], () => undefined);
     setStatus(elements.ui, "Gebiete konnten nicht geladen werden.");
     setError(elements.ui, error instanceof Error ? error.message : "Unbekannter Ladefehler.");
   }
 }
 
-function resultToAreaId(result: SearchResult): string | null {
+function updateOperators(operators: Operator[]): void {
+  pageState.allOperators = operators;
+  renderOperatorFilter(elements.ui.operatorFilter, pageState.allOperators);
+}
+
+function resultToAreaId(result: SearchResult, visibleFeatures: AreaFeature[]): string | null {
   if (result.areaId) {
     return result.areaId;
   }

@@ -169,7 +169,20 @@
   gap: var(--space-3);
   padding-top: var(--space-3);
   margin-top: var(--space-1);
+  margin-inline: 0;
   border-top: 1px dashed var(--color-line);
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+}
+
+.filter-grid legend {
+  padding: 0;
+  color: var(--color-ink-soft);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .field > label {
@@ -401,5 +414,4 @@
   .search-row {
     grid-template-columns: 1fr;
   }
-
 }

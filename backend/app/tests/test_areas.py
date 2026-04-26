@@ -4,13 +4,17 @@ from app.main import app
 
 client = TestClient(app)
 
+GENERATED_AREA_COUNT = 547
+GENERATED_NW_AREA_COUNT = 267
+GENERATED_HOCHSPANNUNG_AREA_COUNT = 48
+
 
 def test_areas_feature_collection() -> None:
     response = client.get("/api/areas")
     assert response.status_code == 200
     body = response.json()
     assert body["type"] == "FeatureCollection"
-    assert len(body["features"]) == 547
+    assert len(body["features"]) == GENERATED_AREA_COUNT
     first_feature = body["features"][0]
     assert first_feature["type"] == "Feature"
     assert first_feature["geometry"]["type"] in {"Polygon", "MultiPolygon"}
@@ -42,14 +46,14 @@ def test_areas_rejects_invalid_bbox() -> None:
 def test_areas_filters_by_country_and_federal_state() -> None:
     response = client.get("/api/areas", params={"country": "DE", "federal_state": "NW"})
     assert response.status_code == 200
-    assert len(response.json()["features"]) == 267
+    assert len(response.json()["features"]) == GENERATED_NW_AREA_COUNT
 
 
 def test_areas_filters_by_voltage_level() -> None:
     response = client.get("/api/areas", params={"voltage_level": "Hochspannung"})
     assert response.status_code == 200
     features = response.json()["features"]
-    assert len(features) == 48
+    assert len(features) == GENERATED_HOCHSPANNUNG_AREA_COUNT
     assert all(feature["properties"]["voltageLevels"] == ["Hochspannung"] for feature in features)
 
 

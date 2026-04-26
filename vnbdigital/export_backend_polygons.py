@@ -34,6 +34,28 @@ DATA_NOTICE = (
 VOLTAGE_ORDER = {"Niederspannung": 0, "Mittelspannung": 1, "Hochspannung": 2}
 
 
+@dataclass(frozen=True)
+class OperatorVoltageKey:
+    operator_id: str
+    operator_name: str
+    vnb_id: str
+    voltage_level: str
+
+
+@dataclass
+class ExportConfig:
+    input_path: Path
+    operators_output: Path
+    areas_output: Path
+    federal_states_path: Path
+    clip_bbox: tuple[float, float, float, float]
+    federal_state: str
+    updated_at: str
+    overlay_inputs: list[Path]
+    overlay_clip_bboxes: list[tuple[float, float, float, float]]
+    overlay_federal_states: list[str]
+
+
 @dataclass
 class PolygonLayer:
     operators: dict[str, dict[str, Any]]
@@ -151,8 +173,8 @@ def export_polygon_layer(
 
     operators_by_id: dict[str, dict[str, Any]] = {}
     voltage_levels_by_operator: dict[str, set[str]] = defaultdict(set)
-    cells_by_operator_voltage: dict[tuple[str, str, str, str], list[Any]] = defaultdict(list)
-    sample_point_count_by_operator_voltage: dict[tuple[str, str, str, str], int] = defaultdict(int)
+    cells_by_operator_voltage: dict[OperatorVoltageKey, list[Any]] = defaultdict(list)
+    sample_point_count_by_operator_voltage: dict[OperatorVoltageKey, int] = defaultdict(int)
 
     for feature in mesh_features:
         properties = feature.get("properties") or {}
@@ -189,15 +211,19 @@ def export_polygon_layer(
 
             for voltage_level in voltage_levels:
                 voltage_levels_by_operator[op_id].add(voltage_level)
-                key = (op_id, name, vnb_id, voltage_level)
+                key = OperatorVoltageKey(op_id, name, vnb_id, voltage_level)
                 cells_by_operator_voltage[key].append(cell)
                 sample_point_count_by_operator_voltage[key] += 1
 
     area_features: list[dict[str, Any]] = []
-    for (op_id, name, vnb_id, voltage_level), cells in sorted(
+    for key, cells in sorted(
         cells_by_operator_voltage.items(),
-        key=lambda item: (voltage_sort_key(item[0][3]), item[0][1].casefold()),
+        key=lambda item: (voltage_sort_key(item[0].voltage_level), item[0].operator_name.casefold()),
     ):
+        op_id = key.operator_id
+        name = key.operator_name
+        vnb_id = key.vnb_id
+        voltage_level = key.voltage_level
         dissolved = clean_geometry(unary_union(cells).intersection(clip_geometry))
         if dissolved.is_empty:
             continue
@@ -207,10 +233,10 @@ def export_polygon_layer(
                 "properties": {
                     "id": f"mesh-{slugify(federal_state)}-{op_id}-{slugify(voltage_level)}",
                     "name": f"{name} ({voltage_level})",
-                        "operatorId": op_id,
-                        "country": "DE",
-                        "federalState": federal_state,
-                        "accuracy": "municipality_approximation",
+                    "operatorId": op_id,
+                    "country": "DE",
+                    "federalState": federal_state,
+                    "accuracy": "municipality_approximation",
                     "source": SOURCE_LABEL,
                     "updatedAt": updated_at,
                     "mockNotice": DATA_NOTICE,
@@ -219,7 +245,7 @@ def export_polygon_layer(
                     "voltageLevels": [voltage_level],
                     "voltageLevel": voltage_level,
                     "vnbdigitalId": vnb_id,
-                    "samplePointCount": sample_point_count_by_operator_voltage[(op_id, name, vnb_id, voltage_level)],
+                    "samplePointCount": sample_point_count_by_operator_voltage[key],
                 },
                 "geometry": mapping(dissolved),
             }
@@ -346,33 +372,62 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def main() -> None:
-    args = build_parser().parse_args()
+def export_config_from_args(args: argparse.Namespace) -> ExportConfig:
     if len(args.overlay_clip_bbox) not in {0, len(args.overlay_input)}:
         raise ValueError("--overlay-clip-bbox must be omitted or repeated once per --overlay-input")
     if len(args.overlay_federal_state) not in {0, len(args.overlay_input)}:
         raise ValueError("--overlay-federal-state must be omitted or repeated once per --overlay-input")
 
-    base_mesh = load_feature_collection(Path(args.input))
-    base_layer = export_polygon_layer(base_mesh, parse_bbox(args.clip_bbox), args.updated_at, args.federal_state)
+    return ExportConfig(
+        input_path=Path(args.input),
+        operators_output=Path(args.operators_output),
+        areas_output=Path(args.areas_output),
+        federal_states_path=Path(args.federal_states),
+        clip_bbox=parse_bbox(args.clip_bbox),
+        federal_state=args.federal_state,
+        updated_at=args.updated_at,
+        overlay_inputs=[Path(input_path) for input_path in args.overlay_input],
+        overlay_clip_bboxes=[
+            parse_bbox(raw_bbox) for raw_bbox in (args.overlay_clip_bbox or [args.clip_bbox] * len(args.overlay_input))
+        ],
+        overlay_federal_states=args.overlay_federal_state or [args.federal_state] * len(args.overlay_input),
+    )
+
+
+def build_layers(config: ExportConfig) -> tuple[PolygonLayer, list[PolygonLayer]]:
+    base_mesh = load_feature_collection(config.input_path)
+    base_layer = export_polygon_layer(base_mesh, config.clip_bbox, config.updated_at, config.federal_state)
 
     overlay_layers = []
-    for index, overlay_input in enumerate(args.overlay_input):
-        overlay_bbox = args.overlay_clip_bbox[index] if args.overlay_clip_bbox else args.clip_bbox
-        overlay_federal_state = args.overlay_federal_state[index] if args.overlay_federal_state else args.federal_state
-        overlay_mesh = load_feature_collection(Path(overlay_input))
+    for index, overlay_input in enumerate(config.overlay_inputs):
+        overlay_mesh = load_feature_collection(overlay_input)
         overlay_layers.append(
-            export_polygon_layer(overlay_mesh, parse_bbox(overlay_bbox), args.updated_at, overlay_federal_state)
+            export_polygon_layer(
+                overlay_mesh,
+                config.overlay_clip_bboxes[index],
+                config.updated_at,
+                config.overlay_federal_states[index],
+            )
         )
+    return base_layer, overlay_layers
 
+
+def run_export(config: ExportConfig) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    base_layer, overlay_layers = build_layers(config)
     operators, areas = merge_polygon_layers(base_layer, overlay_layers)
     validate_area_geometries(areas)
-    write_json(Path(args.operators_output), operators)
-    write_json(Path(args.areas_output), areas)
-    update_federal_states(Path(args.federal_states))
+    write_json(config.operators_output, operators)
+    write_json(config.areas_output, areas)
+    update_federal_states(config.federal_states_path)
+    return operators, areas
+
+
+def main() -> None:
+    config = export_config_from_args(build_parser().parse_args())
+    operators, areas = run_export(config)
     print(f"operators: {len(operators)}")
     print(f"area features: {len(areas['features'])}")
-    print(f"updated: {args.operators_output}, {args.areas_output}, {args.federal_states}")
+    print(f"updated: {config.operators_output}, {config.areas_output}, {config.federal_states_path}")
 
 
 if __name__ == "__main__":

@@ -2,18 +2,20 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
+from app.domain import Accuracy, CountryCode, DataCoverage, DataStatus, OperatorType, SearchMatchedField, SearchResultType
+
 
 class Operator(BaseModel):
     id: str
     name: str
-    type: Literal["VNB", "ÜNB", "UNKNOWN"]
+    type: OperatorType
     website: str
     parentCompany: str | None = None
     description: str
     voltageLevels: list[str]
-    country: Literal["DE"]
+    country: CountryCode
     federalStates: list[str]
-    dataCoverage: Literal["none", "mock", "partial", "verified"]
+    dataCoverage: DataCoverage
     mockNotice: str
 
 
@@ -22,26 +24,36 @@ class AreaProperties(BaseModel):
     name: str
     operatorId: str
     operatorName: str
-    country: Literal["DE"]
+    country: CountryCode
     federalState: str
-    accuracy: Literal["mock", "municipality_approximation", "verified"]
+    accuracy: Accuracy
     source: str
     updatedAt: str
     mockNotice: str
     places: list[str]
     postalCodes: list[str]
     voltageLevels: list[str] = Field(default_factory=list)
+    voltageLevel: str | None = None
+    vnbdigitalId: str | None = None
+    samplePointCount: int | None = None
+
+
+class AreaFeature(BaseModel):
+    type: Literal["Feature"]
+    properties: AreaProperties
+    geometry: dict[str, Any]
+    bbox: list[float] | None = None
 
 
 class SearchResult(BaseModel):
-    type: Literal["operator", "area", "place", "postalCode"]
+    type: SearchResultType
     label: str
     operatorId: str
     operatorName: str
     areaId: str | None = None
     areaName: str | None = None
-    accuracy: Literal["mock", "municipality_approximation", "verified"] | None = None
-    matchedField: str
+    accuracy: Accuracy | None = None
+    matchedField: SearchMatchedField
 
 
 class SearchResponse(BaseModel):
@@ -51,7 +63,7 @@ class SearchResponse(BaseModel):
 
 
 class LookupMatch(BaseModel):
-    area: dict[str, Any]
+    area: AreaFeature
     operator: Operator
 
 
@@ -69,16 +81,16 @@ class FederalState(BaseModel):
     id: str
     name: str
     hasAreaData: bool
-    dataStatus: Literal["mock", "partial", "verified", "not_available"]
+    dataStatus: DataStatus
 
 
 class FederalStateCoverage(BaseModel):
     id: str
     name: str
     hasAreas: bool
-    status: Literal["mock", "partial", "verified", "not_available"]
+    status: DataStatus
 
 
 class CountryCoverage(BaseModel):
-    country: Literal["DE"]
+    country: CountryCode
     federalStates: dict[str, FederalStateCoverage]

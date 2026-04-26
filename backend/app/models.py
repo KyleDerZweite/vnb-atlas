@@ -1,10 +1,6 @@
-from typing import Literal, TypedDict
+from typing import TypedDict
 
-
-OperatorType = Literal["VNB", "ÜNB", "UNKNOWN"]
-Accuracy = Literal["mock", "municipality_approximation", "verified"]
-DataCoverage = Literal["none", "mock", "partial", "verified"]
-DataStatus = Literal["mock", "partial", "verified", "not_available"]
+from app.domain import Accuracy, CountryCode, DataCoverage, DataStatus, OperatorType
 
 
 class OperatorRecord(TypedDict):
@@ -15,7 +11,7 @@ class OperatorRecord(TypedDict):
     parentCompany: str | None
     description: str
     voltageLevels: list[str]
-    country: Literal["DE"]
+    country: CountryCode
     federalStates: list[str]
     dataCoverage: DataCoverage
     mockNotice: str
@@ -25,7 +21,7 @@ class AreaPropertiesRecord(TypedDict):
     id: str
     name: str
     operatorId: str
-    country: Literal["DE"]
+    country: CountryCode
     federalState: str
     accuracy: Accuracy
     source: str

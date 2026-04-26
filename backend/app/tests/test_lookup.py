@@ -11,6 +11,11 @@ def test_lookup_inside_area() -> None:
     body = response.json()
     assert body["match"] is not None
     assert body["match"]["operator"]["id"] == "vnbdigital-153"
+    assert [match["area"]["properties"]["voltageLevels"] for match in body["matches"]] == [
+        ["Niederspannung"],
+        ["Mittelspannung"],
+        ["Hochspannung"],
+    ]
     assert [match["area"]["properties"]["voltageLevel"] for match in body["matches"]] == [
         "Niederspannung",
         "Mittelspannung",

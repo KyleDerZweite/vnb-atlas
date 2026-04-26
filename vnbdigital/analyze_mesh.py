@@ -6,6 +6,7 @@ import argparse
 import csv
 import json
 from collections import Counter, defaultdict
+from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -13,6 +14,20 @@ from typing import Any
 DEFAULT_INPUT = "vnbdigital/output/nrw_vnb_mesh.geojson"
 DEFAULT_OUTPUT_DIR = "vnbdigital/output/analysis"
 UNKNOWN_VOLTAGE = "UNKNOWN"
+
+
+@dataclass
+class AnalysisResult:
+    feature_count: int
+    empty_features: list[dict[str, Any]]
+    multi_operator_features: list[dict[str, Any]]
+    error_counts: dict[str, int]
+    query_voltage_types: dict[str, int]
+    operator_points: Counter[tuple[str, str]]
+    operator_voltage_points: Counter[tuple[str, str, str]]
+    voltage_points: Counter[str]
+    operator_bboxes: dict[tuple[str, str], list[float]]
+    normalized_rows: list[dict[str, Any]]
 
 
 def load_feature_collection(path: Path) -> dict[str, Any]:
@@ -39,7 +54,7 @@ def operator_key(operator: dict[str, Any]) -> tuple[str, str]:
     return str(operator.get("vnbId") or ""), str(operator.get("name") or "")
 
 
-def analyze(features: list[dict[str, Any]]) -> dict[str, Any]:
+def analyze(features: list[dict[str, Any]]) -> AnalysisResult:
     operator_points: Counter[tuple[str, str]] = Counter()
     operator_voltage_points: Counter[tuple[str, str, str]] = Counter()
     voltage_points: Counter[str] = Counter()
@@ -101,18 +116,18 @@ def analyze(features: list[dict[str, Any]]) -> dict[str, Any]:
     for op_voltage_key, point_keys in operator_voltage_point_keys.items():
         operator_voltage_points[op_voltage_key] = len(point_keys)
 
-    return {
-        "featureCount": len(features),
-        "emptyFeatures": empty_features,
-        "multiOperatorFeatures": multi_operator_features,
-        "errorCounts": dict(error_counts),
-        "queryVoltageTypes": dict(query_voltage_types),
-        "operatorPoints": operator_points,
-        "operatorVoltagePoints": operator_voltage_points,
-        "voltagePoints": voltage_points,
-        "operatorBboxes": operator_bboxes,
-        "normalizedRows": normalized_rows,
-    }
+    return AnalysisResult(
+        feature_count=len(features),
+        empty_features=empty_features,
+        multi_operator_features=multi_operator_features,
+        error_counts=dict(error_counts),
+        query_voltage_types=dict(query_voltage_types),
+        operator_points=operator_points,
+        operator_voltage_points=operator_voltage_points,
+        voltage_points=voltage_points,
+        operator_bboxes=operator_bboxes,
+        normalized_rows=normalized_rows,
+    )
 
 
 def feature_collection(features: list[dict[str, Any]]) -> dict[str, Any]:
@@ -132,14 +147,14 @@ def write_csv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> 
         writer.writerows(rows)
 
 
-def write_analysis(analysis: dict[str, Any], output_dir: Path) -> None:
+def write_analysis(analysis: AnalysisResult, output_dir: Path) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     operator_rows = []
-    for (vnb_id, name), point_count in analysis["operatorPoints"].most_common():
+    for (vnb_id, name), point_count in analysis.operator_points.most_common():
         voltage_counts = {
             voltage: count
-            for (voltage_vnb_id, voltage_name, voltage), count in analysis["operatorVoltagePoints"].items()
+            for (voltage_vnb_id, voltage_name, voltage), count in analysis.operator_voltage_points.items()
             if voltage_vnb_id == vnb_id and voltage_name == name
         }
         operator_rows.append(
@@ -152,7 +167,7 @@ def write_analysis(analysis: dict[str, Any], output_dir: Path) -> None:
                 "mittelspannungPoints": voltage_counts.get("Mittelspannung", 0),
                 "hochspannungPoints": voltage_counts.get("Hochspannung", 0),
                 "unknownVoltagePoints": voltage_counts.get(UNKNOWN_VOLTAGE, 0),
-                "meshBbox": json.dumps(analysis["operatorBboxes"].get((vnb_id, name)), ensure_ascii=False),
+                "meshBbox": json.dumps(analysis.operator_bboxes.get((vnb_id, name)), ensure_ascii=False),
             }
         )
 
@@ -163,29 +178,29 @@ def write_analysis(analysis: dict[str, Any], output_dir: Path) -> None:
             "voltageType": voltage,
             "pointCount": count,
         }
-        for (vnb_id, name, voltage), count in analysis["operatorVoltagePoints"].most_common()
+        for (vnb_id, name, voltage), count in analysis.operator_voltage_points.most_common()
     ]
 
     voltage_rows = [
         {"voltageType": voltage, "operatorPointCount": count}
-        for voltage, count in analysis["voltagePoints"].most_common()
+        for voltage, count in analysis.voltage_points.most_common()
     ]
 
     summary = {
         "generatedAt": datetime.now(UTC).isoformat(),
-        "featureCount": analysis["featureCount"],
-        "emptyPointCount": len(analysis["emptyFeatures"]),
-        "multiOperatorPointCount": len(analysis["multiOperatorFeatures"]),
-        "operatorCount": len(analysis["operatorPoints"]),
-        "errorCounts": analysis["errorCounts"],
-        "queryVoltageTypes": analysis["queryVoltageTypes"],
-        "voltagePointCounts": dict(analysis["voltagePoints"]),
+        "featureCount": analysis.feature_count,
+        "emptyPointCount": len(analysis.empty_features),
+        "multiOperatorPointCount": len(analysis.multi_operator_features),
+        "operatorCount": len(analysis.operator_points),
+        "errorCounts": analysis.error_counts,
+        "queryVoltageTypes": analysis.query_voltage_types,
+        "voltagePointCounts": dict(analysis.voltage_points),
         "topOperators": operator_rows[:25],
     }
 
     write_json(output_dir / "summary.json", summary)
-    write_json(output_dir / "empty_points.geojson", feature_collection(analysis["emptyFeatures"]))
-    write_json(output_dir / "multi_operator_points.geojson", feature_collection(analysis["multiOperatorFeatures"]))
+    write_json(output_dir / "empty_points.geojson", feature_collection(analysis.empty_features))
+    write_json(output_dir / "multi_operator_points.geojson", feature_collection(analysis.multi_operator_features))
     write_csv(
         output_dir / "operators.csv",
         operator_rows,
@@ -209,7 +224,7 @@ def write_analysis(analysis: dict[str, Any], output_dir: Path) -> None:
     write_csv(output_dir / "voltage_summary.csv", voltage_rows, ["voltageType", "operatorPointCount"])
     write_csv(
         output_dir / "point_operator_voltage.csv",
-        analysis["normalizedRows"],
+        analysis.normalized_rows,
         ["lat", "lon", "voltageType", "vnbId", "operatorName"],
     )
 
@@ -229,10 +244,10 @@ def main() -> None:
     analysis = analyze(list(data.get("features") or []))
     write_analysis(analysis, output_dir)
 
-    print(f"features: {analysis['featureCount']}")
-    print(f"operators: {len(analysis['operatorPoints'])}")
-    print(f"empty points: {len(analysis['emptyFeatures'])}")
-    print(f"multi-operator points: {len(analysis['multiOperatorFeatures'])}")
+    print(f"features: {analysis.feature_count}")
+    print(f"operators: {len(analysis.operator_points)}")
+    print(f"empty points: {len(analysis.empty_features)}")
+    print(f"multi-operator points: {len(analysis.multi_operator_features)}")
     print(f"output: {output_dir}")
 
 

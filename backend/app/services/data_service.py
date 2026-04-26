@@ -3,39 +3,14 @@ import json
 import unicodedata
 from functools import lru_cache
 from pathlib import Path
-from typing import Any, Literal
+from typing import Any
 
-from app.models import Accuracy, DataCoverage, OperatorRecord, OperatorType
+from app.domain import Accuracy, DataCoverage, OperatorType, SearchMatchedField, VoltageLevel, VOLTAGE_PRIORITY
+from app.models import OperatorRecord
 from app.schemas import SearchResult
 from app.services.geo_service import BBox, bbox_intersects, geometry_bbox, point_in_geometry
 
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
-VOLTAGE_PRIORITY = {"Niederspannung": 0, "Mittelspannung": 1, "Hochspannung": 2}
-VoltageLevel = Literal["Niederspannung", "Mittelspannung", "Hochspannung"]
-
-
-def parse_operator_type(value: str | None) -> OperatorType | None:
-    if value is None:
-        return None
-    return value  # FastAPI already validated the literal.
-
-
-def parse_accuracy(value: str | None) -> Accuracy | None:
-    if value is None:
-        return None
-    return value  # FastAPI already validated the literal.
-
-
-def parse_coverage(value: str | None) -> DataCoverage | None:
-    if value is None:
-        return None
-    return value  # FastAPI already validated the literal.
-
-
-def parse_voltage_level(value: str | None) -> VoltageLevel | None:
-    if value is None:
-        return None
-    return value  # FastAPI already validated the literal.
 
 
 @lru_cache
@@ -96,7 +71,7 @@ def filter_operators(
     return operators
 
 
-def filter_area_features(
+def filter_raw_area_features(
     bbox: BBox | None = None,
     operator_id: str | None = None,
     accuracy: Accuracy | None = None,
@@ -104,7 +79,6 @@ def filter_area_features(
     federal_state: str | None = None,
     voltage_level: VoltageLevel | None = None,
 ) -> list[dict[str, Any]]:
-    operators_by_id = {operator["id"]: operator for operator in load_operators()}
     features = []
 
     for feature in load_areas()["features"]:
@@ -122,18 +96,54 @@ def filter_area_features(
         if bbox and not bbox_intersects(geometry_bbox(feature["geometry"]), bbox):
             continue
 
-        enriched = copy.deepcopy(feature)
-        enriched["properties"]["operatorName"] = operators_by_id[properties["operatorId"]]["name"]
-        enriched["bbox"] = list(geometry_bbox(enriched["geometry"]))
-        features.append(enriched)
+        features.append(feature)
     return features
+
+
+def enrich_area_feature(feature: dict[str, Any], operators_by_id: dict[str, OperatorRecord] | None = None) -> dict[str, Any]:
+    operators = operators_by_id or {operator["id"]: operator for operator in load_operators()}
+    enriched = copy.deepcopy(feature)
+    properties = enriched["properties"]
+    properties["operatorName"] = operators[properties["operatorId"]]["name"]
+    enriched["bbox"] = list(geometry_bbox(enriched["geometry"]))
+    return enriched
+
+
+def list_enriched_area_features(
+    bbox: BBox | None = None,
+    operator_id: str | None = None,
+    accuracy: Accuracy | None = None,
+    country: str | None = None,
+    federal_state: str | None = None,
+    voltage_level: VoltageLevel | None = None,
+) -> list[dict[str, Any]]:
+    operators_by_id = {operator["id"]: operator for operator in load_operators()}
+    return [
+        enrich_area_feature(feature, operators_by_id)
+        for feature in filter_raw_area_features(
+            bbox=bbox,
+            operator_id=operator_id,
+            accuracy=accuracy,
+            country=country,
+            federal_state=federal_state,
+            voltage_level=voltage_level,
+        )
+    ]
 
 
 def search_all(query: str) -> list[SearchResult]:
     normalized_query = normalize(query)
     operators_by_id = {operator["id"]: operator for operator in load_operators()}
-    results: list[SearchResult] = []
+    results = _operator_search_results(normalized_query)
 
+    for feature in list_enriched_area_features():
+        results.extend(_area_search_results(feature, operators_by_id, normalized_query))
+
+    return results
+
+
+def _operator_search_results(normalized_query: str) -> list[SearchResult]:
+    results: list[SearchResult] = []
     for operator in load_operators():
         haystack = normalize(" ".join([operator["name"], operator["description"], operator.get("parentCompany") or ""]))
         if normalized_query in haystack:
@@ -146,32 +156,62 @@ def search_all(query: str) -> list[SearchResult]:
                     matchedField="operator",
                 )
             )
+    return results
 
-    seen_place_matches: set[tuple[str, str, str]] = set()
-    for feature in filter_area_features():
-        properties = feature["properties"]
-        operator = operators_by_id[properties["operatorId"]]
-        if normalized_query in normalize(properties["name"]):
-            results.append(_area_result(properties, operator["name"], "area"))
 
-        for place in properties["places"]:
-            key = (properties["id"], "place", place)
-            if normalized_query in normalize(place) and key not in seen_place_matches:
-                seen_place_matches.add(key)
-                results.append(_area_result(properties, operator["name"], "place", place))
+def _area_search_results(
+    feature: dict[str, Any],
+    operators_by_id: dict[str, OperatorRecord],
+    normalized_query: str,
+) -> list[SearchResult]:
+    properties = feature["properties"]
+    operator = operators_by_id[properties["operatorId"]]
+    results: list[SearchResult] = []
 
-        for postal_code in properties["postalCodes"]:
-            key = (properties["id"], "postalCode", postal_code)
-            if normalized_query in normalize(postal_code) and key not in seen_place_matches:
-                seen_place_matches.add(key)
-                results.append(_area_result(properties, operator["name"], "postalCode", postal_code))
+    if normalized_query in normalize(properties["name"]):
+        results.append(_area_result(properties, operator["name"], "area"))
 
+    results.extend(
+        _named_area_results(
+            properties=properties,
+            operator_name=operator["name"],
+            values=properties["places"],
+            matched_field="place",
+            normalized_query=normalized_query,
+        )
+    )
+    results.extend(
+        _named_area_results(
+            properties=properties,
+            operator_name=operator["name"],
+            values=properties["postalCodes"],
+            matched_field="postalCode",
+            normalized_query=normalized_query,
+        )
+    )
+    return results
+
+
+def _named_area_results(
+    properties: dict[str, Any],
+    operator_name: str,
+    values: list[str],
+    matched_field: SearchMatchedField,
+    normalized_query: str,
+) -> list[SearchResult]:
+    seen: set[tuple[str, SearchMatchedField, str]] = set()
+    results: list[SearchResult] = []
+    for value in values:
+        key = (properties["id"], matched_field, value)
+        if normalized_query in normalize(value) and key not in seen:
+            seen.add(key)
+            results.append(_area_result(properties, operator_name, matched_field, value))
     return results
 
 
 def find_areas_for_point(lat: float, lon: float) -> list[dict[str, Any]]:
     matches = []
-    for feature in filter_area_features():
+    for feature in list_enriched_area_features():
         if point_in_geometry(lon=lon, lat=lat, geometry=feature["geometry"]):
             matches.append(feature)
     return sorted(matches, key=_area_sort_key)
@@ -206,7 +246,12 @@ def normalize(value: str | None) -> str:
     return "".join(char for char in normalized if not unicodedata.combining(char))
 
 
-def _area_result(properties: dict[str, Any], operator_name: str, matched_field: str, label: str | None = None) -> SearchResult:
+def _area_result(
+    properties: dict[str, Any],
+    operator_name: str,
+    matched_field: SearchMatchedField,
+    label: str | None = None,
+) -> SearchResult:
     return SearchResult(
         type="postalCode" if matched_field == "postalCode" else "place" if matched_field == "place" else "area",
         label=label or properties["name"],

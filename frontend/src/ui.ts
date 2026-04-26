@@ -62,13 +62,13 @@ export function renderResults(
     button.className = "result-button";
     button.dataset.areaId = feature.properties.id;
     button.setAttribute("aria-controls", "detail-panel");
-    button.innerHTML = `
-      <span class="result-title">${escapeHtml(feature.properties.name)}</span>
-      <span>${escapeHtml(feature.properties.operatorName)}</span>
-      <span class="meta-line">VNBdigital-Mesh: ${escapeHtml(feature.properties.federalState)}</span>
-      <span class="meta-line">${escapeHtml(formatVoltageLevels(feature.properties.voltageLevels))}</span>
-      <span class="meta-line">${escapeHtml(feature.properties.places.join(", "))}</span>
-    `;
+    button.append(
+      createSpan(feature.properties.name, "result-title"),
+      createSpan(feature.properties.operatorName),
+      createSpan(`VNBdigital-Mesh: ${feature.properties.federalState}`, "meta-line"),
+      createSpan(formatVoltageLevels(feature.properties.voltageLevels), "meta-line"),
+      createSpan(feature.properties.places.join(", "), "meta-line"),
+    );
     button.addEventListener("click", () => onSelect(feature, true));
     item.append(button);
     elements.resultsList.append(item);
@@ -77,19 +77,24 @@ export function renderResults(
 
 export function renderDetails(elements: UiElements, feature: AreaFeature, focusDetail = true): void {
   const properties = feature.properties;
-  elements.detailContent.innerHTML = `
-    <p class="notice">${escapeHtml(properties.mockNotice)}</p>
-    <dl class="detail-list">
-      <div><dt>Gebiet</dt><dd>${escapeHtml(properties.name)}</dd></div>
-      <div><dt>Betreiber</dt><dd>${escapeHtml(properties.operatorName)}</dd></div>
-      <div><dt>Spannungsebene</dt><dd>${escapeHtml(formatVoltageLevels(properties.voltageLevels))}</dd></div>
-      <div><dt>Datensatz</dt><dd>${escapeHtml(properties.country)} / ${escapeHtml(properties.federalState)}</dd></div>
-      <div><dt>Orte</dt><dd>${escapeHtml(properties.places.join(", "))}</dd></div>
-      <div><dt>PLZ</dt><dd>${escapeHtml(properties.postalCodes.join(", "))}</dd></div>
-      <div><dt>Quelle</dt><dd>${escapeHtml(properties.source)}</dd></div>
-      <div><dt>Aktualisiert</dt><dd>${escapeHtml(properties.updatedAt)}</dd></div>
-    </dl>
-  `;
+  const notice = document.createElement("p");
+  notice.className = "notice";
+  notice.textContent = properties.mockNotice;
+
+  const details = document.createElement("dl");
+  details.className = "detail-list";
+  details.append(
+    createDetailItem("Gebiet", properties.name),
+    createDetailItem("Betreiber", properties.operatorName),
+    createDetailItem("Spannungsebene", formatVoltageLevels(properties.voltageLevels)),
+    createDetailItem("Datensatz", `${properties.country} / ${properties.federalState}`),
+    createDetailItem("Orte", properties.places.join(", ")),
+    createDetailItem("PLZ", properties.postalCodes.join(", ")),
+    createDetailItem("Quelle", properties.source),
+    createDetailItem("Aktualisiert", properties.updatedAt),
+  );
+
+  elements.detailContent.replaceChildren(notice, details);
   highlightResultButton(properties.id);
   if (focusDetail) {
     elements.detailPanel.focus();
@@ -113,13 +118,23 @@ function highlightResultButton(areaId: string): void {
   });
 }
 
-function escapeHtml(value: string): string {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+function createSpan(text: string, className?: string): HTMLSpanElement {
+  const span = document.createElement("span");
+  if (className) {
+    span.className = className;
+  }
+  span.textContent = text;
+  return span;
+}
+
+function createDetailItem(termText: string, descriptionText: string): HTMLDivElement {
+  const wrapper = document.createElement("div");
+  const term = document.createElement("dt");
+  const description = document.createElement("dd");
+  term.textContent = termText;
+  description.textContent = descriptionText;
+  wrapper.append(term, description);
+  return wrapper;
 }
 
 function formatVoltageLevels(voltageLevels: string[]): string {

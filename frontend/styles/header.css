@@ -32,21 +32,6 @@
   color: var(--color-ink);
 }
 
-.site-header__brand-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: var(--color-ink);
-  color: var(--color-page);
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0;
-  border-radius: 6px;
-}
-
 .site-header__brand-text {
   display: flex;
   flex-direction: column;

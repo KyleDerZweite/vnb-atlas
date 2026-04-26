@@ -178,31 +178,28 @@ def resolve_bbox(args: argparse.Namespace) -> tuple[str | None, tuple[float, flo
         raise argparse.ArgumentTypeError(str(exc)) from exc
 
 
-async def query_points(
+def load_completed_keys(output_path: Path, resume: bool) -> tuple[list[dict[str, Any]], set[str]]:
+    if not resume:
+        return [], set()
+    features = load_existing_features(output_path)
+    return features, {key for feature in features if (key := feature_key(feature))}
+
+
+def select_pending_points(
     points: list[tuple[float, float]],
-    output_path: Path,
+    completed_keys: set[str],
+    limit: int | None,
+) -> list[tuple[float, float]]:
+    pending_points = [(lat, lon) for lat, lon in points if coordinate_key(lat, lon) not in completed_keys]
+    return pending_points[:limit] if limit is not None else pending_points
+
+
+async def collect_lookup_features(
+    pending_points: list[tuple[float, float]],
     args: argparse.Namespace,
     tile_id: str | None = None,
-) -> None:
+) -> list[dict[str, Any]]:
     features: list[dict[str, Any]] = []
-    completed_keys: set[str] = set()
-
-    if args.resume:
-        features = load_existing_features(output_path)
-        completed_keys = {key for feature in features if (key := feature_key(feature))}
-
-    pending_points = [(lat, lon) for lat, lon in points if coordinate_key(lat, lon) not in completed_keys]
-    if args.limit is not None:
-        pending_points = pending_points[: args.limit]
-
-    logging.info(
-        "Starting mesh build: total=%s pending=%s existing=%s output=%s",
-        len(points),
-        len(pending_points),
-        len(features),
-        output_path,
-    )
-
     async with SimpleVNBDigitalClient(request_delay=args.request_delay, timeout=args.timeout) as client:
         for index, (lat, lon) in enumerate(pending_points, start=1):
             logging.info("Lookup %s/%s lat=%s lon=%s", index, len(pending_points), lat, lon)
@@ -214,6 +211,27 @@ async def query_points(
             )
             queried_at = datetime.now(UTC).isoformat()
             features.append(lookup_to_feature(lookup, args.voltage_types, args.only_nap, queried_at, tile_id=tile_id))
+    return features
+
+
+async def query_points(
+    points: list[tuple[float, float]],
+    output_path: Path,
+    args: argparse.Namespace,
+    tile_id: str | None = None,
+) -> None:
+    features, completed_keys = load_completed_keys(output_path, args.resume)
+    pending_points = select_pending_points(points, completed_keys, args.limit)
+
+    logging.info(
+        "Starting mesh build: total=%s pending=%s existing=%s output=%s",
+        len(points),
+        len(pending_points),
+        len(features),
+        output_path,
+    )
+
+    features.extend(await collect_lookup_features(pending_points, args, tile_id=tile_id))
 
     write_feature_collection(output_path, features)
     logging.info("Wrote %s features to %s", len(features), output_path)

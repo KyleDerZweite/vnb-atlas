@@ -57,7 +57,7 @@ export interface SearchResult {
   areaId: string | null;
   areaName: string | null;
   accuracy: Accuracy | null;
-  matchedField: string;
+  matchedField: "operator" | "area" | "place" | "postalCode";
 }
 
 export interface SearchResponse {

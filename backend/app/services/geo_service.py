@@ -4,6 +4,7 @@ from fastapi import HTTPException
 
 BBox = tuple[float, float, float, float]
 Point = tuple[float, float]
+COORDINATE_EPSILON = 1e-10
 
 
 def parse_bbox(raw_bbox: str) -> BBox:
@@ -51,7 +52,11 @@ def point_in_geometry(lon: float, lat: float, geometry: dict[str, Any]) -> bool:
     coordinates = geometry.get("coordinates", [])
 
     if geometry_type == "Point":
-        return len(coordinates) >= 2 and abs(coordinates[0] - lon) < 1e-10 and abs(coordinates[1] - lat) < 1e-10
+        return (
+            len(coordinates) >= 2
+            and abs(coordinates[0] - lon) < COORDINATE_EPSILON
+            and abs(coordinates[1] - lat) < COORDINATE_EPSILON
+        )
     if geometry_type == "Polygon":
         return point_in_polygon((lon, lat), coordinates)
     if geometry_type == "MultiPolygon":
@@ -96,9 +101,12 @@ def _point_on_segment(point: Point, start: Point, end: Point) -> bool:
     x1, y1 = start
     x2, y2 = end
     cross = (y - y1) * (x2 - x1) - (x - x1) * (y2 - y1)
-    if abs(cross) > 1e-10:
+    if abs(cross) > COORDINATE_EPSILON:
         return False
-    return min(x1, x2) - 1e-10 <= x <= max(x1, x2) + 1e-10 and min(y1, y2) - 1e-10 <= y <= max(y1, y2) + 1e-10
+    return (
+        min(x1, x2) - COORDINATE_EPSILON <= x <= max(x1, x2) + COORDINATE_EPSILON
+        and min(y1, y2) - COORDINATE_EPSILON <= y <= max(y1, y2) + COORDINATE_EPSILON
+    )
 
 
 def _iter_points(geometry: dict[str, Any]):

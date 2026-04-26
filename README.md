@@ -8,7 +8,7 @@ Lokales MVP fuer eine deutschlandweit ausgelegte Web-App zur Visualisierung von 
 
 - Landing Page mit deutschlandweiter Zielbeschreibung und NRW-Pilotdaten-Hinweis.
 - Karten- und Suchseite mit OSM-Basemap, Startansicht Deutschland.
-- NRW-Mock-VNB-Gebiete als GeoJSON-Polygone.
+- NRW-Pilotgebiete aus VNBdigital-Meshdaten als GeoJSON-Polygone.
 - Bundeslandfilter mit NRW als einzigem befuelltem Pilotdatensatz.
 - Suche nach Ort, PLZ oder Betreibername, deutschlandfaehig ausgelegt.
 - Filter nach Betreiber und Datenqualitaet.
@@ -122,7 +122,7 @@ scripts/
   import_gis_placeholder.py
 ```
 
-Die Architektur ist nicht auf NRW festgelegt. `federal-states.json` beschreibt bundesweite Datenabdeckung; `areas.geojson` enthaelt im MVP nur NRW-Features. Weitere Bundeslaender koennen spaeter durch neue Features mit `country` und `federalState` ergaenzt werden, ohne das Frontend neu aufzubauen.
+Die Architektur ist nicht auf NRW festgelegt. `federal-states.json` beschreibt bundesweite Datenabdeckung; `areas.geojson` enthaelt im MVP nur Features aus dem VNBdigital-Mesh mit NRW-Bezug. Weitere Bundeslaender koennen spaeter durch neue Features mit `country` und `federalState` ergaenzt werden, ohne das Frontend neu aufzubauen.
 
 ## API
 
@@ -146,7 +146,7 @@ Gibt die Datenabdeckung je Land und Bundesland zurueck.
 curl http://127.0.0.1:8000/api/coverage
 ```
 
-Im MVP hat `NW` `hasAreas=true` und `status=mock`; alle anderen Bundeslaender haben `hasAreas=false` und `status=not_available`.
+Im MVP hat `NW` `hasAreas=true` und `status=partial`; alle anderen Bundeslaender haben `hasAreas=false` und `status=not_available`.
 
 ### `GET /api/federal-states`
 
@@ -238,6 +238,11 @@ Wichtige Properties:
 - `mockNotice`
 - `places`
 - `postalCodes`
+- `voltageLevels`: kanonische API-Liste der Spannungsebenen, z. B. `["Niederspannung"]`
+
+Das VNBdigital-Exportformat kann zusaetzlich generierte Metadaten wie `voltageLevel`, `vnbdigitalId` und `samplePointCount` enthalten. `voltageLevel` ist die skalare Spannungsebene der erzeugten Mesh-Schicht; API-Consumer sollten `voltageLevels` verwenden.
+
+Bei exportierten Mesh-Features kann `federalState` sowohl `NW` als auch `DE` sein. `NW` kennzeichnet die bundeslandspezifisch ausgeschnittene Pilotabdeckung fuer Nordrhein-Westfalen. `DE` kennzeichnet die deutschlandweite Ausgangsschicht des VNBdigital-Meshes, die als Rueckverfolgungs- und Vergleichsebene erhalten bleibt. Das Feld bleibt aus Kompatibilitaetsgruenden unveraendert; eine spaetere Datenmigration sollte dafuer ein klareres Metadatenfeld einfuehren.
 
 Bundeslaender liegen in `backend/app/data/federal-states.json`.
 

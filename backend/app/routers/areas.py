@@ -1,8 +1,9 @@
-from typing import Any, Literal
+from typing import Any
 
 from fastapi import APIRouter, Query
 
-from app.services.data_service import filter_area_features, parse_accuracy, parse_voltage_level
+from app.domain import Accuracy, CountryCode, VoltageLevel
+from app.services.data_service import list_enriched_area_features
 from app.services.geo_service import parse_bbox
 
 router = APIRouter(prefix="/api/areas", tags=["areas"])
@@ -12,21 +13,21 @@ router = APIRouter(prefix="/api/areas", tags=["areas"])
 def list_areas(
     bbox: str | None = Query(default=None, description="minLon,minLat,maxLon,maxLat"),
     operator_id: str | None = Query(default=None, max_length=80),
-    accuracy: Literal["mock", "municipality_approximation", "verified"] | None = Query(default=None),
-    country: Literal["DE"] | None = Query(default=None),
+    accuracy: Accuracy | None = Query(default=None),
+    country: CountryCode | None = Query(default=None),
     federal_state: str | None = Query(default=None, min_length=2, max_length=2),
-    voltage_level: Literal["Niederspannung", "Mittelspannung", "Hochspannung"] | None = Query(default=None),
+    voltage_level: VoltageLevel | None = Query(default=None),
 ) -> dict[str, Any]:
     parsed_bbox = parse_bbox(bbox) if bbox else None
     return {
         "type": "FeatureCollection",
-        "features": filter_area_features(
+        "features": list_enriched_area_features(
             bbox=parsed_bbox,
             operator_id=operator_id,
-            accuracy=parse_accuracy(accuracy),
+            accuracy=accuracy,
             country=country,
             federal_state=federal_state,
-            voltage_level=parse_voltage_level(voltage_level),
+            voltage_level=voltage_level,
         ),
         "mockNotice": "MVP-Datenabdeckung: NRW. VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen.",
     }

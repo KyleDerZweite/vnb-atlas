@@ -7,6 +7,12 @@
       name="description"
       content="Karte und Suche der Verteilnetzbetreiber. Suche nach Ort, PLZ oder Betreiber und filtere nach Bundesland. MVP-Datenabdeckung: NRW."
     />
+    <meta property="og:title" content="Karte und Suche · Deutschland VNB Atlas" />
+    <meta
+      property="og:description"
+      content="Karte und Suche der Verteilnetzbetreiber. Lokales MVP mit NRW-Pilotdaten."
+    />
+    <meta property="og:type" content="website" />
     <title>Karte und Suche · Deutschland VNB Atlas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -75,7 +81,8 @@
                 </div>
               </div>
 
-              <div class="filter-grid" role="group" aria-label="Filter">
+              <fieldset class="filter-grid">
+                <legend>Filter</legend>
                 <div class="field">
                   <label for="federal-state-filter">Bundesland</label>
                   <select id="federal-state-filter" name="federalState">
@@ -96,7 +103,7 @@
                     <option value="Hochspannung">Hochspannung</option>
                   </select>
                 </div>
-              </div>
+              </fieldset>
             </form>
 
             <p id="status" class="status" role="status" aria-live="polite">Lade Daten…</p>
