@@ -147,6 +147,23 @@ export class AtlasMap {
     this.map.fitBounds(germanyViewBounds, { padding: [18, 18], maxZoom: 6 });
   }
 
+  private ensureLayerVisible(layer: L.Layer): void {
+    // panInside schwenkt die Karte nur dann, wenn der Punkt nicht ohnehin
+    // im sichtbaren Bereich liegt. Das verhindert unnoetige Bewegung,
+    // erfuellt aber WCAG 2.2 SC 2.4.11.
+    const padding: L.PointTuple = [60, 60];
+    if (hasBounds(layer)) {
+      const bounds = layer.getBounds();
+      if (bounds.isValid()) {
+        this.map.panInside(bounds.getCenter(), { padding });
+        return;
+      }
+    }
+    if (hasLatLng(layer)) {
+      this.map.panInside(layer.getLatLng(), { padding });
+    }
+  }
+
   private fitBounds(bounds: L.LatLngBounds, maxZoom: number): void {
     this.map.fitBounds(bounds, {
       maxZoom,
@@ -190,7 +207,13 @@ export class AtlasMap {
     pathElement.setAttribute("tabindex", "0");
     pathElement.setAttribute("role", "button");
     pathElement.setAttribute("aria-label", `${feature.properties.name}, ${feature.properties.operatorName}`);
-    pathElement.addEventListener("focus", () => this.applyHover(layer, feature.properties.id));
+    pathElement.addEventListener("focus", () => {
+      this.applyHover(layer, feature.properties.id);
+      // WCAG 2.2 SC 2.4.11 (Focus Not Obscured): wenn ein Polygon per Tab
+      // fokussiert wird, das ausserhalb des sichtbaren Kartenausschnitts liegt,
+      // schwenken wir die Karte sanft, damit der Fokusring sichtbar ist.
+      this.ensureLayerVisible(layer);
+    });
     pathElement.addEventListener("blur", () => this.resetLayerStyle(feature.properties.id));
     pathElement.addEventListener("keydown", (event) => {
       if (event instanceof KeyboardEvent && (event.key === "Enter" || event.key === " ")) {

@@ -8,6 +8,7 @@ import {
   renderDetails,
   renderOperatorFilter,
   renderResults,
+  setBusy,
   setError,
   setStatus,
   showNoCoverageMessage,
@@ -36,6 +37,10 @@ const atlasMap = new AtlasMap("map", (feature, focusDetail) => {
 void initialize();
 
 async function initialize(): Promise<void> {
+  // Waehrend des Initial-Ladens schalten wir die Live-Region auf "busy",
+  // damit Screenreader nicht alle Zwischenmeldungen vorlesen, sondern nur
+  // die finale Status-Zusammenfassung am Ende von loadAreas().
+  setBusy(elements.ui, true);
   setStatus(elements.ui, "Lade Betreiber und Gebiete...");
   try {
     elements.form.voltageLevelFilter.value = DEFAULT_VOLTAGE_LEVEL;
@@ -51,13 +56,16 @@ async function initialize(): Promise<void> {
         .filter((state) => state.hasAreas)
         .map((state) => state.name)
         .join(", ") || pageState.coverageLabel;
-    setStatus(elements.ui, `MVP-Datenabdeckung: ${pageState.coverageLabel}. Andere Bundeslaender sind vorbereitet.`);
     await loadAreas();
     bindEvents();
     window.setTimeout(() => atlasMap.invalidateSize(), 100);
   } catch (error) {
     setStatus(elements.ui, "API nicht erreichbar.");
     setError(elements.ui, error instanceof Error ? error.message : "Unbekannter Fehler beim Laden.");
+  } finally {
+    // busy aufheben -> Screenreader liest jetzt die aktuelle Statuszeile
+    // (entweder die Gebiete-Anzahl oder die Fehlermeldung).
+    setBusy(elements.ui, false);
   }
 }
 

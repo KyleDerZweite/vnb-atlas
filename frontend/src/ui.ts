@@ -15,6 +15,20 @@ export function setStatus(elements: UiElements, message: string): void {
   elements.status.textContent = message;
 }
 
+/**
+ * Schaltet die Live-Region in den "busy"-Zustand. Solange aria-busy=true ist,
+ * unterdruecken Screenreader Statusmeldungen und kuendigen erst die finale
+ * Nachricht an, sobald busy zurueckgesetzt wird. Damit vermeiden wir, dass
+ * mehrere Lade-Updates kurz hintereinander vorgelesen werden.
+ */
+export function setBusy(elements: UiElements, busy: boolean): void {
+  if (busy) {
+    elements.status.setAttribute("aria-busy", "true");
+  } else {
+    elements.status.removeAttribute("aria-busy");
+  }
+}
+
 export function setError(elements: UiElements, message: string | null): void {
   elements.formError.hidden = !message;
   elements.formError.textContent = message ?? "";
@@ -31,7 +45,7 @@ export function renderOperatorFilter(select: HTMLSelectElement, operators: Opera
 
 export function renderFederalStateFilter(select: HTMLSelectElement, federalStates: FederalState[]): void {
   const currentValue = select.value;
-  select.replaceChildren(new Option("Alle verfuegbaren Daten", ""));
+  select.replaceChildren(new Option("Alle verfügbaren Daten", ""));
   for (const federalState of federalStates) {
     const status = federalState.hasAreaData ? "Pilotdaten" : "keine Daten";
     const option = new Option(`${federalState.name} (${status})`, federalState.id);
@@ -114,7 +128,13 @@ function highlightResultButton(areaId: string): void {
   document.querySelectorAll<HTMLButtonElement>(".result-button").forEach((button) => {
     const active = button.dataset.areaId === areaId;
     button.classList.toggle("is-active", active);
-    button.setAttribute("aria-pressed", String(active));
+    // aria-current beschreibt "dies ist das aktuell ausgewaehlte Gebiet"
+    // (aria-pressed waere semantisch nur fuer Toggle-Buttons korrekt).
+    if (active) {
+      button.setAttribute("aria-current", "true");
+    } else {
+      button.removeAttribute("aria-current");
+    }
   });
 }
 
