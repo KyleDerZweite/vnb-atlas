@@ -1,22 +1,23 @@
-# Deutschland VNB Atlas
+# VNB Atlas
 
-Lokales MVP fuer eine deutschlandweit ausgelegte Web-App zur Visualisierung von Verteilnetzbetreibern auf einer OpenStreetMap-basierten Karte. Der MVP enthaelt aktuell nur GIS-/Mock-Gebietsdaten fuer Nordrhein-Westfalen.
+Web-App und FastAPI-Backend zur Visualisierung von Verteilnetzbetreibern auf einer OpenStreetMap-basierten Karte.
 
-> Wichtig: MVP-Datenabdeckung: NRW. Alle gelieferten Flaechen und Betreiberbeziehungen sind Mock-Daten / nicht amtlich. Es gibt keine erfundenen VNB-Grenzen fuer andere Bundeslaender.
+Die aktuelle Datenbasis ist ein deutschlandweites VNBdigital-Koordinatenmesh mit 5-km-Aufloesung. Aus den Rasterpunkten werden approximierte Mittellinien-Polygone pro Betreiber und Spannungsebene erzeugt. Die Daten sind **nicht amtlich** und ersetzen keine offiziellen GIS-Netzgebietsgrenzen.
 
 ## Umfang
 
-- Landing Page mit deutschlandweiter Zielbeschreibung und NRW-Pilotdaten-Hinweis.
-- Karten- und Suchseite mit OSM-Basemap, Startansicht Deutschland.
-- NRW-Pilotgebiete aus VNBdigital-Meshdaten als GeoJSON-Polygone.
-- Bundeslandfilter mit NRW als einzigem befuelltem Pilotdatensatz.
-- Suche nach Ort, PLZ oder Betreibername, deutschlandfaehig ausgelegt.
-- Filter nach Betreiber und Datenqualitaet.
+- Deutschlandweite Karten- und Suchseite mit OSM-Basemap.
+- VNBdigital-Meshdaten als GeoJSON-Polygone.
+- Spannungsebenen-Filter: `Niederspannung`, `Mittelspannung`, `Hochspannung`.
+- Initiale Kartenansicht startet mit `Hochspannung`, weil diese Ebene deutlich weniger Flaechen rendert.
+- Nieder- und Mittelspannung werden im Frontend im Hintergrund vorgeladen und gecacht.
+- Bundeslandfilter fuer alle deutschen Bundeslaender.
+- Suche nach Betreiber, Gebietname und Mesh-Metadaten.
 - Detailbereich bei Auswahl eines Gebiets.
 - Zugaengliche Ergebnisliste als Alternative zur visuellen Karte.
 - FastAPI-Endpunkte fuer Coverage, Bundeslaender, Betreiber, Gebiete, Suche und Koordinaten-Lookup.
 
-Nicht enthalten: User-Accounts, Admin-Panel, Datenbank, echte VNB-Integration, befuellte Daten ausserhalb NRW, Scraping oder API-Keys.
+Nicht enthalten: User-Accounts, Admin-Panel, Datenbank, amtliche GIS-Daten, API-Keys oder produktive Persistenz.
 
 ## Voraussetzungen
 
@@ -25,7 +26,7 @@ Nicht enthalten: User-Accounts, Admin-Panel, Datenbank, echte VNB-Integration, b
 - npm
 - GNU Make fuer Makefile-Kommandos
 
-## Schnellstart nach dem Klonen
+## Schnellstart
 
 Ein einzelner Befehl richtet Backend und Frontend ein und startet beide im Dev-Modus mit Reload:
 
@@ -44,8 +45,6 @@ Falls PowerShell-Scripte durch die lokale Execution Policy blockiert werden:
 ```cmd
 scripts\dev.bat
 ```
-
-Das Script erstellt `backend/.venv`, installiert Python- und npm-Abhaengigkeiten, startet FastAPI mit `uvicorn --reload`, startet Vite mit Hot Reload und beendet beide Prozesse gemeinsam bei `Ctrl+C`.
 
 Alternativ:
 
@@ -99,12 +98,7 @@ backend/
   app/
     main.py
     routers/
-      coverage.py
-      federal_states.py
     services/
-      coverage_service.py
-      data_service.py
-      geo_service.py
     data/
       operators.json
       areas.geojson
@@ -114,15 +108,44 @@ frontend/
   index.html
   map.html
   src/
-  styles/main.css
+  styles/
+vnbdigital/
+  build_tile_mesh.py
+  export_backend_polygons.py
+  analyze_mesh.py
 scripts/
-  dev.sh
-  dev.ps1
-  dev.bat
-  import_gis_placeholder.py
 ```
 
-Die Architektur ist nicht auf NRW festgelegt. `federal-states.json` beschreibt bundesweite Datenabdeckung; `areas.geojson` enthaelt im MVP nur Features aus dem VNBdigital-Mesh mit NRW-Bezug. Weitere Bundeslaender koennen spaeter durch neue Features mit `country` und `federalState` ergaenzt werden, ohne das Frontend neu aufzubauen.
+Die Backend-Daten sind statische JSON/GeoJSON-Dateien. Die `vnbdigital/`-Scripte erzeugen diese Dateien aus VNBdigital-Koordinatenabfragen.
+
+## Daten-Erzeugung
+
+Deutschlandweites 5-km-Mesh abfragen:
+
+```bash
+python -m vnbdigital.build_tile_mesh \
+  --preset de \
+  --spacing-km 5 \
+  --output vnbdigital/output/de_5km.geojson
+```
+
+Mesh in Backend-Polygone transformieren:
+
+```bash
+python -m vnbdigital.export_backend_polygons \
+  --input vnbdigital/output/de_5km.geojson \
+  --clip-bbox de \
+  --federal-state DE \
+  --updated-at 2026-04-28
+```
+
+Verfuegbare grobe BBox-Presets:
+
+```bash
+python -m vnbdigital.build_tile_mesh --list-presets
+```
+
+Die erzeugten Polygone sind interpolierte Approximationen. Die Kanten liegen auf den Mittellinien zwischen benachbarten Meshpunkten und werden pro `Betreiber + Spannungsebene` zusammengefuehrt.
 
 ## API
 
@@ -140,13 +163,11 @@ Antwort:
 
 ### `GET /api/coverage`
 
-Gibt die Datenabdeckung je Land und Bundesland zurueck.
+Gibt die Datenabdeckung je Bundesland zurueck. Da die aktuelle Basis deutschlandweit ist, sind alle deutschen Bundeslaender als `partial` markiert.
 
 ```bash
 curl http://127.0.0.1:8000/api/coverage
 ```
-
-Im MVP hat `NW` `hasAreas=true` und `status=partial`; alle anderen Bundeslaender haben `hasAreas=false` und `status=not_available`.
 
 ### `GET /api/federal-states`
 
@@ -158,18 +179,16 @@ Liefert alle deutschen Bundeslaender mit `id`, `name`, `hasAreaData` und `dataSt
 
 ### `GET /api/operators`
 
-Optionale Query-Parameter: `q`, `type`, `accuracy`, `country`, `federal_state`, `coverage`.
+Optionale Query-Parameter: `q`, `type`, `accuracy`, `country`, `federal_state`, `coverage`, `voltage_level`.
 
 ```bash
-curl "http://127.0.0.1:8000/api/operators?country=DE&federal_state=NW&coverage=mock"
+curl "http://127.0.0.1:8000/api/operators?country=DE&federal_state=BY&voltage_level=Hochspannung"
 ```
-
-Fuer Bundeslaender ohne Daten wird eine leere Liste geliefert.
 
 ### `GET /api/operators/{operator_id}`
 
 ```bash
-curl http://127.0.0.1:8000/api/operators/westnetz-mock
+curl http://127.0.0.1:8000/api/operators/vnbdigital-7332
 ```
 
 ### `GET /api/areas`
@@ -181,29 +200,43 @@ Optionale Query-Parameter:
 - `accuracy`
 - `country=DE`
 - `federal_state=NW`
+- `voltage_level=Hochspannung`
 
 ```bash
-curl "http://127.0.0.1:8000/api/areas?country=DE&federal_state=NW"
-curl "http://127.0.0.1:8000/api/areas?country=DE&federal_state=BY"
+curl "http://127.0.0.1:8000/api/areas?country=DE&federal_state=NW&voltage_level=Hochspannung"
+curl "http://127.0.0.1:8000/api/areas?bbox=6.5,51.0,7.0,51.5&voltage_level=Niederspannung"
 ```
 
-Antwort ist immer eine gueltige GeoJSON `FeatureCollection`. Fuer nicht befuellte Bundeslaender ist `features` leer.
+Antwort ist immer eine gueltige GeoJSON `FeatureCollection`.
 
 ### `GET /api/search?q=...`
 
-Sucht in Betreibername, Gebietname, Mock-Orten und Mock-PLZ. Die Suche ist fuer deutschlandweite Daten vorbereitet, findet im MVP aber nur NRW-Mockdaten.
+Sucht in Betreibername, Gebietname und Mesh-Metadaten.
 
 ```bash
-curl "http://127.0.0.1:8000/api/search?q=40213"
+curl "http://127.0.0.1:8000/api/search?q=westnetz"
 ```
 
 ### `GET /api/lookup?lat=...&lon=...`
 
-Gibt das Mock-Gebiet fuer Koordinaten zurueck oder `{"match":null}`.
+Gibt alle passenden Regionen fuer eine Koordinate zurueck. Eine Geo-Location kann mehrere Treffer haben, weil die Regionen nach Spannungsebene getrennt sind.
 
 ```bash
-curl "http://127.0.0.1:8000/api/lookup?lat=51.23&lon=6.78"
+curl "http://127.0.0.1:8000/api/lookup?lat=51.4818445&lon=7.2162363"
 ```
+
+Antwortform:
+
+```json
+{
+  "match": {"area": {}, "operator": {}},
+  "matches": [
+    {"area": {}, "operator": {}}
+  ]
+}
+```
+
+`match` bleibt als Legacy-Ersttreffer erhalten; neue Clients sollten `matches` verwenden.
 
 ## Datenmodell
 
@@ -218,10 +251,10 @@ Wichtige Felder:
 - `parentCompany`
 - `description`
 - `voltageLevels`
-- `country`: aktuell `DE`
-- `federalStates`: z. B. `["NW"]`
-- `dataCoverage`: `none`, `mock`, `partial`, `verified`
-- `mockNotice`
+- `country`: `DE`
+- `federalStates`: bei deutschlandweiter Basisschicht `["DE"]`
+- `dataCoverage`: aktuell `partial`
+- `mockNotice`: Legacy-Feldname fuer den Hinweistext zur Datenqualitaet
 
 Gebiete liegen in `backend/app/data/areas.geojson` als WGS84/EPSG:4326 GeoJSON.
 
@@ -230,54 +263,21 @@ Wichtige Properties:
 - `id`
 - `name`
 - `operatorId`
-- `country`: aktuell `DE`
-- `federalState`: z. B. `NW`
-- `accuracy`: `mock`, `municipality_approximation`, `verified`
+- `country`: `DE`
+- `federalState`: bei deutschlandweiter Basisschicht `DE`
+- `accuracy`: aktuell `municipality_approximation`
 - `source`
 - `updatedAt`
-- `mockNotice`
-- `places`
-- `postalCodes`
-- `voltageLevels`: kanonische API-Liste der Spannungsebenen, z. B. `["Niederspannung"]`
+- `mockNotice`: Legacy-Feldname fuer den Hinweistext zur Datenqualitaet
+- `voltageLevels`: z. B. `["Niederspannung"]`
+- `voltageLevel`: skalare Spannungsebene der erzeugten Mesh-Schicht
+- `vnbdigitalId`
+- `samplePointCount`
 
-Das VNBdigital-Exportformat kann zusaetzlich generierte Metadaten wie `voltageLevel`, `vnbdigitalId` und `samplePointCount` enthalten. `voltageLevel` ist die skalare Spannungsebene der erzeugten Mesh-Schicht; API-Consumer sollten `voltageLevels` verwenden.
+## Hinweise zur Genauigkeit
 
-Bei exportierten Mesh-Features kann `federalState` sowohl `NW` als auch `DE` sein. `NW` kennzeichnet die bundeslandspezifisch ausgeschnittene Pilotabdeckung fuer Nordrhein-Westfalen. `DE` kennzeichnet die deutschlandweite Ausgangsschicht des VNBdigital-Meshes, die als Rueckverfolgungs- und Vergleichsebene erhalten bleibt. Das Feld bleibt aus Kompatibilitaetsgruenden unveraendert; eine spaetere Datenmigration sollte dafuer ein klareres Metadatenfeld einfuehren.
-
-Bundeslaender liegen in `backend/app/data/federal-states.json`.
-
-## Spaetere GIS-Integration
-
-Echte GIS-Daten koennen spaeter durch Austausch von `backend/app/data/areas.geojson`, `backend/app/data/operators.json` und `backend/app/data/federal-states.json` oder durch einen Importprozess angeschlossen werden. Der API-Contract ist auf deutschlandweite GeoJSON FeatureCollections ausgelegt.
-
-Der Platzhalter:
-
-```bash
-python scripts/import_gis_placeholder.py
-```
-
-dokumentiert den erwarteten Importweg: Shapefile oder GeoJSON lesen, nach EPSG:4326 transformieren, Betreiber auf `operatorId` mappen, GeoJSON validieren und in das interne Format schreiben.
-
-## Accessibility
-
-- Semantische Struktur mit `header`, `nav`, `main`, `section`, `aside`, `footer`.
-- Pro Seite genau eine `h1`.
-- Skip-Link.
-- Labels fuer Formularfelder.
-- Suche nur per Enter oder Button, keine Autocomplete-Requests.
-- Sichtbare Fokuszustaende.
-- Kartenbereich mit Beschreibung.
-- Ergebnisliste als voll nutzbare Alternative zur visuellen Karte.
-- Statusmeldungen in `role="status"` / `aria-live`.
-- Detailpanel ist programmatisch fokussierbar.
-- Informationen werden nicht nur ueber Farbe vermittelt.
-
-## Annahmen
-
-- Die Anwendung heisst Deutschland VNB Atlas und ist deutschlandweit ausgelegt.
-- Im MVP ist NRW der einzige befuellte Pilotdatensatz.
-- Leaflet ist die einzige Kartenbibliothek.
-- Die Geometrie-Operationen sind fuer kleine Mock-Polygone bewusst simpel selbst implementiert.
-- Frontend laeuft lokal auf Port `5173`, Backend auf Port `8000`.
-- Keine externen API-Keys, keine Secrets, kein Scraping.
-- Keine gefaelschten Deutschland-Grenzen oder VNB-Zustaendigkeiten ausserhalb NRW.
+- Die Daten stammen aus VNBdigital-Koordinatenabfragen.
+- Die aktuelle deutschlandweite Rohauflösung ist 5 km.
+- Die Polygone werden aus Rasterzellen abgeleitet und an den Mittellinien zwischen Nachbarpunkten geschnitten.
+- Grenzen sind approximiert, nicht amtlich und koennen mehrere Kilometer von offiziellen Netzgebietsgrenzen abweichen.
+- Offizielle GIS-Daten koennen spaeter durch Austausch von `areas.geojson`, `operators.json` und `federal-states.json` oder durch einen Importprozess angeschlossen werden.

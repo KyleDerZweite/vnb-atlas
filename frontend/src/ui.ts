@@ -1,4 +1,9 @@
-import type { AreaFeature, FederalState, Operator } from "./types";
+import type { AreaFeature, FederalState } from "./types";
+
+export interface OperatorOption {
+  id: string;
+  name: string;
+}
 
 export interface UiElements {
   status: HTMLElement;
@@ -34,7 +39,7 @@ export function setError(elements: UiElements, message: string | null): void {
   elements.formError.textContent = message ?? "";
 }
 
-export function renderOperatorFilter(select: HTMLSelectElement, operators: Operator[]): void {
+export function renderOperatorFilter(select: HTMLSelectElement, operators: OperatorOption[]): void {
   const currentValue = select.value;
   select.replaceChildren(new Option("Alle Betreiber", ""));
   for (const operator of operators) {
@@ -47,7 +52,7 @@ export function renderFederalStateFilter(select: HTMLSelectElement, federalState
   const currentValue = select.value;
   select.replaceChildren(new Option("Alle verfügbaren Daten", ""));
   for (const federalState of federalStates) {
-    const status = federalState.hasAreaData ? "Pilotdaten" : "keine Daten";
+    const status = federalState.hasAreaData ? "Meshdaten" : "keine Daten";
     const option = new Option(`${federalState.name} (${status})`, federalState.id);
     option.disabled = !federalState.hasAreaData;
     select.append(option);
@@ -117,11 +122,11 @@ export function renderDetails(elements: UiElements, feature: AreaFeature, focusD
 
 export function announceAreaCount(elements: UiElements, count: number, coverageLabel: string): void {
   const suffix = count === 1 ? "Gebiet" : "Gebiete";
-  setStatus(elements, `${count} ${suffix} sichtbar. MVP-Datenabdeckung: ${coverageLabel}. VNBdigital-Meshdaten / nicht amtlich.`);
+  setStatus(elements, `${count} ${suffix} sichtbar. Datenabdeckung: ${coverageLabel}. VNBdigital-Meshdaten / nicht amtlich.`);
 }
 
 export function showNoCoverageMessage(elements: UiElements): void {
-  setStatus(elements, "Fuer dieses Gebiet liegen im MVP noch keine VNB-GIS-Daten vor.");
+  setStatus(elements, "Fuer dieses Gebiet liegen keine passenden VNB-GIS-Meshdaten vor.");
 }
 
 function highlightResultButton(areaId: string): void {

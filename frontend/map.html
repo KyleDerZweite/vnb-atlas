@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Karte und Suche der Verteilnetzbetreiber. Suche nach Ort, PLZ oder Betreiber und filtere nach Bundesland. MVP-Datenabdeckung: NRW."
+      content="Karte und Suche der Verteilnetzbetreiber. Suche nach Ort, PLZ oder Betreiber und filtere nach Bundesland oder Spannungsebene."
     />
     <meta property="og:title" content="Karte und Suche · Deutschland VNB Atlas" />
     <meta
       property="og:description"
-      content="Karte und Suche der Verteilnetzbetreiber. Lokales MVP mit NRW-Pilotdaten."
+      content="Karte und Suche der Verteilnetzbetreiber mit deutschlandweiten VNBdigital-Meshdaten."
     />
     <meta property="og:type" content="website" />
     <title>Karte und Suche · Deutschland VNB Atlas</title>
@@ -30,7 +30,7 @@
         <a class="site-header__brand" href="/">
           <span class="site-header__brand-text">
             <span class="site-header__brand-name">VNB Atlas</span>
-            <span class="site-header__brand-sub">Verteilnetz · MVP</span>
+            <span class="site-header__brand-sub">Verteilnetz · Deutschland</span>
           </span>
         </a>
         <nav class="site-nav" aria-label="Hauptnavigation">
@@ -47,8 +47,8 @@
           <h1 id="page-title">Netzgebiete erkunden</h1>
         </div>
         <p>
-          Suche deutschlandweit nach Ort, PLZ oder Betreibername. Im MVP sind nur NRW-Mockgebiete
-          befüllt; die Ergebnisliste ist auch ohne visuelle Kartenbedienung vollständig nutzbar.
+          Suche deutschlandweit nach Ort, PLZ oder Betreibername. Die Ergebnisliste ist auch ohne
+          visuelle Kartenbedienung vollständig nutzbar.
         </p>
       </section>
 
@@ -96,9 +96,9 @@
                 <div class="field">
                   <label for="voltage-level-filter">Spannungsebene</label>
                   <select id="voltage-level-filter" name="voltageLevel">
-                    <option value="Niederspannung" selected>Niederspannung</option>
+                    <option value="Niederspannung">Niederspannung</option>
                     <option value="Mittelspannung">Mittelspannung</option>
-                    <option value="Hochspannung">Hochspannung</option>
+                    <option value="Hochspannung" selected>Hochspannung</option>
                   </select>
                 </div>
               </fieldset>
@@ -122,9 +122,8 @@
           aria-describedby="map-description"
         ></div>
         <p id="map-description" class="visually-hidden">
-          Interaktive OpenStreetMap-Karte mit Mock-Gebieten. Alle wichtigen Informationen sind
-          auch in der Ergebnisliste und im Detailbereich verfügbar. Im MVP sind nur NRW-Gebiete
-          befüllt.
+          Interaktive OpenStreetMap-Karte mit approximierten VNBdigital-Gebieten. Alle wichtigen
+          Informationen sind auch in der Ergebnisliste und im Detailbereich verfügbar.
         </p>
 
         <!-- Rechtes Overlay: Details des ausgewählten Gebiets -->
@@ -146,9 +145,9 @@
 
     <footer class="site-footer">
       <div class="site-footer__inner">
-        <p>Mock-Daten für Entwicklungszwecke. Keine amtliche Auskunft.</p>
+        <p>VNBdigital-Meshdaten mit approximierten Grenzen. Keine amtliche Auskunft.</p>
         <span class="site-footer__meta">
-          <span class="site-footer__tag">MVP · v0.1</span>
+          <span class="site-footer__tag">VNBdigital · 5 km Mesh</span>
           <span>OpenStreetMap-Basiskarte</span>
         </span>
       </div>

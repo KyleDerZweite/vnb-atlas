@@ -21,12 +21,12 @@ from shapely.ops import unary_union
 
 from .bbox_presets import resolve_bbox_preset
 
-DEFAULT_INPUT = "vnbdigital/output/nrw_vnb_mesh.geojson"
+DEFAULT_INPUT = "vnbdigital/output/de_5km.geojson"
 DEFAULT_OPERATORS_OUTPUT = "backend/app/data/operators.json"
 DEFAULT_AREAS_OUTPUT = "backend/app/data/areas.geojson"
 DEFAULT_FEDERAL_STATES = "backend/app/data/federal-states.json"
-DEFAULT_CLIP_BBOX = "6.15,50.55,9.45,52.50"
-SOURCE_LABEL = "VNBdigital Koordinaten-Mesh, 10-km-Raster, approximierte Mittellinien-Polygone"
+DEFAULT_CLIP_BBOX = "de"
+SOURCE_LABEL = "VNBdigital Koordinaten-Mesh, approximierte Mittellinien-Polygone"
 DATA_NOTICE = (
     "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. "
     "Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
@@ -316,15 +316,19 @@ def export_backend_data(
     return merge_polygon_layers(layer, [])
 
 
-def update_federal_states(path: Path) -> None:
+def update_federal_states(path: Path, active_federal_states: set[str]) -> None:
     if not path.exists():
         return
     with path.open(encoding="utf-8") as file:
         states = json.load(file)
+    mark_all_states = "DE" in active_federal_states
     for state in states:
-        if state.get("id") == "NW":
+        if mark_all_states or state.get("id") in active_federal_states:
             state["hasAreaData"] = True
             state["dataStatus"] = "partial"
+        else:
+            state["hasAreaData"] = False
+            state["dataStatus"] = "not_available"
     write_json(path, states)
 
 
@@ -418,7 +422,8 @@ def run_export(config: ExportConfig) -> tuple[list[dict[str, Any]], dict[str, An
     validate_area_geometries(areas)
     write_json(config.operators_output, operators)
     write_json(config.areas_output, areas)
-    update_federal_states(config.federal_states_path)
+    active_federal_states = {feature["properties"]["federalState"] for feature in areas["features"]}
+    update_federal_states(config.federal_states_path, active_federal_states)
     return operators, areas
 
 

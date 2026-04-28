@@ -1,4 +1,4 @@
-"""Backward-compatible wrapper for the old NRW mesh command."""
+"""Backward-compatible wrapper for the earlier regional mesh command."""
 
 from __future__ import annotations
 

@@ -61,7 +61,7 @@
   --font-display: "Fraunces", "Atkinson Hyperlegible", Georgia, serif;
 }
 
-/* Dark mode is intentionally deferred for the local MVP until a tested theme
+/* Dark mode is intentionally deferred until a tested theme
    scope exists for the map tiles, overlay panels, and generated area colors. */
 
 /* --- Reset --------------------------------------------------------------- */

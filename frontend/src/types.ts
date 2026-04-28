@@ -1,7 +1,8 @@
 export type OperatorType = "VNB" | "ÜNB" | "UNKNOWN";
 export type Accuracy = "mock" | "municipality_approximation" | "verified";
 export type VoltageLevel = "Niederspannung" | "Mittelspannung" | "Hochspannung";
-export const DEFAULT_VOLTAGE_LEVEL: VoltageLevel = "Niederspannung";
+export const DEFAULT_VOLTAGE_LEVEL: VoltageLevel = "Hochspannung";
+export const BACKGROUND_VOLTAGE_LEVELS: VoltageLevel[] = ["Niederspannung", "Mittelspannung"];
 
 export interface Operator {
   id: string;

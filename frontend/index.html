@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Deutschland VNB Atlas - eine schlichte Web-App zur deutschlandweiten Visualisierung von Verteilnetzbetreibern auf einer OpenStreetMap-Karte. Lokales MVP mit Mock-Daten für NRW."
+      content="Deutschland VNB Atlas - eine Web-App zur deutschlandweiten Visualisierung von Verteilnetzbetreibern auf einer OpenStreetMap-Karte mit VNBdigital-Meshdaten."
     />
     <meta property="og:title" content="Deutschland VNB Atlas" />
     <meta
       property="og:description"
-      content="Lokales MVP zur deutschlandweiten Visualisierung von Verteilnetzbetreibern mit NRW-Pilotdaten."
+      content="Deutschlandweite Visualisierung von Verteilnetzbetreibern mit approximierten VNBdigital-Meshdaten."
     />
     <meta property="og:type" content="website" />
     <title>VNB Atlas - Verteilnetzbetreiber auf der Karte</title>
@@ -30,7 +30,7 @@
         <a class="site-header__brand" href="/">
           <span class="site-header__brand-text">
             <span class="site-header__brand-name">VNB Atlas</span>
-            <span class="site-header__brand-sub">Verteilnetz · MVP</span>
+            <span class="site-header__brand-sub">Verteilnetz · Deutschland</span>
           </span>
         </a>
         <nav class="site-nav" aria-label="Hauptnavigation">
@@ -43,7 +43,7 @@
     <main id="main" class="landing" tabindex="-1">
       <section class="hero" aria-labelledby="page-title">
         <div class="hero__copy">
-          <p class="eyebrow">Lokales MVP · Pilotdatensatz NRW</p>
+          <p class="eyebrow">Deutschlandweite VNBdigital-Meshdaten</p>
           <h1 id="page-title">Verteilnetzbetreiber auf einer Karte Deutschlands.</h1>
           <p class="hero__lede">
             Eine schlichte Web-App zur deutschlandweiten Visualisierung von Verteilnetzbetreibern
@@ -55,13 +55,13 @@
               Zur Kartenansicht
               <span class="button__arrow" aria-hidden="true">→</span>
             </a>
-            <p class="hero__cta-note">Keine amtliche Auskunft. Mock-Daten für Entwicklungszwecke.</p>
+            <p class="hero__cta-note">Keine amtliche Auskunft. Grenzen sind aus Meshpunkten approximiert.</p>
           </div>
         </div>
 
         <figure class="hero__visual" aria-hidden="true">
           <div class="hero__visual-frame">
-            <span class="hero__visual-label">Pilotgebiet NRW</span>
+            <span class="hero__visual-label">Deutschland-Mesh</span>
             <div class="hero__visual-map">
               <!-- Stilisierte Netzdarstellung: Polygone + Knoten -->
               <svg viewBox="0 0 400 320" role="img" aria-hidden="true" focusable="false">
@@ -121,7 +121,7 @@
                 <circle cx="200" cy="140" r="14" fill="none" stroke="#0a6b59" stroke-width="0.8" stroke-opacity="0.45" />
               </svg>
             </div>
-            <span class="hero__visual-caption">OpenStreetMap · Mock-Polygone</span>
+            <span class="hero__visual-caption">OpenStreetMap · VNBdigital-Polygone</span>
           </div>
         </figure>
       </section>
@@ -130,9 +130,9 @@
         <div class="intro__header">
           <h2 id="goal-title">Ziel der Anwendung</h2>
           <p>
-            Das MVP bereitet die deutschlandweite technische Struktur für echte GIS-Daten vor:
-            REST-Endpunkte, GeoJSON-Ausgabe, Suche, Filter und eine zugängliche Ergebnisliste
-            neben der Karte. Der erste Pilotdatensatz enthält ausschließlich NRW-Mockgebiete.
+            Der Atlas visualisiert deutschlandweite VNBdigital-Meshdaten als approximierte
+            Polygone: REST-Endpunkte, GeoJSON-Ausgabe, Suche, Filter und eine zugängliche
+            Ergebnisliste neben der Karte.
           </p>
         </div>
 
@@ -140,7 +140,7 @@
           <article class="intro__card">
             <span class="intro__card__index" aria-hidden="true">01</span>
             <h3>Karte</h3>
-            <p>OpenStreetMap-Basiskarte mit Polygonen der Pilot-Netzgebiete und Hover-Tooltips.</p>
+            <p>OpenStreetMap-Basiskarte mit Polygonen der approximierten Netzgebiete und Hover-Tooltips.</p>
           </article>
           <article class="intro__card">
             <span class="intro__card__index" aria-hidden="true">02</span>
@@ -158,9 +158,9 @@
 
     <footer class="site-footer">
       <div class="site-footer__inner">
-        <p>Mock-Daten für Entwicklungszwecke. Keine amtliche Auskunft.</p>
+        <p>VNBdigital-Meshdaten mit approximierten Grenzen. Keine amtliche Auskunft.</p>
         <span class="site-footer__meta">
-          <span class="site-footer__tag">MVP · v0.1</span>
+          <span class="site-footer__tag">VNBdigital · 5 km Mesh</span>
           <span>OpenStreetMap-Basiskarte</span>
         </span>
       </div>
