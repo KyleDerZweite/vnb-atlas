@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import asyncio
+import email.utils
 import logging
 import time
 from dataclasses import dataclass
+from datetime import UTC, datetime
 from typing import Any, ClassVar
 
 import httpx
@@ -13,6 +15,10 @@ import httpx
 logger = logging.getLogger(__name__)
 
 DEFAULT_VOLTAGE_TYPES = ["Niederspannung", "Mittelspannung", "Hochspannung"]
+DEFAULT_REQUEST_DELAY_SECONDS = 1.5
+DEFAULT_BACKOFF_MULTIPLIER_SECONDS = 600.0
+DEFAULT_MAX_BACKOFF_ATTEMPTS = 5
+THROTTLE_STATUS_CODES = {403, 429, 500, 502, 503, 504}
 
 COORDINATES_QUERY = """
 query (
@@ -65,6 +71,10 @@ class CoordinateLookup:
     error: str | None = None
 
 
+class BackoffExhaustedError(RuntimeError):
+    """Raised when VNBdigital keeps returning throttle/server responses."""
+
+
 class SimpleVNBDigitalClient:
     """Minimal async client for the public VNBdigital GraphQL endpoint."""
 
@@ -80,12 +90,16 @@ class SimpleVNBDigitalClient:
     def __init__(
         self,
         api_url: str = API_URL,
-        request_delay: float = 1.0,
+        request_delay: float = DEFAULT_REQUEST_DELAY_SECONDS,
         timeout: float = 20.0,
+        backoff_multiplier: float = DEFAULT_BACKOFF_MULTIPLIER_SECONDS,
+        max_backoff_attempts: int = DEFAULT_MAX_BACKOFF_ATTEMPTS,
     ) -> None:
         self.api_url = api_url
         self.request_delay = max(0.0, request_delay)
         self.timeout = timeout
+        self.backoff_multiplier = max(0.0, backoff_multiplier)
+        self.max_backoff_attempts = max(0, max_backoff_attempts)
         self._last_request_time = 0.0
         self._client: httpx.AsyncClient | None = None
 
@@ -127,25 +141,22 @@ class SimpleVNBDigitalClient:
         }
 
         try:
-            client = await self._get_client()
-            response = await client.post(self.api_url, json=payload)
-            response.raise_for_status()
-            data = response.json()
+            data = await self._post_with_backoff(payload, lat, lon)
+        except BackoffExhaustedError:
+            raise
         except httpx.TimeoutException:
             logger.warning("VNBdigital request timed out", extra={"lat": lat, "lon": lon})
             return CoordinateLookup(lat=lat, lon=lon, operators=[], regions=[], raw_geometry=None, error="timeout")
         except httpx.HTTPStatusError as exc:
-            logger.warning(
-                "VNBdigital HTTP error",
-                extra={"lat": lat, "lon": lon, "status_code": exc.response.status_code},
-            )
+            status_code = exc.response.status_code
+            logger.warning("VNBdigital HTTP error", extra={"lat": lat, "lon": lon, "status_code": status_code})
             return CoordinateLookup(
                 lat=lat,
                 lon=lon,
                 operators=[],
                 regions=[],
                 raw_geometry=None,
-                error=f"http_{exc.response.status_code}",
+                error=f"http_{status_code}",
             )
         except Exception as exc:
             logger.warning("VNBdigital request failed", extra={"lat": lat, "lon": lon, "error": str(exc)})
@@ -182,6 +193,45 @@ class SimpleVNBDigitalClient:
             self._client = httpx.AsyncClient(timeout=self.timeout, headers=self.HEADERS)
         return self._client
 
+    async def _post_with_backoff(self, payload: dict[str, Any], lat: float, lon: float) -> dict[str, Any]:
+        for attempt in range(self.max_backoff_attempts + 1):
+            await self._wait_for_rate_limit()
+            client = await self._get_client()
+            response = await client.post(self.api_url, json=payload)
+            try:
+                response.raise_for_status()
+            except httpx.HTTPStatusError as exc:
+                status_code = exc.response.status_code
+                if status_code not in THROTTLE_STATUS_CODES:
+                    raise
+                if attempt >= self.max_backoff_attempts:
+                    raise BackoffExhaustedError(
+                        f"VNBdigital returned HTTP {status_code} after {attempt + 1} attempts at lat={lat} lon={lon}"
+                    ) from exc
+                await self._sleep_for_backoff(exc.response, attempt, lat, lon)
+                continue
+            return response.json()
+
+        raise RuntimeError("unreachable VNBdigital backoff state")
+
+    async def _sleep_for_backoff(self, response: httpx.Response, attempt: int, lat: float, lon: float) -> None:
+        status_code = response.status_code
+        retry_after = parse_retry_after(response.headers.get("Retry-After"))
+        computed_delay = self.request_delay * self.backoff_multiplier * (2**attempt)
+        delay = max(computed_delay, retry_after or 0.0)
+        logger.warning(
+            "VNBdigital backoff before retry",
+            extra={
+                "lat": lat,
+                "lon": lon,
+                "status_code": status_code,
+                "attempt": attempt + 1,
+                "max_attempts": self.max_backoff_attempts,
+                "delay_seconds": round(delay, 1),
+            },
+        )
+        await asyncio.sleep(delay)
+
     async def _wait_for_rate_limit(self) -> None:
         if self.request_delay <= 0:
             self._last_request_time = time.time()
@@ -192,3 +242,19 @@ class SimpleVNBDigitalClient:
             await asyncio.sleep(self.request_delay - elapsed)
         self._last_request_time = time.time()
 
+
+def parse_retry_after(value: str | None) -> float | None:
+    if not value:
+        return None
+    try:
+        return max(0.0, float(value))
+    except ValueError:
+        try:
+            parsed = email.utils.parsedate_to_datetime(value)
+        except (TypeError, ValueError):
+            return None
+        if parsed is None:
+            return None
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=UTC)
+        return max(0.0, (parsed - datetime.now(UTC)).total_seconds())

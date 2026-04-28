@@ -1,4 +1,4 @@
-# VNB Atlas
+# Deutschland VNB Atlas
 
 Web-App und FastAPI-Backend zur Visualisierung von Verteilnetzbetreibern auf einer OpenStreetMap-basierten Karte.
 

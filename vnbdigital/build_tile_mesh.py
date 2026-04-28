@@ -12,7 +12,14 @@ from pathlib import Path
 from typing import Any
 
 from .bbox_presets import iter_display_presets, resolve_bbox_preset
-from .simple_client import DEFAULT_VOLTAGE_TYPES, CoordinateLookup, SimpleVNBDigitalClient
+from .simple_client import (
+    DEFAULT_BACKOFF_MULTIPLIER_SECONDS,
+    DEFAULT_MAX_BACKOFF_ATTEMPTS,
+    DEFAULT_REQUEST_DELAY_SECONDS,
+    DEFAULT_VOLTAGE_TYPES,
+    CoordinateLookup,
+    SimpleVNBDigitalClient,
+)
 
 DEFAULT_PRESET = "nrw"
 DEFAULT_OUTPUT = "vnbdigital/output/{preset}_{spacing_slug}km.geojson"
@@ -198,9 +205,15 @@ async def collect_lookup_features(
     pending_points: list[tuple[float, float]],
     args: argparse.Namespace,
     tile_id: str | None = None,
+    collected_features: list[dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
-    features: list[dict[str, Any]] = []
-    async with SimpleVNBDigitalClient(request_delay=args.request_delay, timeout=args.timeout) as client:
+    features = collected_features if collected_features is not None else []
+    async with SimpleVNBDigitalClient(
+        request_delay=args.request_delay,
+        timeout=args.timeout,
+        backoff_multiplier=args.backoff_multiplier,
+        max_backoff_attempts=args.max_backoff_attempts,
+    ) as client:
         for index, (lat, lon) in enumerate(pending_points, start=1):
             logging.info("Lookup %s/%s lat=%s lon=%s", index, len(pending_points), lat, lon)
             lookup = await client.lookup_coordinates(
@@ -231,7 +244,17 @@ async def query_points(
         output_path,
     )
 
-    features.extend(await collect_lookup_features(pending_points, args, tile_id=tile_id))
+    new_features: list[dict[str, Any]] = []
+    try:
+        await collect_lookup_features(pending_points, args, tile_id=tile_id, collected_features=new_features)
+    except Exception:
+        if new_features:
+            features.extend(new_features)
+            write_feature_collection(output_path, features)
+            logging.info("Wrote %s features to %s before aborting", len(features), output_path)
+        raise
+
+    features.extend(new_features)
 
     write_feature_collection(output_path, features)
     logging.info("Wrote %s features to %s", len(features), output_path)
@@ -261,7 +284,10 @@ async def build_tiled_mesh(args: argparse.Namespace) -> None:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Build VNBdigital coordinate meshes by bbox, preset or tiles.")
+    parser = argparse.ArgumentParser(
+        description="Build VNBdigital coordinate meshes by bbox, preset or tiles.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
     parser.add_argument("--preset", default=DEFAULT_PRESET, help="bbox preset name; use --list-presets to inspect")
     parser.add_argument("--bbox", help="west,south,east,north; overrides --preset")
     parser.add_argument("--list-presets", action="store_true", help="print available bbox presets and exit")
@@ -269,8 +295,25 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--tile-size-km", type=float, help="if set, split bbox into tile outputs of roughly this size")
     parser.add_argument("--voltage-types", nargs="+", default=DEFAULT_VOLTAGE_TYPES, help="VNBdigital voltageTypes")
     parser.add_argument("--only-nap", action="store_true", help="set VNBdigital filter.onlyNap=true")
-    parser.add_argument("--request-delay", type=float, default=1.0, help="seconds between API requests")
+    parser.add_argument(
+        "--request-delay",
+        type=float,
+        default=DEFAULT_REQUEST_DELAY_SECONDS,
+        help="seconds between API requests",
+    )
     parser.add_argument("--timeout", type=float, default=20.0, help="request timeout in seconds")
+    parser.add_argument(
+        "--backoff-multiplier",
+        type=float,
+        default=DEFAULT_BACKOFF_MULTIPLIER_SECONDS,
+        help="base backoff multiplier; first throttling delay is request-delay * this value",
+    )
+    parser.add_argument(
+        "--max-backoff-attempts",
+        type=int,
+        default=DEFAULT_MAX_BACKOFF_ATTEMPTS,
+        help="retry attempts for HTTP 403/429/5xx before aborting the crawl",
+    )
     parser.add_argument("--output", help="single output GeoJSON path")
     parser.add_argument("--output-dir", help="tile output directory when --tile-size-km is set")
     parser.add_argument("--resume", action="store_true", help="skip points already present in output")

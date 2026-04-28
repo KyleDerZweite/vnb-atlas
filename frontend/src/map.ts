@@ -3,7 +3,7 @@ import "leaflet/dist/leaflet.css";
 import type { GeoJsonObject } from "geojson";
 
 import { asAreaFeature } from "./geojson-utils";
-import { buildOperatorColors, fallbackOperatorColor } from "./map-colors";
+import { fallbackOperatorColor } from "./map-colors";
 import type { AreaFeature, AreaFeatureCollection } from "./types";
 
 type SelectHandler = (feature: AreaFeature, focusDetail: boolean) => void;
@@ -22,6 +22,16 @@ const germanyPanBounds: L.LatLngBoundsExpression = [
   [45.4, 2.5],
   [56.7, 18.8],
 ];
+
+// Layout-aware fitBounds padding. The desktop UI overlays the map with a left
+// detail panel and a right results sidebar, so we pad fitBounds enough to land
+// polygons in the visible strip between them. Below RESPONSIVE_BREAKPOINT_PX
+// the overlays stack vertically, so we fall back to uniform compact padding.
+const DETAIL_PANEL_WIDTH_PX = 430;
+const SIDEBAR_WIDTH_PX = 380;
+const RESPONSIVE_BREAKPOINT_PX = 960;
+const VERTICAL_PADDING_PX = 40;
+const COMPACT_PADDING: L.PointTuple = [18, 18];
 
 export class AtlasMap {
   private readonly map: L.Map;
@@ -67,7 +77,6 @@ export class AtlasMap {
     }
     this.featureLayers.clear();
     this.featuresByAreaId.clear();
-    this.operatorColors = buildOperatorColors(collection.features);
 
     this.layer = L.geoJSON(collection as unknown as GeoJsonObject, {
       pane: "vnbAreas",
@@ -101,6 +110,16 @@ export class AtlasMap {
       },
     }).addTo(this.map);
     this.layer.bringToFront();
+  }
+
+  /**
+   * Inject the operator -> color map computed once at page load. Keeping this
+   * out of renderAreas means colors stay stable across filter changes - the
+   * adjacency-aware allocation is sensitive to which features it sees, so we
+   * compute it on the full initial feature set and reuse the result.
+   */
+  setOperatorColors(colors: Map<string, string>): void {
+    this.operatorColors = colors;
   }
 
   selectArea(feature: AreaFeature, focusDetail: boolean): void {
@@ -144,7 +163,7 @@ export class AtlasMap {
   }
 
   showGermanyView(): void {
-    this.map.fitBounds(germanyViewBounds, { padding: [18, 18], maxZoom: 6 });
+    this.map.fitBounds(germanyViewBounds, { padding: COMPACT_PADDING, maxZoom: 6 });
   }
 
   private ensureLayerVisible(layer: L.Layer): void {
@@ -173,13 +192,13 @@ export class AtlasMap {
 
   private getOverlayAwarePadding(): L.FitBoundsOptions {
     const width = this.map.getContainer().clientWidth;
-    if (width <= 960) {
-      return { padding: [18, 18] };
+    if (width <= RESPONSIVE_BREAKPOINT_PX) {
+      return { padding: COMPACT_PADDING };
     }
 
     return {
-      paddingTopLeft: [430, 40],
-      paddingBottomRight: [380, 40],
+      paddingTopLeft: [DETAIL_PANEL_WIDTH_PX, VERTICAL_PADDING_PX],
+      paddingBottomRight: [SIDEBAR_WIDTH_PX, VERTICAL_PADDING_PX],
     };
   }
 
@@ -223,40 +242,31 @@ export class AtlasMap {
     });
   }
 
-  private applyHover(layer: L.Layer, areaId: string): void {
-    if (layer instanceof L.Path) {
-      const feature = this.featuresByAreaId.get(areaId);
-      if (feature) {
-        layer.setStyle(this.getAreaStyle(feature, "hover"));
-      }
-      if (layer instanceof L.CircleMarker) {
-        layer.setRadius(7);
-      }
+  private applyStyle(areaId: string, state: "default" | "hover" | "selected"): void {
+    const layer = this.featureLayers.get(areaId);
+    const feature = this.featuresByAreaId.get(areaId);
+    if (!(layer instanceof L.Path) || !feature) {
+      return;
+    }
+    layer.setStyle(this.getAreaStyle(feature, state));
+    if (layer instanceof L.CircleMarker) {
+      layer.setRadius(state === "default" ? 5 : 7);
+    }
+    if (state !== "default") {
       layer.bringToFront();
     }
   }
 
+  private applyHover(_layer: L.Layer, areaId: string): void {
+    this.applyStyle(areaId, "hover");
+  }
+
   private resetLayerStyle(areaId: string): void {
-    const layer = this.featureLayers.get(areaId);
-    const feature = this.featuresByAreaId.get(areaId);
-    if (layer instanceof L.Path) {
-      layer.setStyle(feature ? this.getAreaStyle(feature, areaId === this.selectedAreaId ? "selected" : "default") : {});
-      if (layer instanceof L.CircleMarker) {
-        layer.setRadius(areaId === this.selectedAreaId ? 7 : 5);
-      }
-    }
+    this.applyStyle(areaId, areaId === this.selectedAreaId ? "selected" : "default");
   }
 
   private updateSelectionStyles(): void {
-    this.featureLayers.forEach((layer, areaId) => {
-      const feature = this.featuresByAreaId.get(areaId);
-      if (layer instanceof L.Path) {
-        layer.setStyle(feature ? this.getAreaStyle(feature, areaId === this.selectedAreaId ? "selected" : "default") : {});
-        if (layer instanceof L.CircleMarker) {
-          layer.setRadius(areaId === this.selectedAreaId ? 7 : 5);
-        }
-      }
-    });
+    this.featureLayers.forEach((_, areaId) => this.resetLayerStyle(areaId));
   }
 }
 

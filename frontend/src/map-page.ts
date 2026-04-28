@@ -1,5 +1,6 @@
 import { getAreas, getCoverage, getFederalStates, search } from "./api-client";
 import { AtlasMap } from "./map";
+import { buildOperatorColors } from "./map-colors";
 import { readFilters, readSearchQuery, validateSearchQuery, type SearchFormElements } from "./search";
 import { BACKGROUND_VOLTAGE_LEVELS, DEFAULT_VOLTAGE_LEVEL, type AreaFeature, type AreaFilters, type SearchResult, type VoltageLevel } from "./types";
 import {
@@ -18,19 +19,23 @@ import {
 
 const elements = getElements();
 interface PageState {
-  areasByCacheKey: Map<string, AreaFeature[]>;
-  loadingByCacheKey: Map<string, Promise<AreaFeature[]>>;
+  // Single cache that doubles as request-dedup: a pending Promise lives here
+  // while the request is in flight, then the same entry resolves to the
+  // features. Re-awaiting a settled Promise is free, so one map covers both
+  // states. Failed requests evict their entry so retries hit the network.
+  areaCache: Map<string, Promise<AreaFeature[]>>;
   baseFeatures: AreaFeature[];
   visibleFeatures: AreaFeature[];
   coverageLabel: string;
+  operatorColors: Map<string, string>;
 }
 
 const pageState: PageState = {
-  areasByCacheKey: new Map(),
-  loadingByCacheKey: new Map(),
+  areaCache: new Map(),
   baseFeatures: [],
   visibleFeatures: [],
   coverageLabel: "Deutschland",
+  operatorColors: new Map(),
 };
 
 const atlasMap = new AtlasMap("map", (feature, focusDetail) => {
@@ -56,6 +61,14 @@ async function initialize(): Promise<void> {
       availableStates.length >= 16
         ? "Deutschland"
         : availableStates.map((state) => state.name).join(", ") || pageState.coverageLabel;
+
+    // Compute operator colors once on the initial feature set so each operator
+    // keeps the same hue across every later filter change. The fetch is shared
+    // with the loadAreas() call below via the request cache (one network hit).
+    const initialFeatures = await getCachedAreas(readFilters(elements.form));
+    pageState.operatorColors = buildOperatorColors(initialFeatures);
+    atlasMap.setOperatorColors(pageState.operatorColors);
+
     await loadAreas();
     bindEvents();
     preloadBackgroundVoltageLevels();
@@ -145,33 +158,24 @@ function preloadBackgroundVoltageLevels(): void {
   }
 }
 
-async function getCachedAreas(filters: AreaFilters): Promise<AreaFeature[]> {
-  const cacheKey = areaCacheKey(filters);
-  const cachedFeatures = pageState.areasByCacheKey.get(cacheKey);
-  if (cachedFeatures) {
-    return cachedFeatures;
-  }
-
-  const existingLoad = pageState.loadingByCacheKey.get(cacheKey);
-  if (existingLoad) {
-    return existingLoad;
-  }
-
-  const load = getAreas({
-    country: filters.country,
-    federalState: filters.federalState,
-    voltageLevel: filters.voltageLevel,
-  })
-    .then((collection) => {
-      pageState.areasByCacheKey.set(cacheKey, collection.features);
-      return collection.features;
+function getCachedAreas(filters: AreaFilters): Promise<AreaFeature[]> {
+  const key = areaCacheKey(filters);
+  let pending = pageState.areaCache.get(key);
+  if (!pending) {
+    pending = getAreas({
+      country: filters.country,
+      federalState: filters.federalState,
+      voltageLevel: filters.voltageLevel,
     })
-    .finally(() => {
-      pageState.loadingByCacheKey.delete(cacheKey);
-    });
-
-  pageState.loadingByCacheKey.set(cacheKey, load);
-  return load;
+      .then((collection) => collection.features)
+      .catch((error) => {
+        // Drop failed entries so the next call retries over the network.
+        pageState.areaCache.delete(key);
+        throw error;
+      });
+    pageState.areaCache.set(key, pending);
+  }
+  return pending;
 }
 
 function areaCacheKey(filters: AreaFilters): string {
