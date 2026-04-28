@@ -4,9 +4,9 @@ from app.main import app
 
 client = TestClient(app)
 
-GENERATED_AREA_COUNT = 547
+GENERATED_AREA_COUNT = 1484
 GENERATED_NW_AREA_COUNT = 267
-GENERATED_HOCHSPANNUNG_AREA_COUNT = 48
+GENERATED_HOCHSPANNUNG_AREA_COUNT = 67
 
 
 def test_areas_feature_collection() -> None:
