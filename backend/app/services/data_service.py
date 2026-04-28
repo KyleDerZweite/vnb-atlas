@@ -55,7 +55,7 @@ def filter_operators(
             continue
         if country and operator["country"] != country:
             continue
-        if federal_state and federal_state not in operator["federalStates"]:
+        if federal_state and federal_state not in operator["federalStates"] and "DE" not in operator["federalStates"]:
             continue
         if coverage and operator["dataCoverage"] != coverage:
             continue
@@ -87,7 +87,7 @@ def filter_raw_area_features(
             continue
         if country and properties["country"] != country:
             continue
-        if federal_state and properties["federalState"] != federal_state:
+        if federal_state and properties["federalState"] not in {federal_state, "DE"}:
             continue
         if accuracy and properties["accuracy"] != accuracy:
             continue

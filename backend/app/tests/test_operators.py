@@ -4,8 +4,8 @@ from app.main import app
 
 client = TestClient(app)
 
-GENERATED_OPERATOR_COUNT = 699
-GENERATED_NW_OPERATOR_COUNT = 130
+GENERATED_OPERATOR_COUNT = 695
+GENERATED_STATE_OPERATOR_COUNT = 695
 GENERATED_HOCHSPANNUNG_OPERATOR_COUNT = 62
 
 
@@ -27,7 +27,7 @@ def test_filter_operators_by_query_and_accuracy() -> None:
 def test_filter_operators_by_country_state_and_coverage() -> None:
     response = client.get("/api/operators", params={"country": "DE", "federal_state": "NW", "coverage": "partial"})
     assert response.status_code == 200
-    assert len(response.json()) == GENERATED_NW_OPERATOR_COUNT
+    assert len(response.json()) == GENERATED_STATE_OPERATOR_COUNT
 
 
 def test_filter_operators_by_voltage_level() -> None:
@@ -38,10 +38,10 @@ def test_filter_operators_by_voltage_level() -> None:
     assert all("Hochspannung" in operator["voltageLevels"] for operator in operators)
 
 
-def test_filter_operators_for_state_without_data_is_empty() -> None:
+def test_filter_operators_for_state_uses_germany_baseline() -> None:
     response = client.get("/api/operators", params={"country": "DE", "federal_state": "BY"})
     assert response.status_code == 200
-    assert response.json() == []
+    assert len(response.json()) == GENERATED_STATE_OPERATOR_COUNT
 
 
 def test_operator_detail_not_found() -> None:

@@ -8,9 +8,9 @@ def create_app() -> FastAPI:
     app = FastAPI(
         title="Deutschland VNB Atlas API",
         description=(
-            "API fuer ein lokales MVP mit VNBdigital-Meshdaten. "
-            "Die Anwendung ist deutschlandweit ausgelegt; im MVP sind nur NRW-Pilotdaten befuellt. "
-            "Die gelieferten Punkte sind nicht amtlich und ersetzen keine offiziellen GIS-Netzgebietsgrenzen."
+            "API fuer den Deutschland VNB Atlas mit deutschlandweiten VNBdigital-Meshdaten. "
+            "Die gelieferten Polygone sind aus Rasterpunkten approximiert, nicht amtlich "
+            "und ersetzen keine offiziellen GIS-Netzgebietsgrenzen."
         ),
         version="0.1.0",
     )

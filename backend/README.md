@@ -1,6 +1,8 @@
 # Deutschland VNB Atlas Backend
 
-FastAPI-Backend fuer das Deutschland VNB Atlas MVP. Die Anwendung ist deutschlandweit ausgelegt; befuellte GIS-/Mockdaten gibt es im MVP nur fuer Nordrhein-Westfalen.
+FastAPI-Backend fuer den Deutschland VNB Atlas.
+
+Die API liefert statische Betreiber- und Gebietsdaten aus `app/data/`. Die aktuelle Datenbasis ist ein deutschlandweites VNBdigital-Koordinatenmesh mit daraus erzeugten approximierten Polygonen. Die Daten sind nicht amtlich.
 
 ## Start
 
@@ -18,3 +20,14 @@ OpenAPI ist unter `http://localhost:8000/docs` verfuegbar.
 ```bash
 pytest
 ```
+
+## Wichtige Endpunkte
+
+- `GET /api/coverage`
+- `GET /api/federal-states`
+- `GET /api/operators`
+- `GET /api/areas`
+- `GET /api/search`
+- `GET /api/lookup`
+
+`/api/areas` und `/api/operators` unterstuetzen `voltage_level=Niederspannung|Mittelspannung|Hochspannung`.

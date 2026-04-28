@@ -4,9 +4,9 @@ from app.main import app
 
 client = TestClient(app)
 
-GENERATED_AREA_COUNT = 1484
-GENERATED_NW_AREA_COUNT = 267
-GENERATED_HOCHSPANNUNG_AREA_COUNT = 67
+GENERATED_AREA_COUNT = 1420
+GENERATED_STATE_AREA_COUNT = 1420
+GENERATED_HOCHSPANNUNG_AREA_COUNT = 62
 
 
 def test_areas_feature_collection() -> None:
@@ -20,7 +20,7 @@ def test_areas_feature_collection() -> None:
     assert first_feature["geometry"]["type"] in {"Polygon", "MultiPolygon"}
     assert first_feature["properties"]["operatorName"]
     assert first_feature["properties"]["country"] == "DE"
-    assert first_feature["properties"]["federalState"] in {"DE", "NW"}
+    assert first_feature["properties"]["federalState"] == "DE"
     assert first_feature["properties"]["voltageLevels"]
 
 
@@ -30,11 +30,8 @@ def test_areas_filters_by_bbox_and_operator() -> None:
     body = response.json()
     assert {feature["properties"]["id"] for feature in body["features"]} == {
         "mesh-de-vnbdigital-7332-niederspannung",
-        "mesh-nw-vnbdigital-7332-niederspannung",
         "mesh-de-vnbdigital-7332-mittelspannung",
-        "mesh-nw-vnbdigital-7332-mittelspannung",
         "mesh-de-vnbdigital-7332-hochspannung",
-        "mesh-nw-vnbdigital-7332-hochspannung",
     }
 
 
@@ -46,7 +43,7 @@ def test_areas_rejects_invalid_bbox() -> None:
 def test_areas_filters_by_country_and_federal_state() -> None:
     response = client.get("/api/areas", params={"country": "DE", "federal_state": "NW"})
     assert response.status_code == 200
-    assert len(response.json()["features"]) == GENERATED_NW_AREA_COUNT
+    assert len(response.json()["features"]) == GENERATED_STATE_AREA_COUNT
 
 
 def test_areas_filters_by_voltage_level() -> None:
@@ -57,9 +54,9 @@ def test_areas_filters_by_voltage_level() -> None:
     assert all(feature["properties"]["voltageLevels"] == ["Hochspannung"] for feature in features)
 
 
-def test_areas_for_state_without_data_returns_empty_feature_collection() -> None:
+def test_areas_for_state_uses_germany_baseline() -> None:
     response = client.get("/api/areas", params={"country": "DE", "federal_state": "BY"})
     assert response.status_code == 200
     body = response.json()
     assert body["type"] == "FeatureCollection"
-    assert body["features"] == []
+    assert len(body["features"]) == GENERATED_STATE_AREA_COUNT

@@ -1,7 +1,7 @@
 [project]
 name = "vnb-atlas-backend"
 version = "0.1.0"
-description = "FastAPI backend for the Deutschland VNB Atlas MVP"
+description = "FastAPI backend for the Deutschland VNB Atlas"
 requires-python = ">=3.12"
 dependencies = [
   "fastapi>=0.115,<1.0",

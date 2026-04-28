@@ -2,56 +2,56 @@
   {
     "id": "BW",
     "name": "Baden-Wuerttemberg",
-    "hasAreaData": false,
-    "dataStatus": "not_available"
+    "hasAreaData": true,
+    "dataStatus": "partial"
   },
   {
     "id": "BY",
     "name": "Bayern",
-    "hasAreaData": false,
-    "dataStatus": "not_available"
+    "hasAreaData": true,
+    "dataStatus": "partial"
   },
   {
     "id": "BE",
     "name": "Berlin",
-    "hasAreaData": false,
-    "dataStatus": "not_available"
+    "hasAreaData": true,
+    "dataStatus": "partial"
   },
   {
     "id": "BB",
     "name": "Brandenburg",
-    "hasAreaData": false,
-    "dataStatus": "not_available"
+    "hasAreaData": true,
+    "dataStatus": "partial"
   },
   {
     "id": "HB",
     "name": "Bremen",
-    "hasAreaData": false,
-    "dataStatus": "not_available"
+    "hasAreaData": true,
+    "dataStatus": "partial"
   },
   {
     "id": "HH",
     "name": "Hamburg",
-    "hasAreaData": false,
-    "dataStatus": "not_available"
+    "hasAreaData": true,
+    "dataStatus": "partial"
   },
   {
     "id": "HE",
     "name": "Hessen",
-    "hasAreaData": false,
-    "dataStatus": "not_available"
+    "hasAreaData": true,
+    "dataStatus": "partial"
   },
   {
     "id": "MV",
     "name": "Mecklenburg-Vorpommern",
-    "hasAreaData": false,
-    "dataStatus": "not_available"
+    "hasAreaData": true,
+    "dataStatus": "partial"
   },
   {
     "id": "NI",
     "name": "Niedersachsen",
-    "hasAreaData": false,
-    "dataStatus": "not_available"
+    "hasAreaData": true,
+    "dataStatus": "partial"
   },
   {
     "id": "NW",
@@ -62,37 +62,37 @@
   {
     "id": "RP",
     "name": "Rheinland-Pfalz",
-    "hasAreaData": false,
-    "dataStatus": "not_available"
+    "hasAreaData": true,
+    "dataStatus": "partial"
   },
   {
     "id": "SL",
     "name": "Saarland",
-    "hasAreaData": false,
-    "dataStatus": "not_available"
+    "hasAreaData": true,
+    "dataStatus": "partial"
   },
   {
     "id": "SN",
     "name": "Sachsen",
-    "hasAreaData": false,
-    "dataStatus": "not_available"
+    "hasAreaData": true,
+    "dataStatus": "partial"
   },
   {
     "id": "ST",
     "name": "Sachsen-Anhalt",
-    "hasAreaData": false,
-    "dataStatus": "not_available"
+    "hasAreaData": true,
+    "dataStatus": "partial"
   },
   {
     "id": "SH",
     "name": "Schleswig-Holstein",
-    "hasAreaData": false,
-    "dataStatus": "not_available"
+    "hasAreaData": true,
+    "dataStatus": "partial"
   },
   {
     "id": "TH",
     "name": "Thueringen",
-    "hasAreaData": false,
-    "dataStatus": "not_available"
+    "hasAreaData": true,
+    "dataStatus": "partial"
   }
 ]

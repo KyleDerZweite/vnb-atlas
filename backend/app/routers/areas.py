@@ -29,5 +29,5 @@ def list_areas(
             federal_state=federal_state,
             voltage_level=voltage_level,
         ),
-        "mockNotice": "MVP-Datenabdeckung: NRW. VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen.",
+        "mockNotice": "Deutschlandweite VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen.",
     }
