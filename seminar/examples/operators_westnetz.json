@@ -1,0 +1,21 @@
+[
+  {
+    "id": "vnbdigital-7332",
+    "name": "Westnetz GmbH",
+    "type": "VNB",
+    "website": "",
+    "parentCompany": null,
+    "description": "Aus VNBdigital-Koordinatenmesh abgeleiteter Betreiber-Datensatz fuer Westnetz GmbH.",
+    "voltageLevels": [
+      "Niederspannung",
+      "Mittelspannung",
+      "Hochspannung"
+    ],
+    "country": "DE",
+    "federalStates": [
+      "DE"
+    ],
+    "dataCoverage": "partial",
+    "mockNotice": "VNBdigital-Meshdaten / nicht amtliche GIS-Grenzen. Polygone sind aus Rasterpunkten interpoliert und ersetzen keine offiziellen Netzgebietsgrenzen."
+  }
+]

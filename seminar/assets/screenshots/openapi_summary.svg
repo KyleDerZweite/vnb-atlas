@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="624" viewBox="0 0 1400 624">
+  <rect width="1400" height="624" rx="18" fill="#101827"/>
+  <rect width="1400" height="54" rx="18" fill="#202A3A"/>
+  <circle cx="34" cy="27" r="8" fill="#EF4444"/>
+  <circle cx="60" cy="27" r="8" fill="#F59E0B"/>
+  <circle cx="86" cy="27" r="8" fill="#22C55E"/>
+  <text x="120" y="35" class="title">OpenAPI Schema Auszug</text>
+  <text x="34" y="86" class="code">GET http://127.0.0.1:8000/openapi.json</text>
+<text x="34" y="110" class="code"></text>
+<text x="34" y="134" class="code">{</text>
+<text x="34" y="158" class="code">  &quot;title&quot;: &quot;Deutschland VNB Atlas API&quot;,</text>
+<text x="34" y="182" class="code">  &quot;version&quot;: &quot;0.1.0&quot;,</text>
+<text x="34" y="206" class="code">  &quot;openapi&quot;: &quot;3.1.0&quot;,</text>
+<text x="34" y="230" class="code">  &quot;paths&quot;: [</text>
+<text x="34" y="254" class="code">    &quot;/api/areas&quot;,</text>
+<text x="34" y="278" class="code">    &quot;/api/coverage&quot;,</text>
+<text x="34" y="302" class="code">    &quot;/api/federal-states&quot;,</text>
+<text x="34" y="326" class="code">    &quot;/api/lookup&quot;,</text>
+<text x="34" y="350" class="code">    &quot;/api/operators&quot;,</text>
+<text x="34" y="374" class="code">    &quot;/api/operators/{operator_id}&quot;,</text>
+<text x="34" y="398" class="code">    &quot;/api/search&quot;,</text>
+<text x="34" y="422" class="code">    &quot;/health&quot;</text>
+<text x="34" y="446" class="code">  ],</text>
+<text x="34" y="470" class="code">  &quot;areas_response_schema&quot;: {</text>
+<text x="34" y="494" class="code">    &quot;type&quot;: &quot;object&quot;,</text>
+<text x="34" y="518" class="code">    &quot;additionalProperties&quot;: true,</text>
+<text x="34" y="542" class="code">    &quot;title&quot;: &quot;Response List Areas Api Areas Get&quot;</text>
+<text x="34" y="566" class="code">  }</text>
+<text x="34" y="590" class="code">}</text>
+  <style>
+    .title { font: 600 22px Arial, sans-serif; fill: #E8EEF8; }
+    .code { font: 18px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #E8EEF8; white-space: pre; }
+  </style>
+</svg>

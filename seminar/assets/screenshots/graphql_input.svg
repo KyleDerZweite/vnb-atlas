@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="768" viewBox="0 0 1400 768">
+  <rect width="1400" height="768" rx="18" fill="#101827"/>
+  <rect width="1400" height="54" rx="18" fill="#202A3A"/>
+  <circle cx="34" cy="27" r="8" fill="#EF4444"/>
+  <circle cx="60" cy="27" r="8" fill="#F59E0B"/>
+  <circle cx="86" cy="27" r="8" fill="#22C55E"/>
+  <text x="120" y="35" class="title">GraphQL Query Eingabe</text>
+  <text x="34" y="86" class="code">POST https://www.vnbdigital.de/gateway/graphql</text>
+<text x="34" y="110" class="code"></text>
+<text x="34" y="134" class="code">query ($coordinates: String, $filter: vnb_FilterInput) {</text>
+<text x="34" y="158" class="code">  vnb_coordinates(coordinates: $coordinates) {</text>
+<text x="34" y="182" class="code">    regions(filter: $filter) {</text>
+<text x="34" y="206" class="code">      _id</text>
+<text x="34" y="230" class="code">      name</text>
+<text x="34" y="254" class="code">      bbox</text>
+<text x="34" y="278" class="code">      layerUrl</text>
+<text x="34" y="302" class="code">    }</text>
+<text x="34" y="326" class="code">    vnbs(filter: $filter) {</text>
+<text x="34" y="350" class="code">      _id</text>
+<text x="34" y="374" class="code">      name</text>
+<text x="34" y="398" class="code">      bbox</text>
+<text x="34" y="422" class="code">      types</text>
+<text x="34" y="446" class="code">      voltageTypes</text>
+<text x="34" y="470" class="code">    }</text>
+<text x="34" y="494" class="code">  }</text>
+<text x="34" y="518" class="code">}</text>
+<text x="34" y="542" class="code"></text>
+<text x="34" y="566" class="code">variables:</text>
+<text x="34" y="590" class="code">{</text>
+<text x="34" y="614" class="code">  &quot;coordinates&quot;: &quot;51.4818445,7.2162363&quot;,</text>
+<text x="34" y="638" class="code">  &quot;filter&quot;: {</text>
+<text x="34" y="662" class="code">    &quot;voltageTypes&quot;: [&quot;Niederspannung&quot;, &quot;Mittelspannung&quot;, &quot;Hochspannung&quot;],</text>
+<text x="34" y="686" class="code">    &quot;withRegions&quot;: true</text>
+<text x="34" y="710" class="code">  }</text>
+<text x="34" y="734" class="code">}</text>
+  <style>
+    .title { font: 600 22px Arial, sans-serif; fill: #E8EEF8; }
+    .code { font: 18px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #E8EEF8; white-space: pre; }
+  </style>
+</svg>

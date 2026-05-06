@@ -1,0 +1,46 @@
+{
+  "query": "westnetz",
+  "total": 4,
+  "results": [
+    {
+      "type": "operator",
+      "label": "Westnetz GmbH",
+      "operatorId": "vnbdigital-7332",
+      "operatorName": "Westnetz GmbH",
+      "areaId": null,
+      "areaName": null,
+      "accuracy": null,
+      "matchedField": "operator"
+    },
+    {
+      "type": "area",
+      "label": "Westnetz GmbH (Niederspannung)",
+      "operatorId": "vnbdigital-7332",
+      "operatorName": "Westnetz GmbH",
+      "areaId": "mesh-de-vnbdigital-7332-niederspannung",
+      "areaName": "Westnetz GmbH (Niederspannung)",
+      "accuracy": "municipality_approximation",
+      "matchedField": "area"
+    },
+    {
+      "type": "area",
+      "label": "Westnetz GmbH (Mittelspannung)",
+      "operatorId": "vnbdigital-7332",
+      "operatorName": "Westnetz GmbH",
+      "areaId": "mesh-de-vnbdigital-7332-mittelspannung",
+      "areaName": "Westnetz GmbH (Mittelspannung)",
+      "accuracy": "municipality_approximation",
+      "matchedField": "area"
+    },
+    {
+      "type": "area",
+      "label": "Westnetz GmbH (Hochspannung)",
+      "operatorId": "vnbdigital-7332",
+      "operatorName": "Westnetz GmbH",
+      "areaId": "mesh-de-vnbdigital-7332-hochspannung",
+      "areaName": "Westnetz GmbH (Hochspannung)",
+      "accuracy": "municipality_approximation",
+      "matchedField": "area"
+    }
+  ]
+}

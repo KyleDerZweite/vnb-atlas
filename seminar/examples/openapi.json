@@ -1,0 +1,1096 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Deutschland VNB Atlas API",
+    "description": "API fuer den Deutschland VNB Atlas mit deutschlandweiten VNBdigital-Meshdaten. Die gelieferten Polygone sind aus Rasterpunkten approximiert, nicht amtlich und ersetzen keine offiziellen GIS-Netzgebietsgrenzen.",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": [
+          "health"
+        ],
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/coverage": {
+      "get": {
+        "tags": [
+          "coverage"
+        ],
+        "summary": "Coverage",
+        "operationId": "coverage_api_coverage_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountryCoverage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/federal-states": {
+      "get": {
+        "tags": [
+          "federal-states"
+        ],
+        "summary": "Federal States",
+        "operationId": "federal_states_api_federal_states_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FederalState"
+                  },
+                  "type": "array",
+                  "title": "Response Federal States Api Federal States Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/operators": {
+      "get": {
+        "tags": [
+          "operators"
+        ],
+        "summary": "List Operators",
+        "operationId": "list_operators_api_operators_get",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Q"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "VNB",
+                    "ÜNB",
+                    "UNKNOWN"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Type"
+            }
+          },
+          {
+            "name": "accuracy",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "mock",
+                    "municipality_approximation",
+                    "verified"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Accuracy"
+            }
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "const": "DE",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Country"
+            }
+          },
+          {
+            "name": "federal_state",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 2,
+                  "maxLength": 2
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Federal State"
+            }
+          },
+          {
+            "name": "coverage",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "none",
+                    "mock",
+                    "partial",
+                    "verified"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Coverage"
+            }
+          },
+          {
+            "name": "voltage_level",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "Niederspannung",
+                    "Mittelspannung",
+                    "Hochspannung"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Voltage Level"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Operator"
+                  },
+                  "title": "Response List Operators Api Operators Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/operators/{operator_id}": {
+      "get": {
+        "tags": [
+          "operators"
+        ],
+        "summary": "Operator Detail",
+        "operationId": "operator_detail_api_operators__operator_id__get",
+        "parameters": [
+          {
+            "name": "operator_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Operator Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Operator"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/areas": {
+      "get": {
+        "tags": [
+          "areas"
+        ],
+        "summary": "List Areas",
+        "operationId": "list_areas_api_areas_get",
+        "parameters": [
+          {
+            "name": "bbox",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "minLon,minLat,maxLon,maxLat",
+              "title": "Bbox"
+            },
+            "description": "minLon,minLat,maxLon,maxLat"
+          },
+          {
+            "name": "operator_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Operator Id"
+            }
+          },
+          {
+            "name": "accuracy",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "mock",
+                    "municipality_approximation",
+                    "verified"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Accuracy"
+            }
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "const": "DE",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Country"
+            }
+          },
+          {
+            "name": "federal_state",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 2,
+                  "maxLength": 2
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Federal State"
+            }
+          },
+          {
+            "name": "voltage_level",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "Niederspannung",
+                    "Mittelspannung",
+                    "Hochspannung"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Voltage Level"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response List Areas Api Areas Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/search": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Search",
+        "operationId": "search_api_search_get",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80,
+              "title": "Q"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lookup": {
+      "get": {
+        "tags": [
+          "lookup"
+        ],
+        "summary": "Lookup",
+        "operationId": "lookup_api_lookup_get",
+        "parameters": [
+          {
+            "name": "lat",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "maximum": 90,
+              "minimum": -90,
+              "title": "Lat"
+            }
+          },
+          {
+            "name": "lon",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "maximum": 180,
+              "minimum": -180,
+              "title": "Lon"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LookupResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AreaFeature": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "Feature",
+            "title": "Type"
+          },
+          "properties": {
+            "$ref": "#/components/schemas/AreaProperties"
+          },
+          "geometry": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Geometry"
+          },
+          "bbox": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bbox"
+          }
+        },
+        "type": "object",
+        "required": [
+          "type",
+          "properties",
+          "geometry"
+        ],
+        "title": "AreaFeature"
+      },
+      "AreaProperties": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "operatorId": {
+            "type": "string",
+            "title": "Operatorid"
+          },
+          "operatorName": {
+            "type": "string",
+            "title": "Operatorname"
+          },
+          "country": {
+            "type": "string",
+            "const": "DE",
+            "title": "Country"
+          },
+          "federalState": {
+            "type": "string",
+            "title": "Federalstate"
+          },
+          "accuracy": {
+            "type": "string",
+            "enum": [
+              "mock",
+              "municipality_approximation",
+              "verified"
+            ],
+            "title": "Accuracy"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "updatedAt": {
+            "type": "string",
+            "title": "Updatedat"
+          },
+          "mockNotice": {
+            "type": "string",
+            "title": "Mocknotice"
+          },
+          "places": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Places"
+          },
+          "postalCodes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Postalcodes"
+          },
+          "voltageLevels": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Voltagelevels"
+          },
+          "voltageLevel": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Voltagelevel"
+          },
+          "vnbdigitalId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vnbdigitalid"
+          },
+          "samplePointCount": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Samplepointcount"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "operatorId",
+          "operatorName",
+          "country",
+          "federalState",
+          "accuracy",
+          "source",
+          "updatedAt",
+          "mockNotice",
+          "places",
+          "postalCodes"
+        ],
+        "title": "AreaProperties"
+      },
+      "CountryCoverage": {
+        "properties": {
+          "country": {
+            "type": "string",
+            "const": "DE",
+            "title": "Country"
+          },
+          "federalStates": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/FederalStateCoverage"
+            },
+            "type": "object",
+            "title": "Federalstates"
+          }
+        },
+        "type": "object",
+        "required": [
+          "country",
+          "federalStates"
+        ],
+        "title": "CountryCoverage"
+      },
+      "FederalState": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "hasAreaData": {
+            "type": "boolean",
+            "title": "Hasareadata"
+          },
+          "dataStatus": {
+            "type": "string",
+            "enum": [
+              "mock",
+              "partial",
+              "verified",
+              "not_available"
+            ],
+            "title": "Datastatus"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "hasAreaData",
+          "dataStatus"
+        ],
+        "title": "FederalState"
+      },
+      "FederalStateCoverage": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "hasAreas": {
+            "type": "boolean",
+            "title": "Hasareas"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "mock",
+              "partial",
+              "verified",
+              "not_available"
+            ],
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "hasAreas",
+          "status"
+        ],
+        "title": "FederalStateCoverage"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "examples": [
+              "ok"
+            ]
+          },
+          "service": {
+            "type": "string",
+            "title": "Service",
+            "examples": [
+              "vnb-atlas"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "service"
+        ],
+        "title": "HealthResponse"
+      },
+      "LookupMatch": {
+        "properties": {
+          "area": {
+            "$ref": "#/components/schemas/AreaFeature"
+          },
+          "operator": {
+            "$ref": "#/components/schemas/Operator"
+          }
+        },
+        "type": "object",
+        "required": [
+          "area",
+          "operator"
+        ],
+        "title": "LookupMatch"
+      },
+      "LookupResponse": {
+        "properties": {
+          "match": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LookupMatch"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "matches": {
+            "items": {
+              "$ref": "#/components/schemas/LookupMatch"
+            },
+            "type": "array",
+            "title": "Matches"
+          }
+        },
+        "type": "object",
+        "title": "LookupResponse"
+      },
+      "Operator": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "VNB",
+              "ÜNB",
+              "UNKNOWN"
+            ],
+            "title": "Type"
+          },
+          "website": {
+            "type": "string",
+            "title": "Website"
+          },
+          "parentCompany": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parentcompany"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "voltageLevels": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Voltagelevels"
+          },
+          "country": {
+            "type": "string",
+            "const": "DE",
+            "title": "Country"
+          },
+          "federalStates": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Federalstates"
+          },
+          "dataCoverage": {
+            "type": "string",
+            "enum": [
+              "none",
+              "mock",
+              "partial",
+              "verified"
+            ],
+            "title": "Datacoverage"
+          },
+          "mockNotice": {
+            "type": "string",
+            "title": "Mocknotice"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "type",
+          "website",
+          "description",
+          "voltageLevels",
+          "country",
+          "federalStates",
+          "dataCoverage",
+          "mockNotice"
+        ],
+        "title": "Operator"
+      },
+      "SearchResponse": {
+        "properties": {
+          "query": {
+            "type": "string",
+            "title": "Query"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/SearchResult"
+            },
+            "type": "array",
+            "title": "Results"
+          }
+        },
+        "type": "object",
+        "required": [
+          "query",
+          "total",
+          "results"
+        ],
+        "title": "SearchResponse"
+      },
+      "SearchResult": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "operator",
+              "area",
+              "place",
+              "postalCode"
+            ],
+            "title": "Type"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "operatorId": {
+            "type": "string",
+            "title": "Operatorid"
+          },
+          "operatorName": {
+            "type": "string",
+            "title": "Operatorname"
+          },
+          "areaId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Areaid"
+          },
+          "areaName": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Areaname"
+          },
+          "accuracy": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "mock",
+                  "municipality_approximation",
+                  "verified"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Accuracy"
+          },
+          "matchedField": {
+            "type": "string",
+            "enum": [
+              "operator",
+              "area",
+              "place",
+              "postalCode"
+            ],
+            "title": "Matchedfield"
+          }
+        },
+        "type": "object",
+        "required": [
+          "type",
+          "label",
+          "operatorId",
+          "operatorName",
+          "matchedField"
+        ],
+        "title": "SearchResult"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}
