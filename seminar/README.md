@@ -1,52 +1,25 @@
-# Seminar: GraphQL + REST
+# Seminarinhalt: API Schema Design + REST
 
-Dieses Verzeichnis enthält alles für die deutschsprachige Präsentation zu:
+Dieses Verzeichnis enthält nur die inhaltliche Grundlage für die deutschsprachige Präsentation:
 
-**GraphQL + REST - API-Design, Apollo, fetch vs. axios**
+**API Schema Design + REST mit Live-Interaktion und fetch vs. axios**
 
-Der Inhalt ist für zwei Sprecher aufgeteilt und nutzt das Projekt als durchgehendes Beispiel:
+Das Projekt **Deutschland VNB Atlas** ist dabei nicht die Leitgeschichte, sondern ein Showcase:
 
-- unser FastAPI-Backend als REST- und OpenAPI-Beispiel
-- den VNBdigital-GraphQL-Endpunkt als GraphQL-Beispiel
-- den vorhandenen Frontend-Client als fetch-Beispiel
-- axios und Apollo als Vergleichs-/Erweiterungsbeispiele
+- Zuerst werden REST, API-Schema-Design, OpenAPI und Client-Zugriff allgemein erklärt.
+- Danach wird gezeigt, wie diese Konzepte im Projekt sichtbar werden.
+- Die Live-Demo nutzt das Projekt als konkretes Beispiel für Swagger UI, OpenAPI JSON und Frontend-API-Aufrufe.
 
-## Generieren
+## Dateien
 
-```bash
-cd seminar
-npm install
-npm run build
-```
+- `talk-plan.md`: Gesamtstruktur, Ziel, Timing und Sprecheraufteilung
+- `slides-content.md`: Folieninhalt als Storyboard, ohne Design
+- `speaker-notes.md`: Sprechertext und Übergänge
+- `live-demo-plan.md`: konkreter Ablauf für die Live-Interaktion
+- `learning-material.md`: Lernmaterial für Vorbereitung/Nachbereitung
+- `code-examples.md`: fetch- und axios-Beispiele
+- `project-reference.md`: was im VNB Atlas gezeigt werden kann
 
-Ergebnis:
+## Kein generiertes PowerPoint
 
-- `dist/graphql-rest-api-design-vnb-atlas.pptx`
-- `materials/sprecher-skript.md`
-- `materials/lernmaterial.md`
-- `materials/demo-ablauf.md`
-- `materials/code-examples.md`
-- `materials/zeitplan-und-rollen.md`
-- `examples/*.json`
-- `assets/screenshots/*.svg`
-
-## Präsentation starten
-
-Für die Live-Demo im Projektwurzelverzeichnis:
-
-```bash
-./scripts/dev.sh
-```
-
-Dann öffnen:
-
-- Frontend: `http://127.0.0.1:5173`
-- Swagger UI: `http://127.0.0.1:8000/docs`
-- OpenAPI JSON: `http://127.0.0.1:8000/openapi.json`
-
-## Sprecheraufteilung
-
-- Sprecher A: REST, OpenAPI, API-Design, Architekturentscheidung
-- Sprecher B: Frontend-Client, fetch vs. axios, GraphQL, Apollo
-
-Die Folien sind so angelegt, dass beide ähnlich viel Redezeit haben.
+Dieses Verzeichnis enthält bewusst keine generierte PPTX, keine Screenshots, keine `node_modules` und keine Build-Skripte. Design und PowerPoint-Erstellung können später auf Basis dieser Inhalte erfolgen.
